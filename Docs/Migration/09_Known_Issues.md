@@ -11,7 +11,7 @@
 
 - Severity: gate condition.
 - Status: IN_PROGRESS.
-- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, the 127-package Modern UI batch, and the 20-package EFProcedural contracts batch.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, the 127-package Modern UI batch, the 20-package EFProcedural contracts batch, and the exact `DungeonGeneration` World batch.
 - Remaining: asset class/dependency enrichment and final action classification for every other manifest row.
 
 ## MIG-0003 — Target-owned Blueprint baseline was red
@@ -75,8 +75,8 @@
 - Severity: migration gate condition.
 - Status: IN_PROGRESS.
 - Completed: exact migration and UE 5.8 validation of 31 packages, generation of the packaged character-background preview texture, preservation of the raw preview, effective core settings validation, 9/9 clean focused automation, Editor/Game builds, source read-only verification, and protected invariant re-hash.
-- Current resolution: the structural soft-package probe resolves 9/11 contracts; only `/Game/Procedural/DoorToLevel` and `/Game/Procedural/Maps/DungeonGeneration` remain absent.
-- Remaining: migrate or replace those procedural contracts through an approved exact batch/adapter, then pass PIE, complete input behavior, visual QA, cook, package, and packaged-runtime validation. The current Phase 4 evidence must not be promoted to a full subsystem or migration PASS before those gates complete.
+- Current resolution: the last structural soft-package probe resolved 9/11 contracts and predated the exact map batch. `/Game/Procedural/Maps/DungeonGeneration` is now present with separate UE 5.7 load/AssetTools and UE 5.8 load/save/reload evidence; the 11-path probe has not yet been rerun, and `/Game/Procedural/DoorToLevel` remains absent.
+- Remaining: migrate or replace DoorToLevel through an approved exact batch/adapter, rerun the structural probe, then pass map PIE, complete input behavior, visual QA, cook, package, and packaged-runtime validation. The current Phase 4 evidence must not be promoted to a full subsystem or migration PASS before those gates complete.
 
 ## MIG-0011 — Modern UI content is not yet a runtime/package PASS
 
@@ -96,4 +96,14 @@
 - Commit: `259bf42`.
 - Process note: the first post-migration binary-hash gate stopped after the log had recorded 20/20 successful AssetTools migrations because AssetTools reserialized `BP_StartPoint`; byte identity with the staged package was therefore not a valid success condition. The resume gate verified the exact already-created 20-package delta and completed successfully. No Blueprint compile, load, dependency, or functional defect was inferred from this serialization delta.
 - Configuration guard: do not point `EFProceduralSettings` at `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon` yet.
-- Remaining: migrate or replace `BP_MassiveDungeon`, `/Game/Procedural/Maps/DungeonGeneration`, and `/Game/Procedural/DoorToLevel`; then pass StartPoint discovery/spawn in PIE, full dungeon generation/cleanup, visual QA, cook/cooked-manifest, package, and packaged-runtime validation.
+- Map update: `/Game/Procedural/Maps/DungeonGeneration` is now migrated through a separate exact single-map batch and passes static UE 5.7/5.8 load/save gates; see MIG-0013. This does not close its runtime gates.
+- Remaining: migrate or replace `BP_MassiveDungeon` and `/Game/Procedural/DoorToLevel`; then pass StartPoint discovery/spawn and map execution in PIE, full dungeon generation/cleanup, visual QA, cook/cooked-manifest, package, and packaged-runtime validation.
+
+## MIG-0013 — DungeonGeneration is statically migrated, not runtime-complete
+
+- Severity: migration gate condition.
+- Status: IN_PROGRESS.
+- Completed: exact migration of `/Game/Procedural/Maps/DungeonGeneration` as one `World`. The isolated UE 5.7 read-only gate loaded the map without saving; UE 5.7 AssetTools migrated exactly one package; UE 5.8 loaded, saved, reloaded, and reinspected it. Editor/Game builds and post-migration source/protected gates pass. Evidence: `Phase4_DungeonGeneration_ContentBuild.json`.
+- Static result: the final target is 58,272 bytes, SHA-256 `4262B37586D7626F2C912AD81BE7FFF27EEA2615130919B5B85339E7B77E39E1`, with only three Engine/Script dependencies, no `/Game` dependencies, and no sidecars, streaming levels, external actor/object packages, or World Partition payload.
+- Process note: the initial UE 5.7 validation used an unavailable `AssetData.object_path` property and was rerun with the compatible API. The first AssetTools run migrated exactly the map, then stopped at an invalid byte-identity assertion because AssetTools reserialized it; the resume gate verified the exact one-package delta before UE 5.8 resave.
+- Remaining: `/Game/Procedural/DoorToLevel` and `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon`; map PIE, visible PCG/navigation QA, StartPoint discovery/spawn, complete dungeon generation/cleanup, cook/cooked-manifest, package, and packaged runtime.
