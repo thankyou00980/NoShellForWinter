@@ -30,7 +30,7 @@ Every descriptor below is rooted at `D:\Projects UE5\LustAsDeadlySin\Plugins\<Pl
 | EFBlink | 0.1.0 | `EFBlinkRuntime` Runtime/Default | none | 11 | 5 headers; 3 UCLASS, 1 USTRUCT | none | MIGRATE_SOURCE | PHASE2_INVENTORIED / PENDING_PORT |
 | DirtyPawnRuntime | 1.0.0 | `DirtyPawnRuntime` Runtime/Default; `DirtyPawnRuntimeEditor` Editor/Default | none | 12 | 5 headers; 16 UCLASS, 5 USTRUCT, 3 UENUM | none | MIGRATE_SOURCE | PHASE2_INVENTORIED / PENDING_PORT |
 | ACFTrainingSystem | 0.1.0 | `ACFTrainingSystem` Runtime/Default | GameplayAbilities, AscentCombatFramework | 11 | 5 headers; 3 UCLASS, 5 USTRUCT, 1 UENUM | none | REBUILD_AGAINST_TARGET | PHASE2_INVENTORIED / PENDING_PORT |
-| CodeWidgetDesignerBridge | 0.1.0 | `CodeWidgetDesignerBridge` Runtime/Default; `CodeWidgetDesignerBridgeEditor` Editor/Default | none | 22 | 2 public headers; 1 UCLASS, 5 USTRUCT, 2 UENUM, 1 UINTERFACE | none | REBUILD_AGAINST_UE58_EDITOR | PHASE2_INVENTORIED / PENDING_PORT |
+| CodeWidgetDesignerBridge | 0.1.0 | `CodeWidgetDesignerBridge` Runtime/Default; `CodeWidgetDesignerBridgeEditor` Editor/Default | none | 22 | 2 public headers; 1 UCLASS, 5 USTRUCT, 2 UENUM, 1 UINTERFACE | none | REBUILD_AGAINST_UE58_EDITOR | PHASE3_EDITOR_GAME_BUILD_PASS / QA_PENDING |
 
 `CanContainContent=true` is present on EFCharacterCreation, EFProjectSystems, DirtyPawnRuntime, and ACFTrainingSystem, but only EFCharacterCreation currently contains plugin assets. Project DataAssets, DataTables, Widget Blueprints, maps, input assets, and other `/Game` dependencies must therefore be handled by the content manifest; porting plugin source alone is not a subsystem-complete migration.
 
