@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-07-13T08:04:29Z",
+  "status": "IN_PROGRESS",
+  "source": {
+    "root": "D:\\Projects UE5\\LustAsDeadlySin",
+    "write_policy": "READ_ONLY",
+    "uproject": "ACFSample.uproject",
+    "engine_association": "5.7",
+    "git": {
+      "head": "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+      "branch": "main",
+      "upstream": "origin/main",
+      "ahead": 3,
+      "behind": 0,
+      "tracked_modifications": 8,
+      "lfs_entries": 10952,
+      "lfs_hydrated": true
+    },
+    "modules": ["ACFSample"],
+    "plugins": [
+      "EFCharacterCreation",
+      "EFCharacterCreationDazBridge",
+      "EFClothingMorph",
+      "EFProcedural",
+      "EFLevelFlow",
+      "EFCharacterCreationACFUBridge",
+      "EFProjectSystems",
+      "EFBlink",
+      "DirtyPawnRuntime",
+      "ACFTrainingSystem",
+      "CodeWidgetDesignerBridge"
+    ],
+    "content_roots": [
+      "FullSample",
+      "DazToUnreal",
+      "Food_Props_Kit",
+      "Fantastic_Dungeon_Pack",
+      "RealisticBlood",
+      "KawaiiAnimations",
+      "ExportedAnimations",
+      "Calysto",
+      "Characters",
+      "DirtyPawnSystem",
+      "_Game"
+    ],
+    "maps": [
+      "/Game/_Game/Hub/HUB",
+      "/Game/_Game/Locations/StorySelection",
+      "/Game/_Game/Locations/PCGLevel",
+      "/Game/Procedural/Maps/DungeonGeneration",
+      "/Game/FullSample/Integrations/UIIntegrations/Level/MenuMap"
+    ],
+    "systems": [
+      "CharacterBackground",
+      "CharacterCreation",
+      "Chronicle",
+      "SinfulAscension",
+      "SurvivalNeedsStatus",
+      "Consumables",
+      "EnemyScaling",
+      "DefeatStruggle",
+      "ProceduralLevelFlow",
+      "EmotesLocomotion",
+      "Intimacy",
+      "Lockpicking",
+      "DirtyPawn",
+      "TattooShop",
+      "Blink"
+    ]
+  },
+  "target": {
+    "root": "D:\\Projects UE5\\NoShellForWinter",
+    "uproject": "NoShellForWinter.uproject",
+    "engine_association": "5.8",
+    "modules": ["NoShellForWinter"],
+    "plugins": [
+      "ModelingToolsEditorMode",
+      "StateTree",
+      "GameplayStateTree",
+      "AscentCombatFramework@4.3.5",
+      "OneClickMaterials@1.0",
+      "DazToUnreal@5.8.0.491",
+      "BpGeneratorUltimate@1.7.0",
+      "PCGExtendedToolkit@0.76.2",
+      "SkinnedDecalComponent@3.0.1"
+    ],
+    "content_roots": [
+      "FullSample",
+      "DazToUnreal",
+      "Characters",
+      "Input",
+      "ThirdPerson",
+      "Variant_Combat",
+      "Variant_Platforming",
+      "Variant_SideScrolling"
+    ],
+    "maps": [
+      "/Game/FullSample/L_UltOpenWorld",
+      "/Game/FullSample/Integrations/UIIntegrations/Level/MenuMap",
+      "/Game/FullSample/Test",
+      "/Game/FullSample/FullMap"
+    ],
+    "systems": ["ACFUUltimateSample", "DazCharacterAssets"]
+  },
+  "classifications": [],
+  "unresolved": [
+    "Blueprint graph/CDO inventory",
+    "exact T and Plus source interactions",
+    "Frederick runtime identity",
+    "complete asset-by-asset classification",
+    "target Blueprint compile baseline failures"
+  ]
+}

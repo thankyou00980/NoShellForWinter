@@ -1,0 +1,34 @@
+﻿{
+    "schema_version":  1,
+    "captured_utc":  "2026-07-13T08:09:39.4708803Z",
+    "entries":  [
+                    {
+                        "path":  "Saved/Migration/Logs/Phase1_GenerateProjectFiles_Retry_20260713.log",
+                        "result":  "PASS",
+                        "exit_code":  0,
+                        "length":  17648,
+                        "sha256":  "22C75A9FE47872B197E77770D738855413BECD43CCC85AF4E815B5584AC4672B"
+                    },
+                    {
+                        "path":  "Saved/Migration/Logs/Phase1_DevelopmentEditor_Build_20260713.log",
+                        "result":  "PASS",
+                        "exit_code":  0,
+                        "length":  10296,
+                        "sha256":  "01D526B359D3FF05D55FAC4EA573AE7E05B35A566F40E20D287C2FF845004A9A"
+                    },
+                    {
+                        "path":  "Saved/Migration/Logs/Phase1_DevelopmentGame_Build_20260713.log",
+                        "result":  "PASS",
+                        "exit_code":  0,
+                        "length":  11186,
+                        "sha256":  "A01F8133B621B4B7632BA2BD6425646AE14B8EDB2CFC2D7EC9653C735101F009"
+                    },
+                    {
+                        "path":  "Saved/Migration/Logs/Phase1_CompileAllBlueprints_20260713.log",
+                        "result":  "FAIL_PREEXISTING",
+                        "exit_code":  83,
+                        "length":  1620778,
+                        "sha256":  "76FA6973A7FEAD1810E9E280AEC6B83320BBD2AE1E9EDC60A704E9938F50B79F"
+                    }
+                ]
+}

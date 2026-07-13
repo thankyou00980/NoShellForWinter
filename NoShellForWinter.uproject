@@ -1,0 +1,64 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.8",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "NoShellForWinter",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"AIModule",
+				"UMG"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "StateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayStateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "AscentCombatFramework",
+			"Enabled": true,
+			"MarketplaceURL": "https://www.fab.com/listings/cc258205-8fcf-41e5-9b48-6ec44e46d7eb"
+		},
+		{
+			"Name": "OneClickMaterials",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher: //ue/marketplace/product/a2aba59069af445081f7e628a415e70b"
+		},
+		{
+			"Name": "DazToUnreal",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/070a312bc04c48bcb1a4d193aaddf73e"
+		},
+		{
+			"Name": "BpGeneratorUltimate",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/8d776721-5da3-44ce-b7ef-be17a023be59"
+		},
+		{
+			"Name": "PCGExtendedToolkit",
+			"Enabled": true
+		},
+		{
+			"Name": "SkinnedDecalComponent",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/05b6b0f2f8f049aaa469a1da4e09275c"
+		}
+	]
+}

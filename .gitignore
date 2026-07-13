@@ -1,0 +1,31 @@
+# Unreal generated artifacts
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+
+# IDE-generated files
+.vscode/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.user
+*.xcodeproj/
+*.xcworkspace/
+
+# Local assistant/vendor reference cache
+.claude/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.bak
+*.old
+*~

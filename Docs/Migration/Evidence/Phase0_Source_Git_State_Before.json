@@ -1,0 +1,67 @@
+﻿{
+    "schema_version":  1,
+    "captured_utc":  "2026-07-13T08:04:29.3069506Z",
+    "source_root":  "D:\\Projects UE5\\LustAsDeadlySin",
+    "head":  "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+    "branch":  "main",
+    "upstream":  "origin/main",
+    "status_porcelain_v2":  [
+                                "# branch.oid 8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+                                "# branch.head main",
+                                "# branch.upstream origin/main",
+                                "# branch.ab +3 -0",
+                                "1 .M N... 100644 100644 100644 e93b3844453ccf42ad77b6e8076b0919e39b2b5c e93b3844453ccf42ad77b6e8076b0919e39b2b5c Content/FullSample/Player.uasset",
+                                "1 .M N... 100644 100644 100644 92cb172111d9b202bb7d12b73d5c809d64bca580 92cb172111d9b202bb7d12b73d5c809d64bca580 Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.cpp",
+                                "1 .M N... 100644 100644 100644 713454201eb7c02b7c9bd8874ad78bfea6b71e92 713454201eb7c02b7c9bd8874ad78bfea6b71e92 Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.h",
+                                "1 .M N... 100644 100644 100644 af8996cc5842c941d667c63c6a9a8f3465a51b04 af8996cc5842c941d667c63c6a9a8f3465a51b04 Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.cpp",
+                                "1 .M N... 100644 100644 100644 8253edd3a311c6a0ab6eb9b2e5b756063ab9784a 8253edd3a311c6a0ab6eb9b2e5b756063ab9784a Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.h",
+                                "1 .M N... 100644 100644 100644 023c745eab084f0b8c7c28d8086e04f89f5e8d32 023c745eab084f0b8c7c28d8086e04f89f5e8d32 Tools/EmoteMenu/test_project_blueprint_scene_visual_runtime.py",
+                                "1 .M N... 100644 100644 100644 4e82f39effb7bf43c876bdd3a7d6eb90c563f54e 4e82f39effb7bf43c876bdd3a7d6eb90c563f54e Tools/Intimacy/run_project_intimacy_visual_capture.ps1",
+                                "1 .M N... 100644 100644 100644 2fdcef3de34fb6097541f5bc274e99b800d0dd1f 2fdcef3de34fb6097541f5bc274e99b800d0dd1f Tools/Intimacy/test_project_intimacy_visual_runtime.py"
+                            ],
+    "modified_file_hashes":  [
+                                 {
+                                     "path":  "Content/FullSample/Player.uasset",
+                                     "length":  94887,
+                                     "sha256":  "2D95F20CDEE218EA9F74C62E002F4393665E69DD3875D4C6758EC4AFB915470C"
+                                 },
+                                 {
+                                     "path":  "Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.cpp",
+                                     "length":  88299,
+                                     "sha256":  "F1D51E139EDC68BE12D592FA582581E60124F8FD84403A89BB8AC10A7A66FA3F"
+                                 },
+                                 {
+                                     "path":  "Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.h",
+                                     "length":  10320,
+                                     "sha256":  "B48B0ACBD149712C19C3B49A6A6F826A1C303772604E171112433DAC14343932"
+                                 },
+                                 {
+                                     "path":  "Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.cpp",
+                                     "length":  139082,
+                                     "sha256":  "5B2C8D3C4714D3017D4FDF86792E7980966E9764539AB1D6BD6DA1756F00259E"
+                                 },
+                                 {
+                                     "path":  "Plugins/EFProjectSystems/Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.h",
+                                     "length":  21937,
+                                     "sha256":  "D20F7E623363ADC37A6B9CE02E16C69097F298DFB5FA61D076CD65761C99CE4B"
+                                 },
+                                 {
+                                     "path":  "Tools/EmoteMenu/test_project_blueprint_scene_visual_runtime.py",
+                                     "length":  36155,
+                                     "sha256":  "38D8DFB6B41346BA8DA91A6CEB4F472583EC3C30E611293B56C7E4E58FF62E7A"
+                                 },
+                                 {
+                                     "path":  "Tools/Intimacy/run_project_intimacy_visual_capture.ps1",
+                                     "length":  11580,
+                                     "sha256":  "399987519E215770281145C0728E8D90BD71E493B3AFFBDD7BD47D8542ED829F"
+                                 },
+                                 {
+                                     "path":  "Tools/Intimacy/test_project_intimacy_visual_runtime.py",
+                                     "length":  32729,
+                                     "sha256":  "2F761F7ABE6AA2829E035752D4287CADB15E563CAAC8A3572ED15AE737AEA840"
+                                 }
+                             ],
+    "lfs_entry_count":  10952,
+    "lfs_manifest_sha256":  "50FF7F3DF5DD50A8E687BD312BDE1172BCBAF89D6F0588697E5B0A13B1757015",
+    "lfs_manifest":  "D:\\Projects UE5\\NoShellForWinter\\Saved\\Migration\\Reports\\Phase0_Source_LFS_Manifest_Before.txt"
+}
