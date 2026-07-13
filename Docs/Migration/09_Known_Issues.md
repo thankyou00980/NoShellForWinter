@@ -11,7 +11,7 @@
 
 - Severity: gate condition.
 - Status: IN_PROGRESS.
-- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, and the 127-package Modern UI batch.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, the 127-package Modern UI batch, and the 20-package EFProcedural contracts batch.
 - Remaining: asset class/dependency enrichment and final action classification for every other manifest row.
 
 ## MIG-0003 — Target-owned Blueprint baseline was red
@@ -85,4 +85,14 @@
 - Completed: exact migration of 127 packages (12,370,672 bytes) under the five approved `/Game/_Game/Widgets` roots: Chronicle 23, InnerState 24, Status 17, Attributes 27, and SinfulAscensionAltar 36.
 - Static validation: 66 Widget Blueprints, 54 Texture2D assets, and 7 FontFace assets; UE 5.7 loaded/compiled all 66 Widget Blueprints and resolved 52 native parents; UE 5.7 AssetTools and UE 5.8 load/compile/resave passed with zero external `/Game` dependencies and zero redirectors.
 - Config/build gates: the `/Game/_Game/Widgets` always-cook root is applied; UE 5.8 Editor/Game builds, 71/71 native plus 9/9 content-focused automation tests, source read-only verification, and protected invariant re-hash passed.
+- Commit: `4a66c74`.
 - Remaining: exercise the widgets in PIE, complete visual QA, verify the root and assets in the cook manifest, then pass package and packaged-runtime validation. Static migration evidence alone is not a full Modern UI PASS.
+
+## MIG-0012 — EFProcedural contracts are statically migrated, not runtime-complete
+
+- Severity: migration gate condition.
+- Status: IN_PROGRESS.
+- Completed: exact migration of 20 packages—19 Calysto data contracts plus canonical `/Game/Calysto/Dungeon/Blueprint/Utility/BP_StartPoint`—through UE 5.7 AssetTools, followed by UE 5.8 load/compile/resave. All 6 Blueprints compile; Editor/Game builds, source read-only verification, and protected invariant re-hash pass. Evidence: `Phase4_ProceduralContracts_ContentBuild.json`.
+- Process note: the first post-migration binary-hash gate stopped after the log had recorded 20/20 successful AssetTools migrations because AssetTools reserialized `BP_StartPoint`; byte identity with the staged package was therefore not a valid success condition. The resume gate verified the exact already-created 20-package delta and completed successfully. No Blueprint compile, load, dependency, or functional defect was inferred from this serialization delta.
+- Configuration guard: do not point `EFProceduralSettings` at `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon` yet.
+- Remaining: migrate or replace `BP_MassiveDungeon`, `/Game/Procedural/Maps/DungeonGeneration`, and `/Game/Procedural/DoorToLevel`; then pass StartPoint discovery/spawn in PIE, full dungeon generation/cleanup, visual QA, cook/cooked-manifest, package, and packaged-runtime validation.

@@ -132,7 +132,7 @@ for line_index in range(1, len(raw_lines)):
     row[indices["Action"]] = "MIGRATE_VIA_UNREAL_ASSETTOOLS_AFTER_DEPENDENCY_GATE"
     row[indices["Result"]] = "PASS"
     row[indices["TestEvidence"]] = EVIDENCE
-    row[indices["Commit"]] = "PENDING_PHASE4_CONTENT_COMMIT"
+    row[indices["Commit"]] = "671feda"
     note = row[indices["Notes"]].rstrip()
     migration_note = "Migrated through isolated UE 5.7 AssetTools; UE 5.8 load/resave PASS."
     if migration_note not in note:
@@ -172,7 +172,7 @@ values = {
     "Action": "GENERATE_VIA_UE58_ASSETTOOLS_FROM_VERIFIED_PNG",
     "Result": "PASS",
     "TestEvidence": EVIDENCE,
-    "Commit": "PENDING_PHASE4_CONTENT_COMMIT",
+    "Commit": "671feda",
     "Notes": (
         "Generated from Content/_Game/Images/preview.png, 749769 bytes, "
         "SHA-256 6B4075152BB866EB6B05AB8E24AD68A1138756AA0899681B348FA38F8DE288D3."

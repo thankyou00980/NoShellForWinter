@@ -1,14 +1,16 @@
 # Configuration merge
 
-Status: `PHASE4_CORE_AND_MODERN_UI_SELECTIVE_PASS`
+Status: `PHASE4_CORE_MODERN_UI_AND_PROCEDURAL_CONTRACTS_SELECTIVE_PASS`
 
-This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content and Modern UI batches recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave, native automation, and Editor/Game builds; PIE input behavior, visual QA, cook, and packaged runtime remain pending.
+This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content, Modern UI, and EFProcedural contract batches recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave where applicable, native automation, and Editor/Game builds; PIE input behavior, procedural runtime, visual QA, cook, and packaged runtime remain pending.
 
 Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audit.md)
 
 Phase 4 evidence: [Phase4_EFProjectCoreContent_ConfigAutomation.json](Evidence/Phase4_EFProjectCoreContent_ConfigAutomation.json)
 
 Modern UI evidence: [Phase4_ModernUI_ConfigBuild.json](Evidence/Phase4_ModernUI_ConfigBuild.json)
+
+Procedural contracts evidence: [Phase4_ProceduralContracts_ContentBuild.json](Evidence/Phase4_ProceduralContracts_ContentBuild.json)
 
 ## Authorities
 
@@ -39,7 +41,8 @@ Modern UI evidence: [Phase4_ModernUI_ConfigBuild.json](Evidence/Phase4_ModernUI_
 | `DefaultGame.ini` | ACFU always-cook roots | `/AscentCombatFramework`, `/Game/FullSample` | Missing from project file; present in ACFU 4.3.5 template | `DEFER_MERGE_FROM_ACFU_4_3_5` | Cook manifest confirms roots |
 | `DefaultGame.ini` | `/Game/_Game/Widgets` always-cook root | Project-owned addition | Exact 127-package Modern UI batch now present | `APPLIED_PACKAGING_STRUCTURAL_PASS` | Config/load/compile/resave/build PASS; cook-manifest and packaged validation pending |
 | `DefaultGame.ini` | `/NNEDenoiser` always-cook root | Legacy source entry | Absent | `REJECT_UNLESS_REFERENCED` | NNEDenoiser enabled and an asset dependency proves need |
-| `DefaultGame.ini` | EFProjectSystems, EFProcedural, EFCharacterCreation, GameplayAbilities sections | Project-owned settings added after initial import | Absent | `DEFER_MERGE` section-by-section | Owning plugin loads; every configured asset path resolves |
+| `DefaultGame.ini` | EFProjectSystems, EFCharacterCreation, GameplayAbilities sections | Project-owned settings added after initial import | Selective owner sections applied | `MERGE_SECTION_BY_SECTION` | Owning plugin loads; every configured asset path resolves |
+| `DefaultGame.ini` | `EFProceduralSettings` dungeon actor/start-point settings | Source uses `BP_MassiveDungeon` and canonical `BP_StartPoint` contracts | Exact contract batch and `BP_StartPoint` present; `BP_MassiveDungeon`, DungeonGeneration, and DoorToLevel absent | `DEFER_MERGE`; do not point settings at `BP_MassiveDungeon` yet | Migrate/replace remaining runtime assets, then pass dungeon PIE, visual, cook, and package gates |
 | `DefaultGame.ini` | Temporary gameplay tuning | Pain `0.25`, sensation hold `30`, dance lust `0.10` with `TEMP_TEST` comments | Absent | `REJECT_TEMP_VALUES`; release candidates are `0.01`, `10`, `0.05` | Owning native tests and gameplay QA |
 | `DefaultGame.ini` | Packaging legacy keys | Includes Blueprint nativization-era keys | Absent | `REJECT_UE5_LEGACY`; do not copy file wholesale | Validate desired packaging through UE 5.8 settings/CDO |
 | `DefaultGameplayTags.ini` | ACF tag tables and ACF tags | Older ACF table paths and fewer tables | Exact current ACFU 4.3.5 file | `KEEP_TARGET` | ACF tag resolution smoke |
@@ -83,13 +86,14 @@ Merge only owner sections, never the surrounding UE 5.7 file. Current dispositio
 - `APPLIED_STRUCTURAL_PASS`: `EFProjectInputSettings`, `EFProjectEnemySettings`, `ProjectEnemyVisualVariationSettings`, `ProjectEnemyLevelSettings`, `ProjectActivityFeedSettings`, and `ProjectSinfulAscensionSettings`.
 - `APPLIED_EARLIER`: `EFCharacterCreationSettings`.
 - `APPLIED_CONTENT_STRUCTURAL_PASS`: `EFProjectSurvivalSettings`, `ProjectDefeatFlowSettings`, and `ProjectCharacterBackgroundSettings` for the exact Phase 4 batch.
+- `APPLIED_CONTENT_STRUCTURAL_PASS`: exact EFProcedural batch of 19 Calysto contracts plus canonical `/Game/Calysto/Dungeon/Blueprint/Utility/BP_StartPoint`; no `EFProceduralSettings` activation is implied.
 - `APPLIED_PACKAGING_STRUCTURAL_PASS`: `/Game/_Game/Widgets` always-cook root for the exact 127-package Modern UI batch; cook-manifest verification remains pending.
 - `PENDING_CONTENT`: `EFProjectWorldFlowSettings`, `ProjectRuntimePerformanceSettings`, and `EFProceduralSettings`.
 - `PENDING_GAS_CUE_VALIDATION`: `AbilitySystemGlobals`.
 
-Configured source-only dependencies still include HUB, DungeonGeneration, and DoorToLevel. The exact Phase 4 batches now supply the survival data, food registry, defeat UI and its self-contained visual dependencies, character-background data/UI, `_Game/Images/preview.png`, and the approved `_Game/Widgets` Modern UI roots; this does not authorize migration of the remaining roots.
+Configured source-only dependencies still include HUB, DungeonGeneration, DoorToLevel, and the `BP_MassiveDungeon` runtime actor. The exact Phase 4 batches now supply the survival data, food registry, defeat UI and its self-contained visual dependencies, character-background data/UI, `_Game/Images/preview.png`, the approved `_Game/Widgets` Modern UI roots, 19 Calysto procedural data contracts, and canonical `BP_StartPoint`; this does not authorize migration of the remaining roots.
 
-Phase 3 has applied only the four EFProcedural class redirects after its Runtime and PCG modules passed Editor/Game builds. The `EFProceduralSettings` section remains deferred: its three configured dungeon asset paths are absent from target Content, and the isolated UE 5.7 registry closure is evidence for inspection only, not an authorized migration allowlist.
+The four EFProcedural class redirects remain applied after all EFProcedural C++ modules passed their applicable Editor/Game builds. The exact 20-package content allowlist is now approved and present, but the `EFProceduralSettings` section remains deferred: `BP_StartPoint` is available while `BP_MassiveDungeon` and the remaining dungeon runtime assets are not. Do not configure `DungeonActorClass` to `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon` until that Blueprint has its own approved migration/adapter and runtime gates.
 
 The two EFLevelFlow class redirects were then applied after its destination module passed Editor/Game builds. EFLevelFlow has no explicit source settings section to merge; its native CDO defaults and ACFU loading widget passed a read-only UE 5.8 probe. Serialized redirect resolution and the DungeonGeneration runtime remain pending until the gated map migration exists.
 
@@ -129,6 +133,16 @@ The second controlled Phase 4 content action migrated exactly 127 packages (12,3
 The detached UE 5.7 read-only validation loaded and compiled all 66 Widget Blueprints and resolved 52 native parents before the UE 5.7 AssetTools exact migration passed. UE 5.8 then loaded, compiled, resaved, and revalidated the entire batch. The resulting closure has zero external `/Game` dependencies and zero redirectors.
 
 `DefaultGame.ini` now adds `+DirectoriesToAlwaysCook=(Path="/Game/_Game/Widgets")` for this migrated root. Editor and Game builds, 71/71 native plus 9/9 content-focused automation tests, the source read-only gate, and all protected ACFU/Daz/player/mesh invariants passed after the change. Runtime widget creation and interaction in PIE, visual QA, confirmation in the cook manifest, package, and packaged runtime remain `PENDING`.
+
+### Phase 4 EFProcedural exact contracts batch
+
+The third controlled Phase 4 content action migrated exactly 20 packages: 19 Calysto data contracts and `/Game/Calysto/Dungeon/Blueprint/Utility/BP_StartPoint`. The set contains 6 Blueprints, 12 UserDefinedStruct assets, and 2 UserDefinedEnum assets, with zero external `/Game` dependencies and zero redirectors.
+
+The isolated UE 5.7 read-only load/compile gate and exact AssetTools migration passed. UE 5.8 then loaded, compiled all 6 Blueprints, resaved, and revalidated all 20 packages. Editor and Game builds, source read-only verification, and the protected ACFU, DazToUnreal, Player, Female, Frederick, Multiple, and Male re-hash also passed.
+
+The first post-migration binary-hash assertion stopped after AssetTools had migrated 20/20 packages because saving legitimately reserialized `BP_StartPoint`, so its output was not byte-identical to the staged source package. The resume path verified the already-created exact 20-package target delta and completed successfully; the initial and resume logs are both linked by the evidence artifact. This is process evidence about serialization, not a functional asset defect.
+
+`BP_MassiveDungeon`, DungeonGeneration, and DoorToLevel were explicitly excluded. `EFProceduralSettings` therefore remains unapplied, and PIE StartPoint discovery/spawn, dungeon generation/cleanup, visual QA, cook, package, and packaged runtime remain `PENDING`.
 
 ## Applied ACFU 4.3.5 repair to `DefaultGame.ini`
 
@@ -246,4 +260,4 @@ PCG interops, ScriptableTools, DeformerGraph, MLDeformerFramework, Volumetrics, 
 8. Switch HUB/GameMode routes only after load, Blueprint compile, PIE, visual, cook, and packaged gates.
 9. Inspect effective output under `Saved/Config/WindowsEditor`, then re-hash ACFU, Daz, Player, Female, Frederick, Multiple, and Male.
 
-Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` covers content resolution and Blueprint compile/resave for the exact 31-package core-content batch; `APPLIED_PACKAGING_STRUCTURAL_PASS` records the equivalent static validation plus the always-cook setting for the exact 127-package Modern UI batch. PIE input, visual QA, cook, package, and packaged runtime remain execution gates.
+Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` covers content resolution and Blueprint compile/resave for the exact 31-package core-content batch and the separate exact 20-package procedural-contract batch; it does not apply `EFProceduralSettings`. `APPLIED_PACKAGING_STRUCTURAL_PASS` records equivalent static validation plus the always-cook setting for the exact 127-package Modern UI batch. PIE input, procedural runtime, visual QA, cook, package, and packaged runtime remain execution gates.
