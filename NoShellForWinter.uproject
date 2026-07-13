@@ -83,6 +83,14 @@
 		{
 			"Name": "EFClothingMorph",
 			"Enabled": true
+		},
+		{
+			"Name": "DeformerGraph",
+			"Enabled": true
+		},
+		{
+			"Name": "EFCharacterCreationDazBridge",
+			"Enabled": true
 		}
 	]
 }
