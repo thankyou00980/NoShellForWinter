@@ -95,6 +95,8 @@ Configured source-only dependencies currently include HUB, DungeonGeneration, Do
 
 Phase 3 has applied only the four EFProcedural class redirects after its Runtime and PCG modules passed Editor/Game builds. The `EFProceduralSettings` section remains deferred: its three configured dungeon asset paths are absent from target Content, and the isolated UE 5.7 registry closure is evidence for inspection only, not an authorized migration allowlist.
 
+The two EFLevelFlow class redirects were then applied after its destination module passed Editor/Game builds. EFLevelFlow has no explicit source settings section to merge; its native CDO defaults and ACFU loading widget passed a read-only UE 5.8 probe. Serialized redirect resolution and the DungeonGeneration runtime remain pending until the gated map migration exists.
+
 ## Required ACFU 4.3.5 repair to `DefaultGame.ini`
 
 The desired merge must restore these ACFU 4.3.5 values while retaining the complete Daz section:
