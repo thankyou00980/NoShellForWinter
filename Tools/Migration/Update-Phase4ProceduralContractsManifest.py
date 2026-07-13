@@ -222,7 +222,7 @@ for line_index in range(1, len(raw_lines)):
     )
     row[indices["Result"]] = "PASS"
     row[indices["TestEvidence"]] = EVIDENCE
-    row[indices["Commit"]] = "PENDING_PHASE4_PROCEDURAL_CONTRACTS_COMMIT"
+    row[indices["Commit"]] = "259bf42"
     note = row[indices["Notes"]].rstrip()
     migration_note = (
         "Exact 20-package UE 5.7 AssetTools migration with dependencies "

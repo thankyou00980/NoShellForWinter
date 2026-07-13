@@ -16,6 +16,10 @@ EXPECTED = {
         "count": 127,
         "commit": "4a66c74",
     },
+    "Docs/Migration/Evidence/Phase4_ProceduralContracts_ContentBuild.json": {
+        "count": 20,
+        "commit": "259bf42",
+    },
 }
 
 

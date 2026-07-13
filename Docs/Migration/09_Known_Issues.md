@@ -93,6 +93,7 @@
 - Severity: migration gate condition.
 - Status: IN_PROGRESS.
 - Completed: exact migration of 20 packages—19 Calysto data contracts plus canonical `/Game/Calysto/Dungeon/Blueprint/Utility/BP_StartPoint`—through UE 5.7 AssetTools, followed by UE 5.8 load/compile/resave. All 6 Blueprints compile; Editor/Game builds, source read-only verification, and protected invariant re-hash pass. Evidence: `Phase4_ProceduralContracts_ContentBuild.json`.
+- Commit: `259bf42`.
 - Process note: the first post-migration binary-hash gate stopped after the log had recorded 20/20 successful AssetTools migrations because AssetTools reserialized `BP_StartPoint`; byte identity with the staged package was therefore not a valid success condition. The resume gate verified the exact already-created 20-package delta and completed successfully. No Blueprint compile, load, dependency, or functional defect was inferred from this serialization delta.
 - Configuration guard: do not point `EFProceduralSettings` at `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon` yet.
 - Remaining: migrate or replace `BP_MassiveDungeon`, `/Game/Procedural/Maps/DungeonGeneration`, and `/Game/Procedural/DoorToLevel`; then pass StartPoint discovery/spawn in PIE, full dungeon generation/cleanup, visual QA, cook/cooked-manifest, package, and packaged-runtime validation.
