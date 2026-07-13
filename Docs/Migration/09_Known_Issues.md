@@ -11,7 +11,7 @@
 
 - Severity: gate condition.
 - Status: IN_PROGRESS.
-- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages plus one target-generated texture.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, and the 127-package Modern UI batch.
 - Remaining: asset class/dependency enrichment and final action classification for every other manifest row.
 
 ## MIG-0003 — Target-owned Blueprint baseline was red
@@ -77,3 +77,12 @@
 - Completed: exact migration and UE 5.8 validation of 31 packages, generation of the packaged character-background preview texture, preservation of the raw preview, effective core settings validation, 9/9 clean focused automation, Editor/Game builds, source read-only verification, and protected invariant re-hash.
 - Current resolution: the structural soft-package probe resolves 9/11 contracts; only `/Game/Procedural/DoorToLevel` and `/Game/Procedural/Maps/DungeonGeneration` remain absent.
 - Remaining: migrate or replace those procedural contracts through an approved exact batch/adapter, then pass PIE, complete input behavior, visual QA, cook, package, and packaged-runtime validation. The current Phase 4 evidence must not be promoted to a full subsystem or migration PASS before those gates complete.
+
+## MIG-0011 — Modern UI content is not yet a runtime/package PASS
+
+- Severity: migration gate condition.
+- Status: IN_PROGRESS.
+- Completed: exact migration of 127 packages (12,370,672 bytes) under the five approved `/Game/_Game/Widgets` roots: Chronicle 23, InnerState 24, Status 17, Attributes 27, and SinfulAscensionAltar 36.
+- Static validation: 66 Widget Blueprints, 54 Texture2D assets, and 7 FontFace assets; UE 5.7 loaded/compiled all 66 Widget Blueprints and resolved 52 native parents; UE 5.7 AssetTools and UE 5.8 load/compile/resave passed with zero external `/Game` dependencies and zero redirectors.
+- Config/build gates: the `/Game/_Game/Widgets` always-cook root is applied; UE 5.8 Editor/Game builds, 71/71 native plus 9/9 content-focused automation tests, source read-only verification, and protected invariant re-hash passed.
+- Remaining: exercise the widgets in PIE, complete visual QA, verify the root and assets in the cook manifest, then pass package and packaged-runtime validation. Static migration evidence alone is not a full Modern UI PASS.

@@ -1,12 +1,14 @@
 # Configuration merge
 
-Status: `PHASE4_CORE_CONTENT_SELECTIVE_PASS`
+Status: `PHASE4_CORE_AND_MODERN_UI_SELECTIVE_PASS`
 
-This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content batch recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave, native automation, and Editor/Game builds; PIE input behavior, visual QA, cook, and packaged runtime remain pending.
+This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content and Modern UI batches recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave, native automation, and Editor/Game builds; PIE input behavior, visual QA, cook, and packaged runtime remain pending.
 
 Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audit.md)
 
 Phase 4 evidence: [Phase4_EFProjectCoreContent_ConfigAutomation.json](Evidence/Phase4_EFProjectCoreContent_ConfigAutomation.json)
+
+Modern UI evidence: [Phase4_ModernUI_ConfigBuild.json](Evidence/Phase4_ModernUI_ConfigBuild.json)
 
 ## Authorities
 
@@ -35,7 +37,7 @@ Phase 4 evidence: [Phase4_EFProjectCoreContent_ConfigAutomation.json](Evidence/P
 | `DefaultGame.ini` | Current Daz settings | Old two-key override, including `ZeroRootRotationOnImport=False` | Full current Daz settings, including `ZeroRootRotationOnImport=True` and Multiple skeleton mapping | `KEEP_TARGET` complete section | Daz and protected mesh hashes unchanged |
 | `DefaultGame.ini` | ACFU CommonUI/CommonInput | Present in source baseline and ACFU 4.3.5 | Missing because target file currently contains only Daz settings | `DEFER_MERGE_FROM_ACFU_4_3_5` | Config parse and baseline UI/input smoke |
 | `DefaultGame.ini` | ACFU always-cook roots | `/AscentCombatFramework`, `/Game/FullSample` | Missing from project file; present in ACFU 4.3.5 template | `DEFER_MERGE_FROM_ACFU_4_3_5` | Cook manifest confirms roots |
-| `DefaultGame.ini` | `/Game/_Game/Widgets` always-cook root | Project-owned addition | Absent | `DEFER_MERGE` | Root migrated and cook reference audit passes |
+| `DefaultGame.ini` | `/Game/_Game/Widgets` always-cook root | Project-owned addition | Exact 127-package Modern UI batch now present | `APPLIED_PACKAGING_STRUCTURAL_PASS` | Config/load/compile/resave/build PASS; cook-manifest and packaged validation pending |
 | `DefaultGame.ini` | `/NNEDenoiser` always-cook root | Legacy source entry | Absent | `REJECT_UNLESS_REFERENCED` | NNEDenoiser enabled and an asset dependency proves need |
 | `DefaultGame.ini` | EFProjectSystems, EFProcedural, EFCharacterCreation, GameplayAbilities sections | Project-owned settings added after initial import | Absent | `DEFER_MERGE` section-by-section | Owning plugin loads; every configured asset path resolves |
 | `DefaultGame.ini` | Temporary gameplay tuning | Pain `0.25`, sensation hold `30`, dance lust `0.10` with `TEMP_TEST` comments | Absent | `REJECT_TEMP_VALUES`; release candidates are `0.01`, `10`, `0.05` | Owning native tests and gameplay QA |
@@ -81,10 +83,11 @@ Merge only owner sections, never the surrounding UE 5.7 file. Current dispositio
 - `APPLIED_STRUCTURAL_PASS`: `EFProjectInputSettings`, `EFProjectEnemySettings`, `ProjectEnemyVisualVariationSettings`, `ProjectEnemyLevelSettings`, `ProjectActivityFeedSettings`, and `ProjectSinfulAscensionSettings`.
 - `APPLIED_EARLIER`: `EFCharacterCreationSettings`.
 - `APPLIED_CONTENT_STRUCTURAL_PASS`: `EFProjectSurvivalSettings`, `ProjectDefeatFlowSettings`, and `ProjectCharacterBackgroundSettings` for the exact Phase 4 batch.
+- `APPLIED_PACKAGING_STRUCTURAL_PASS`: `/Game/_Game/Widgets` always-cook root for the exact 127-package Modern UI batch; cook-manifest verification remains pending.
 - `PENDING_CONTENT`: `EFProjectWorldFlowSettings`, `ProjectRuntimePerformanceSettings`, and `EFProceduralSettings`.
 - `PENDING_GAS_CUE_VALIDATION`: `AbilitySystemGlobals`.
 
-Configured source-only dependencies still include HUB, DungeonGeneration, DoorToLevel, and `_Game/Widgets`. The exact Phase 4 batch now supplies the survival data, food registry, defeat UI and its self-contained visual dependencies, character-background data/UI, and `_Game/Images/preview.png`; this does not authorize migration of the remaining roots.
+Configured source-only dependencies still include HUB, DungeonGeneration, and DoorToLevel. The exact Phase 4 batches now supply the survival data, food registry, defeat UI and its self-contained visual dependencies, character-background data/UI, `_Game/Images/preview.png`, and the approved `_Game/Widgets` Modern UI roots; this does not authorize migration of the remaining roots.
 
 Phase 3 has applied only the four EFProcedural class redirects after its Runtime and PCG modules passed Editor/Game builds. The `EFProceduralSettings` section remains deferred: its three configured dungeon asset paths are absent from target Content, and the isolated UE 5.7 registry closure is evidence for inspection only, not an authorized migration allowlist.
 
@@ -107,7 +110,7 @@ The UE 5.8 read-only structural probe still passes all 46 checks. After the exac
 
 ### Phase 4 EFProjectSystems core-content batch
 
-The controlled Phase 4 action migrated exactly 31 UE packages: 19 core packages covering survival statuses, the food consumable registry, character-background tables/UI, defeat UI, and status icons, plus 12 self-contained font/texture dependencies used by the defeat widget. UE 5.7 AssetTools performed the source-side exact migration in a detached read-only harness; UE 5.8 then loaded, compiled where applicable, resaved, and validated the target packages.
+The controlled Phase 4 action, recorded in commit `671feda`, migrated exactly 31 UE packages: 19 core packages covering survival statuses, the food consumable registry, character-background tables/UI, defeat UI, and status icons, plus 12 self-contained font/texture dependencies used by the defeat widget. UE 5.7 AssetTools performed the source-side exact migration in a detached read-only harness; UE 5.8 then loaded, compiled where applicable, resaved, and validated the target packages.
 
 Phase 4 also:
 
@@ -118,6 +121,14 @@ Phase 4 also:
 - revalidated the source read-only gate and the protected ACFU, DazToUnreal, Player, Female, Frederick, Multiple, and Male invariants.
 
 These results are not a full gameplay-system PASS. DoorToLevel and DungeonGeneration remain absent, and the complete input contract, PIE behavior, visual presentation, cook manifest, package, and packaged runtime are still `PENDING`.
+
+### Phase 4 Modern UI exact batch
+
+The second controlled Phase 4 content action migrated exactly 127 packages (12,370,672 bytes) under `/Game/_Game/Widgets`: Chronicle 23, InnerState 24, Status 17, Attributes 27, and SinfulAscensionAltar 36. The class inventory is 66 Widget Blueprints, 54 Texture2D assets, and 7 FontFace assets.
+
+The detached UE 5.7 read-only validation loaded and compiled all 66 Widget Blueprints and resolved 52 native parents before the UE 5.7 AssetTools exact migration passed. UE 5.8 then loaded, compiled, resaved, and revalidated the entire batch. The resulting closure has zero external `/Game` dependencies and zero redirectors.
+
+`DefaultGame.ini` now adds `+DirectoriesToAlwaysCook=(Path="/Game/_Game/Widgets")` for this migrated root. Editor and Game builds, 71/71 native plus 9/9 content-focused automation tests, the source read-only gate, and all protected ACFU/Daz/player/mesh invariants passed after the change. Runtime widget creation and interaction in PIE, visual QA, confirmation in the cook manifest, package, and packaged runtime remain `PENDING`.
 
 ## Applied ACFU 4.3.5 repair to `DefaultGame.ini`
 
@@ -134,9 +145,10 @@ InputData=/CommonUI/GenericInputData.GenericInputData_C
 +DirectoriesToAlwaysCook=(Path="/AscentCombatFramework")
 +DirectoriesToAlwaysCook=(Path="/Game/FullSample")
 +DirectoriesToAlwaysCook=(Path="/Game/ExportedAnimations")
++DirectoriesToAlwaysCook=(Path="/Game/_Game/Widgets")
 ```
 
-The project-owned `/Game/_Game/Widgets` root is a separate gated addition. Do not restore `/NNEDenoiser` without a proven dependency.
+The project-owned `/Game/_Game/Widgets` root is an applied Phase 4 addition whose cook-manifest and packaged gates remain pending. Do not restore `/NNEDenoiser` without a proven dependency.
 
 ## Gameplay tags
 
@@ -234,4 +246,4 @@ PCG interops, ScriptableTools, DeformerGraph, MLDeformerFramework, Volumetrics, 
 8. Switch HUB/GameMode routes only after load, Blueprint compile, PIE, visual, cook, and packaged gates.
 9. Inspect effective output under `Saved/Config/WindowsEditor`, then re-hash ACFU, Daz, Player, Female, Frederick, Multiple, and Male.
 
-Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` additionally covers content resolution and Blueprint compile/resave only for the exact 31-package Phase 4 batch. PIE input, visual QA, cook, package, and packaged runtime remain execution gates.
+Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` covers content resolution and Blueprint compile/resave for the exact 31-package core-content batch; `APPLIED_PACKAGING_STRUCTURAL_PASS` records the equivalent static validation plus the always-cook setting for the exact 127-package Modern UI batch. PIE input, visual QA, cook, package, and packaged runtime remain execution gates.

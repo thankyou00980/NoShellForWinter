@@ -1,6 +1,6 @@
 # QA matrix
 
-Status: `PHASE_4_CORE_CONTENT_IN_PROGRESS`
+Status: `PHASE_4_CORE_AND_MODERN_UI_IN_PROGRESS`
 
 Allowed terminal results: `PASS`, `PASS_EXPECTED_DELTA`, `FAIL`, `BLOCKED_EXTERNAL`.
 
@@ -11,7 +11,8 @@ Allowed terminal results: `PASS`, `PASS_EXPECTED_DELTA`, `FAIL`, `BLOCKED_EXTERN
 | MCP transport | PASS | PASS | N/A | N/A | PASS | baseline MCP controller log | PENDING_PHASE1_COMMIT |
 | UBG licensed tools | BLOCKED_EXTERNAL | N/A | N/A | N/A | BLOCKED_EXTERNAL | plugin requests license activation | PENDING_PHASE1_COMMIT |
 | Plugins | PENDING | PENDING | N/A | PENDING | PENDING | PENDING | PENDING |
-| EFProjectSystems core config/content | PASS: UE 5.8 Editor/Game builds; 9/9 clean automation | PENDING | PENDING | PENDING | PENDING | `Phase4_EFProjectCoreContent_ConfigAutomation.json`; exact 31-package batch, generated preview Texture2D, raw preview, 9/11 soft-package probe, source/protected gates PASS | PENDING_PHASE4_COMMIT |
+| EFProjectSystems core config/content | PASS: UE 5.8 Editor/Game builds; 9/9 clean automation | PENDING | PENDING | PENDING | PENDING | `Phase4_EFProjectCoreContent_ConfigAutomation.json`; exact 31-package batch, generated preview Texture2D, raw preview, 9/11 soft-package probe, source/protected gates PASS | `671feda` |
+| Modern UI exact batch | PASS: 127/127 UE 5.7 AssetTools; 66/66 WBP compile; UE 5.8 load/compile/resave; Editor/Game builds; 80/80 automation | PENDING | PENDING | PENDING cook-manifest/package | PENDING | `Phase4_ModernUI_ConfigBuild.json`; 0 external `/Game` deps, 0 redirectors, source/protected gates PASS | PENDING_PHASE4_MODERN_UI_COMMIT |
 | Player invariants | PASS hash | PASS Female ownership | PASS baseline | PASS minimal cook | PASS | PIE and protected-invariant evidence | PENDING_PHASE1_COMMIT |
 | Character creation | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
 | Morphs/blink/clothing | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
