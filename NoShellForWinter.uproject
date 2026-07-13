@@ -67,6 +67,10 @@
 		{
 			"Name": "DirtyPawnRuntime",
 			"Enabled": true
+		},
+		{
+			"Name": "EFBlink",
+			"Enabled": true
 		}
 	]
 }
