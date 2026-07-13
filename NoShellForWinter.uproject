@@ -91,6 +91,10 @@
 		{
 			"Name": "EFCharacterCreationDazBridge",
 			"Enabled": true
+		},
+		{
+			"Name": "ACFTrainingSystem",
+			"Enabled": true
 		}
 	]
 }

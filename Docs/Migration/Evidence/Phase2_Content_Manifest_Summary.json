@@ -1,6 +1,6 @@
 ﻿{
     "schema_version":  1,
-    "generated_utc":  "2026-07-13T09:50:58.1472308Z",
+    "generated_utc":  "2026-07-13T10:52:29Z",
     "source_root":  "D:\\Projects UE5\\LustAsDeadlySin",
     "target_root":  "D:\\Projects UE5\\NoShellForWinter",
     "source_registry":  {
@@ -14,11 +14,11 @@
                             "indexed_packages":  5754
                         },
     "source_package_count":  10895,
-    "target_package_count":  5754,
+    "target_package_count":  5755,
     "union_package_count":  13118,
     "counts_by_presence":  {
-                               "BOTH":  3531,
-                               "SOURCE_ONLY":  7364,
+                               "BOTH":  3532,
+                               "SOURCE_ONLY":  7363,
                                "TARGET_ONLY":  2223
                            },
     "counts_by_classification":  {
@@ -29,7 +29,8 @@
                                      "SOURCE_ONLY_DEPENDENCY_CANDIDATE":  3920,
                                      "SOURCE_ONLY_FULLSAMPLE":  341,
                                      "SOURCE_ONLY_LEGACY_DAZ":  264,
-                                     "SOURCE_ONLY_PROJECT_CONTENT":  2837,
+                                     "SOURCE_ONLY_PROJECT_CONTENT":  2836,
+                                     "MIGRATED_PROJECT_CONTENT":  1,
                                      "TARGET_AUTHORITATIVE_DAZ":  189,
                                      "TARGET_AUTHORITATIVE_PLAYER_COLLISION":  1,
                                      "TARGET_ONLY":  2173
@@ -60,7 +61,8 @@
                              "Input":  38,
                              "Intimacy":  1,
                              "Lockpicking":  6,
-                             "Other":  3436,
+                             "Other":  3435,
+                             "ACFTrainingSystem":  1,
                              "Persistence":  9,
                              "ProceduralLevelFlow":  1785,
                              "SinfulAscension":  102,
@@ -70,8 +72,8 @@
                              "UI":  266
                          },
     "source_packages_missing_registry":  127,
-    "target_packages_missing_registry":  0,
+    "target_packages_missing_registry":  1,
     "manifest_path":  "D:\\Projects UE5\\NoShellForWinter\\Docs\\Migration\\04_Content_Migration_Manifest.csv",
-    "manifest_sha256":  "6390DF3A3213E92EA2D9F061074C7DF6778777B2973FF72B6DA31227EF81EB41",
+    "manifest_sha256":  "DA16C34977F0DC3C8DECFD9218FF4AB9878D593E1E0FACA7A21286E359021526",
     "status":  "COMPLETE_PENDING_ACTION_EXECUTION"
 }
