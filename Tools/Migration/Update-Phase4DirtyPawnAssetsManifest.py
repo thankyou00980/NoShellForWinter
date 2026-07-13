@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "Docs" / "Migration" / "04_Content_Migration_Manifest.csv"
 EVIDENCE = "Docs/Migration/Evidence/Phase4_DirtyPawnAssets_ContentRuntime.json"
-COMMIT = "PENDING"
+COMMIT = "ec10c8e"
 SOURCE_BYTES = 70130437
 SOURCE_FINGERPRINT = (
     "8F58CFD389DA0D63D2633D372C5DE251496EC53F53EEC15FE51AB160C46AEC36"

@@ -118,4 +118,5 @@
 - Process note: the initial UE 5.7 AssetTools run recorded all 15 successful migrations and the exact target delta, then stopped at an invalid byte-identity assertion because four assets were reserialized. The resume gate validated that prior hash-stop and exact delta before UE 5.8 resave.
 - Focused runtime contract: all six Defeat-flow PIE tests are `SucceededWithWarnings` with six `Result={Success}` completions. DirtyPawn reports `Ready ... bindings=6` six times, reports no missing wrapper, and has no PIE lifecycle error. This proves wrapper resolution/material binding only, not rendered effect quality.
 - Warning disposition: remaining `EF Morph Physics Constraint Driver ... could not find constraint` warnings belong to the Phase 7 authoritative Player/Female/Daz morph-physics audit and are not closed by this batch.
+- Commit: `ec10c8e`.
 - Remaining: visible wet/water/wash, mud, blood, smear, snow, sand, and dirt/burn QA; persistence/contact-height sequence; tattoo-path compatibility; blood texture alpha-channel API and rendered-alpha confirmation; cook/cooked-manifest; package; and packaged-runtime validation. No visual claim is `PASS` yet.
