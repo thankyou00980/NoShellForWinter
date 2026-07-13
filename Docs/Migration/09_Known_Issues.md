@@ -11,7 +11,7 @@
 
 - Severity: gate condition.
 - Status: IN_PROGRESS.
-- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, the 127-package Modern UI batch, the 20-package EFProcedural contracts batch, and the exact `DungeonGeneration` World batch.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages, one target-generated texture, the 127-package Modern UI batch, the 20-package EFProcedural contracts batch, the exact `DungeonGeneration` World batch, and the exact 15-package DirtyPawn material closure.
 - Remaining: asset class/dependency enrichment and final action classification for every other manifest row.
 
 ## MIG-0003 — Target-owned Blueprint baseline was red
@@ -68,6 +68,7 @@
 - Status: OPEN.
 - PIE log contains one `LogTemp: Error: Can't Start the quest` line on the ACFU Test map.
 - No fatal, ensure, crash, or PIE lifecycle failure occurred.
+- Focused DirtyPawn/Defeat evidence repeats this known sample-map line once per test across six successful tests; it is not a DirtyPawn wrapper/material failure and does not close the quest ownership issue.
 - Action: classify against the migrated quest/story flow before final closeout; do not treat this sample-map condition as migrated quest behavior.
 
 ## MIG-0010 — EFProjectSystems core content is not yet a runtime/package PASS
@@ -108,3 +109,13 @@
 - Process note: the initial UE 5.7 validation used an unavailable `AssetData.object_path` property and was rerun with the compatible API. The first AssetTools run migrated exactly the map, then stopped at an invalid byte-identity assertion because AssetTools reserialized it; the resume gate verified the exact one-package delta before UE 5.8 resave.
 - Commit: `95fcd1b`.
 - Remaining: `/Game/Procedural/DoorToLevel` and `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon`; map PIE, visible PCG/navigation QA, StartPoint discovery/spawn, complete dungeon generation/cleanup, cook/cooked-manifest, package, and packaged runtime.
+
+## MIG-0014 - DirtyPawn assets bind at runtime but visual/package acceptance is pending
+
+- Severity: migration gate condition.
+- Status: IN_PROGRESS.
+- Completed: exact migration of 15 packages (1 DAZ wrapper material, 8 material functions, and 6 textures) through an isolated UE 5.7 read-only load and AssetTools batch, followed by UE 5.8 load, material/function compile, resave, and reload. Editor/Game builds, zero material/shader log errors, source read-only verification, and protected invariant re-hash pass. Evidence: `Phase4_DirtyPawnAssets_ContentRuntime.json`.
+- Process note: the initial UE 5.7 AssetTools run recorded all 15 successful migrations and the exact target delta, then stopped at an invalid byte-identity assertion because four assets were reserialized. The resume gate validated that prior hash-stop and exact delta before UE 5.8 resave.
+- Focused runtime contract: all six Defeat-flow PIE tests are `SucceededWithWarnings` with six `Result={Success}` completions. DirtyPawn reports `Ready ... bindings=6` six times, reports no missing wrapper, and has no PIE lifecycle error. This proves wrapper resolution/material binding only, not rendered effect quality.
+- Warning disposition: remaining `EF Morph Physics Constraint Driver ... could not find constraint` warnings belong to the Phase 7 authoritative Player/Female/Daz morph-physics audit and are not closed by this batch.
+- Remaining: visible wet/water/wash, mud, blood, smear, snow, sand, and dirt/burn QA; persistence/contact-height sequence; tattoo-path compatibility; blood texture alpha-channel API and rendered-alpha confirmation; cook/cooked-manifest; package; and packaged-runtime validation. No visual claim is `PASS` yet.

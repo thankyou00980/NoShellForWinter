@@ -1,6 +1,6 @@
 # QA matrix
 
-Status: `PHASE_4_CORE_MODERN_UI_PROCEDURAL_CONTRACTS_AND_MAP_IN_PROGRESS`
+Status: `PHASE_4_CORE_MODERN_UI_PROCEDURAL_MAP_AND_DIRTYPAWN_IN_PROGRESS`
 
 Allowed terminal results: `PASS`, `PASS_EXPECTED_DELTA`, `FAIL`, `BLOCKED_EXTERNAL`.
 
@@ -15,6 +15,7 @@ Allowed terminal results: `PASS`, `PASS_EXPECTED_DELTA`, `FAIL`, `BLOCKED_EXTERN
 | Modern UI exact batch | PASS: 127/127 UE 5.7 AssetTools; 66/66 WBP compile; UE 5.8 load/compile/resave; Editor/Game builds; 80/80 automation | PENDING | PENDING | PENDING cook-manifest/package | PENDING | `Phase4_ModernUI_ConfigBuild.json`; 0 external `/Game` deps, 0 redirectors, source/protected gates PASS | `4a66c74` |
 | EFProcedural exact contracts batch | PASS: 20/20 UE 5.7 AssetTools; UE 5.8 load/compile/resave; 6/6 Blueprint compile; Editor/Game builds; source/protected gates PASS | PENDING StartPoint discovery/spawn and dungeon runtime | PENDING | PENDING cook-manifest/package | PENDING | `Phase4_ProceduralContracts_ContentBuild.json`; 19 Calysto contracts + canonical `BP_StartPoint`; 0 external `/Game` deps, 0 redirectors | `259bf42` |
 | DungeonGeneration exact map batch | PASS: 1/1 UE 5.7 AssetTools; UE 5.7 read-only map load; UE 5.8 load/save/reload; Editor/Game builds; source/protected gates PASS | PENDING map PIE, PCG/navigation, StartPoint, and level flow | PENDING | PENDING cook-manifest/package | PENDING | `Phase4_DungeonGeneration_ContentBuild.json`; exact `World`, 0 `/Game` deps, 0 sidecars/external packages | `95fcd1b` |
+| DirtyPawn exact material closure | PASS: 15/15 UE 5.7 AssetTools; UE 5.8 load/material compile/resave/reload; zero material/shader errors; Editor/Game builds; source/protected gates PASS | PASS focused binding contract: 6/6 `SucceededWithWarnings`, six `Result={Success}`, six `Ready ... bindings=6`, wrapper missing 0, lifecycle errors 0 | PENDING wet/mud/blood/smear/snow/sand, tattoo compatibility, and blood alpha | PENDING cook-manifest/package/packaged runtime | PENDING | `Phase4_DirtyPawnAssets_ContentRuntime.json`; runtime scope is wrapper resolution/binding only; morph-physics warnings remain Phase 7 | PENDING |
 | Player invariants | PASS hash | PASS Female ownership | PASS baseline | PASS minimal cook | PASS | PIE and protected-invariant evidence | PENDING_PHASE1_COMMIT |
 | Character creation | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
 | Morphs/blink/clothing | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |

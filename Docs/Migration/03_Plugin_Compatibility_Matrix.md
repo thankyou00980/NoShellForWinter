@@ -2,7 +2,7 @@
 
 Status: `PHASE4_ALL_PROJECT_MODULES_BUILD_PASS_CONTENT_RUNTIME_PENDING`
 
-The Phase 2 rows preserve the read-only inventory of the live UE 5.7 source tree. Every required and auxiliary project-owned plugin listed below now compiles in its applicable UE 5.8 Editor/Game targets. Phase 4 content statuses are promoted only for exact approved batches; PIE, visual, cook, package, and packaged-runtime claims remain pending until their own gates pass.
+The Phase 2 rows preserve the read-only inventory of the live UE 5.7 source tree. Every required and auxiliary project-owned plugin listed below now compiles in its applicable UE 5.8 Editor/Game targets. Phase 4 content statuses are promoted only for exact approved batches. The focused DirtyPawn runtime wrapper/binding contract is also recorded below; it does not promote effect visuals, alpha/tattoo compatibility, cook, package, or packaged-runtime claims.
 
 ## Authoritative external plugins
 
@@ -28,7 +28,7 @@ Every source descriptor below is rooted at `D:\Projects UE5\LustAsDeadlySin\Plug
 | EFCharacterCreationACFUBridge | 1.0.0 | `EFCharacterCreationACFURuntime` Runtime/Default | EFCharacterCreation, GameplayAbilities | 5 | 2 headers | none | REBUILD_AGAINST_TARGET | PHASE3_EDITOR_GAME_BUILD_PASS / RUNTIME_QA_PENDING |
 | EFProjectSystems | 0.1.0 | `EFProjectSystemsCore`, `EFProjectSystemsGameplay`, `EFProjectSystemsUI` Runtime/Default; `EFProjectSystemsEditor` Editor/Default | GameplayAbilities, EnhancedInput, AscentCombatFramework, ACFTrainingSystem, EFCharacterCreation, EFLevelFlow, EFProcedural, CodeWidgetDesignerBridge, DirtyPawnRuntime, SkinnedDecalComponent | 288 | 144 headers; 217 UCLASS, 91 USTRUCT, 31 UENUM, 4 UINTERFACE | plugin Content empty; 5 Core Redirects, 58 `Project.*` tags, and 6 settings sections applied selectively; `/Game` dependencies pending | MIGRATE_SOURCE_AFTER_DEPENDENCIES | PHASE3_EDITOR_GAME_CONFIG_STRUCTURAL_NATIVE_AUTOMATION_PASS / CONTENT_BLUEPRINT_PIE_VISUAL_COOK_PACKAGE_PENDING |
 | EFBlink | 0.1.0 | `EFBlinkRuntime` Runtime/Default | none | 11 | 5 headers; 3 UCLASS, 1 USTRUCT | none | MIGRATE_SOURCE | PHASE3_EDITOR_GAME_BUILD_PASS / CONFIG_AND_VISUAL_QA_PENDING |
-| DirtyPawnRuntime | 1.0.0 | `DirtyPawnRuntime` Runtime/Default; `DirtyPawnRuntimeEditor` Editor/Default | none | 12 | 5 headers; 16 UCLASS, 5 USTRUCT, 3 UENUM | portability manifest only | MIGRATE_SOURCE | PHASE3_EDITOR_GAME_BUILD_PASS / CONTENT_AND_QA_PENDING |
+| DirtyPawnRuntime | 1.0.0 | `DirtyPawnRuntime` Runtime/Default; `DirtyPawnRuntimeEditor` Editor/Default | none | 12 | 5 headers; 16 UCLASS, 5 USTRUCT, 3 UENUM | exact 15-package material/texture closure migrated and resaved | MIGRATE_SOURCE | PHASE4_EDITOR_GAME_ASSET_COMPILE_RESAVE_AND_RUNTIME_BINDING_PASS / VISUAL_ALPHA_TATTOO_COOK_PACKAGE_PENDING |
 | ACFTrainingSystem | 0.1.0 | `ACFTrainingSystem` Runtime/Default | GameplayAbilities, AscentCombatFramework | 11 | 5 headers; 3 UCLASS, 5 USTRUCT, 1 UENUM | 1 project AnimSequence migrated through AssetTools 5.7 and resaved 5.8 | REBUILD_AGAINST_TARGET | PHASE3_EDITOR_GAME_ASSET_PASS / RUNTIME_COOK_QA_PENDING |
 | CodeWidgetDesignerBridge | 0.1.0 | `CodeWidgetDesignerBridge` Runtime/Default; `CodeWidgetDesignerBridgeEditor` Editor/Default | none | 22 | 2 public headers; 1 UCLASS, 5 USTRUCT, 2 UENUM, 1 UINTERFACE | none | REBUILD_AGAINST_UE58_EDITOR | PHASE3_EDITOR_GAME_BUILD_PASS / QA_PENDING |
 
@@ -41,6 +41,8 @@ Its Phase 3 read-only UE 5.8 probe passed 46/46 checks across ten representative
 The approved EFProcedural contract increment contains exactly 20 packages: 19 Calysto data contracts plus the canonical `/Game/Calysto/Dungeon/Blueprint/Utility/BP_StartPoint`. UE 5.7 AssetTools migration, UE 5.8 load/compile/resave, Editor/Game builds, source read-only verification, and protected-target re-hash all pass. Evidence: [Phase4_ProceduralContracts_ContentBuild.json](Evidence/Phase4_ProceduralContracts_ContentBuild.json).
 
 The separate exact-map increment adds only `/Game/Procedural/Maps/DungeonGeneration` as a `World`. Its UE 5.7 read-only load and AssetTools migration, UE 5.8 load/save/reload, Editor/Game builds, source read-only verification, and protected-target re-hash pass. This is static compatibility evidence, not a procedural-runtime PASS: `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon`, `/Game/Procedural/DoorToLevel`, PIE, visible navigation/procedural QA, cook, package, and packaged runtime remain pending. Evidence: [Phase4_DungeonGeneration_ContentBuild.json](Evidence/Phase4_DungeonGeneration_ContentBuild.json).
+
+The DirtyPawn increment migrates exactly 15 packages: 1 DAZ wrapper material, 8 material functions, and 6 textures. The isolated UE 5.7 load and exact AssetTools migration pass; UE 5.8 loads, compiles the material and all functions, resaves, reloads, and reports zero material/shader errors. Editor/Game builds and both post-migration source/protected gates pass. A focused six-test Defeat-flow PIE run finishes with `SucceededWithWarnings` for all six tests, six `Result={Success}` completions, six `Ready ... bindings=6` records, no missing wrapper, and no PIE lifecycle error. This is a runtime resolution/binding contract only. The remaining morph-physics constraint warnings belong to the Phase 7 Player/Daz audit, while wet/mud/blood/smear/snow/sand visual QA, tattoo compatibility, blood-alpha visual/API confirmation, cook, package, and packaged runtime remain `PENDING`. Evidence: [Phase4_DirtyPawnAssets_ContentRuntime.json](Evidence/Phase4_DirtyPawnAssets_ContentRuntime.json).
 
 ## Dependency DAG
 
@@ -78,7 +80,7 @@ Steps 1 through 7 are complete at the source-port and applicable Editor/Game com
 4. Port ACFTrainingSystem and validate its ARS/GAS contract against ACFU 4.3.5.
 5. Port EFProcedural in module order: Runtime, ACFURuntime, PCGRuntime, Editor.
 6. Port EFLevelFlow after EFCharacterCreation and EFProcedural are green.
-7. EFProjectSystems descriptor/source import, Editor/Game build, selective structural config probe, and strict native Automation gate are complete. Exact core, Modern UI, procedural-contract, and `DungeonGeneration` map batches have static validation; remaining content, PIE, visual QA, cook, package, and packaged runtime remain pending.
+7. EFProjectSystems descriptor/source import, Editor/Game build, selective structural config probe, and strict native Automation gate are complete. Exact core, Modern UI, procedural-contract, `DungeonGeneration` map, and DirtyPawn material-closure batches are validated to their documented scopes. DirtyPawn wrapper/binding PIE passes; remaining subsystem PIE, visual QA, cook, package, and packaged runtime remain pending.
 
 Passing the source port does not make a subsystem complete: each wave still needs its applicable load, Blueprint, PIE, cook, package, and protected-hash evidence. No `Binaries`, `Intermediate`, or `Saved` subtree is a port input.
 
@@ -103,7 +105,7 @@ This is a confirmed compile blocker, not a speculative hotspot:
 | EFLevelFlow | Direct AIFramework threat APIs plus input/camera/loading state restoration. |
 | EFCharacterCreationACFUBridge | Reflected `ACFCharacterMovementComponent.SetCanMove` and GAS `CancelAllAbilities`; both need runtime contract probes. |
 | EFBlink | Low compile risk; authoritative Female morph existence and visible blink QA remain required. |
-| DirtyPawnRuntime | Dynamic material/height-mask runtime plus KismetCompiler editor module; visual wet/mud/blood/smear/snow/sand QA required. |
+| DirtyPawnRuntime | Exact material closure, UE 5.8 compile/resave, and focused wrapper/binding runtime contract pass. Dynamic material/height-mask presentation still requires visible wet/mud/blood/smear/snow/sand QA, tattoo compatibility, alpha confirmation, cook, and packaged validation. |
 | ACFTrainingSystem | ARS modifier handles, ACF GAS attribute tags, GameplayEffect fallback, replication, progress/save, and minigame delegates. |
 | CodeWidgetDesignerBridge | High-risk UMGEditor/KismetCompiler/WidgetBlueprint factories and commandlets; compile commandlets before using them to mutate any WBP. |
 | EFProjectSystems | Highest risk: broad ACF module surface, direct inheritance/interfaces, reflection, 144 effectively public headers, and the confirmed `FComponentFX` signature change. `bUseUnity=false` should remain for the first strict build. |

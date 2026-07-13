@@ -1,8 +1,8 @@
 # Configuration merge
 
-Status: `PHASE4_CORE_MODERN_UI_PROCEDURAL_CONTRACTS_AND_MAP_SELECTIVE_PASS`
+Status: `PHASE4_CORE_MODERN_UI_PROCEDURAL_MAP_AND_DIRTYPAWN_SELECTIVE_PASS`
 
-This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content, Modern UI, EFProcedural contract, and `DungeonGeneration` map batches recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave where applicable, static map load/save/reload, native automation, and Editor/Game builds; PIE input behavior, procedural runtime, visual QA, cook, and packaged runtime remain pending.
+This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content, Modern UI, EFProcedural contract, `DungeonGeneration` map, and DirtyPawn material-closure batches recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint/material compile and resave where applicable, static map load/save/reload, native automation, the focused DirtyPawn wrapper/binding runtime contract, and Editor/Game builds. PIE input behavior, procedural runtime, effect visual QA, cook, and packaged runtime remain pending.
 
 Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audit.md)
 
@@ -154,6 +154,14 @@ UE 5.7 AssetTools then migrated exactly that one map. UE 5.8 loaded, saved, relo
 
 This exact-map receipt is not a dungeon-runtime PASS. The source referencer `/Game/Procedural/DoorToLevel` is an inverse dependency and remains absent, as does `/Game/Calysto/Dungeon/Blueprint/BP_MassiveDungeon`. PIE, visible PCG/navigation QA, StartPoint discovery/spawn, complete generation/cleanup, cook/cooked-manifest, package, and packaged runtime remain `PENDING`.
 
+### Phase 4 DirtyPawn exact material-closure batch
+
+The fifth controlled Phase 4 content action migrated exactly 15 packages: 1 DAZ wrapper material, 8 material functions, and 6 textures totaling 70,130,437 source bytes. A detached UE 5.7 harness loaded the exact closure without saving it; AssetTools then migrated exactly those packages with dependencies disabled after the closed dependency gate. The first run stopped only after recording the exact 15-package delta because four assets were legitimately reserialized and therefore were not byte-identical to their staged source. The resume path verified that prior hash-stop and exact target delta.
+
+UE 5.8 loaded the closure, compiled the wrapper and all eight functions, resaved and reloaded all 15 packages, and produced zero material/shader errors. Editor and Game builds, the source read-only gates, and the protected ACFU, DazToUnreal, Player, Female, Frederick, Multiple, and Male re-hashes pass.
+
+The focused runtime gate ran six Defeat-flow PIE tests: all six are `SucceededWithWarnings` and have `Result={Success}`, the DirtyPawn component reached `Ready ... bindings=6` six times, the wrapper-missing count is zero, and no PIE lifecycle error occurred. This confirms runtime wrapper resolution and binding, not appearance. Existing morph-physics constraint warnings remain assigned to the Phase 7 Player/Daz audit. Wet/water/wash, mud, blood, smear, snow, sand, dirt/burn visual QA; tattoo compatibility; blood-alpha visual/API confirmation; cook/cooked manifest; package; and packaged runtime remain `PENDING`. Evidence: [Phase4_DirtyPawnAssets_ContentRuntime.json](Evidence/Phase4_DirtyPawnAssets_ContentRuntime.json).
+
 ## Applied ACFU 4.3.5 repair to `DefaultGame.ini`
 
 The controlled merge restored these ACFU 4.3.5 values while retaining the complete Daz section:
@@ -270,4 +278,4 @@ PCG interops, ScriptableTools, DeformerGraph, MLDeformerFramework, Volumetrics, 
 8. Switch HUB/GameMode routes only after load, Blueprint compile, PIE, visual, cook, and packaged gates.
 9. Inspect effective output under `Saved/Config/WindowsEditor`, then re-hash ACFU, Daz, Player, Female, Frederick, Multiple, and Male.
 
-Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` covers content resolution and Blueprint compile/resave for the exact 31-package core-content batch, the separate exact 20-package procedural-contract batch, and static load/save/reload for the exact `DungeonGeneration` World; it does not apply `EFProceduralSettings`. `APPLIED_PACKAGING_STRUCTURAL_PASS` records equivalent static validation plus the always-cook setting for the exact 127-package Modern UI batch. PIE input, procedural runtime, visual QA, cook, package, and packaged runtime remain execution gates.
+Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` covers content resolution and Blueprint/material compile/resave for the exact 31-package core-content batch, the separate exact 20-package procedural-contract batch, static load/save/reload for the exact `DungeonGeneration` World, and the exact 15-package DirtyPawn closure; it does not apply `EFProceduralSettings`. The DirtyPawn batch additionally has a narrowly scoped runtime wrapper/binding PASS, without visual promotion. `APPLIED_PACKAGING_STRUCTURAL_PASS` records equivalent static validation plus the always-cook setting for the exact 127-package Modern UI batch. PIE input, procedural runtime, visual QA, cook, package, and packaged runtime remain execution gates except where a narrower evidence artifact explicitly records a focused PASS.
