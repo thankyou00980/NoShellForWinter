@@ -1,10 +1,12 @@
 # Configuration merge
 
-Status: `PHASE3_SELECTIVE_MERGE_IN_PROGRESS`
+Status: `PHASE4_CORE_CONTENT_SELECTIVE_PASS`
 
-This document began as the Phase 2 three-way decision set. Phase 3 now contains only the controlled additive merges recorded below. A structural config PASS does not imply that deferred soft assets, Blueprint contracts, PIE input behavior, cook, or packaged runtime have passed.
+This document began as the Phase 2 three-way decision set. Phase 3 contains the controlled additive plugin/config merges, and Phase 4 now adds the exact EFProjectSystems core-content batch recorded below. The Phase 4 PASS is limited to the enumerated assets, effective settings, Blueprint compile/resave, native automation, and Editor/Game builds; PIE input behavior, visual QA, cook, and packaged runtime remain pending.
 
 Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audit.md)
+
+Phase 4 evidence: [Phase4_EFProjectCoreContent_ConfigAutomation.json](Evidence/Phase4_EFProjectCoreContent_ConfigAutomation.json)
 
 ## Authorities
 
@@ -78,10 +80,11 @@ Merge only owner sections, never the surrounding UE 5.7 file. Current dispositio
 
 - `APPLIED_STRUCTURAL_PASS`: `EFProjectInputSettings`, `EFProjectEnemySettings`, `ProjectEnemyVisualVariationSettings`, `ProjectEnemyLevelSettings`, `ProjectActivityFeedSettings`, and `ProjectSinfulAscensionSettings`.
 - `APPLIED_EARLIER`: `EFCharacterCreationSettings`.
-- `PENDING_CONTENT`: `EFProjectWorldFlowSettings`, `EFProjectSurvivalSettings`, `ProjectRuntimePerformanceSettings`, `ProjectDefeatFlowSettings`, `ProjectCharacterBackgroundSettings`, and `EFProceduralSettings`.
+- `APPLIED_CONTENT_STRUCTURAL_PASS`: `EFProjectSurvivalSettings`, `ProjectDefeatFlowSettings`, and `ProjectCharacterBackgroundSettings` for the exact Phase 4 batch.
+- `PENDING_CONTENT`: `EFProjectWorldFlowSettings`, `ProjectRuntimePerformanceSettings`, and `EFProceduralSettings`.
 - `PENDING_GAS_CUE_VALIDATION`: `AbilitySystemGlobals`.
 
-Configured source-only dependencies currently include HUB, DungeonGeneration, DoorToLevel, defeat UI, character-background data/UI, `_Game/Widgets`, and `_Game/Images/preview.png`. Their config rows remain pending until the Phase 2 content action that owns them completes.
+Configured source-only dependencies still include HUB, DungeonGeneration, DoorToLevel, and `_Game/Widgets`. The exact Phase 4 batch now supplies the survival data, food registry, defeat UI and its self-contained visual dependencies, character-background data/UI, and `_Game/Images/preview.png`; this does not authorize migration of the remaining roots.
 
 Phase 3 has applied only the four EFProcedural class redirects after its Runtime and PCG modules passed Editor/Game builds. The `EFProceduralSettings` section remains deferred: its three configured dungeon asset paths are absent from target Content, and the isolated UE 5.7 registry closure is evidence for inspection only, not an authorized migration allowlist.
 
@@ -100,7 +103,21 @@ Applied after all four EFProjectSystems modules passed UE 5.8 Editor and Game bu
 - CommonUI/CommonInput settings and the `/AscentCombatFramework`, `/Game/FullSample`, and `/Game/ExportedAnimations` always-cook roots were restored. Their config presence is structurally verified; cook-manifest validation remains `PENDING_COOK`.
 - `Equals` was released from console ownership while `Tab` remains available.
 
-The UE 5.8 read-only probe passed all 46 structural checks and reported `READ_ONLY_STRUCTURAL_PROBE_PASS_SOFT_ASSETS_PENDING`. It found three target-authoritative enemy packages, eight missing packages, and one missing PNG outside AssetRegistry. It performed no map/content load, Blueprint compile, save, or PIE. The missing artifacts are DungeonGeneration, DoorToLevel, DA_FoodConsumableRegistry, DT_ProjectSurvivalStatuses, WBP_ProjectKnockoutStruggleWidget, DT_ProjectBackstories, DT_ProjectProfessions, WBP_ProjectCharacterBackgroundCreationWidget, and `Content/_Game/Images/preview.png`.
+The UE 5.8 read-only structural probe still passes all 46 checks. After the exact Phase 4 migration it resolves 9 of its 11 soft-package contracts; only `/Game/Procedural/DoorToLevel` and `/Game/Procedural/Maps/DungeonGeneration` remain absent. The raw `Content/_Game/Images/preview.png` contract is now present and hash-verified. This probe is structural evidence only and does not substitute for map load, PIE, visual, cook, or packaged validation.
+
+### Phase 4 EFProjectSystems core-content batch
+
+The controlled Phase 4 action migrated exactly 31 UE packages: 19 core packages covering survival statuses, the food consumable registry, character-background tables/UI, defeat UI, and status icons, plus 12 self-contained font/texture dependencies used by the defeat widget. UE 5.7 AssetTools performed the source-side exact migration in a detached read-only harness; UE 5.8 then loaded, compiled where applicable, resaved, and validated the target packages.
+
+Phase 4 also:
+
+- imported the hash-verified raw `_Game/Images/preview.png` sidecar and generated `/Game/_Game/Images/T_ProjectCharacterBackgroundPreview` as the packaged Texture2D counterpart;
+- applied the effective survival, defeat, and character-background settings, retaining the release defeat pain value `0.01`;
+- passed the focused EFProjectSystems automation gate with 9 clean successes and no warnings, failures, or unrun tests;
+- passed UE 5.8 Editor and Game builds after the content/config and project-owned runtime preload updates; and
+- revalidated the source read-only gate and the protected ACFU, DazToUnreal, Player, Female, Frederick, Multiple, and Male invariants.
+
+These results are not a full gameplay-system PASS. DoorToLevel and DungeonGeneration remain absent, and the complete input contract, PIE behavior, visual presentation, cook manifest, package, and packaged runtime are still `PENDING`.
 
 ## Applied ACFU 4.3.5 repair to `DefaultGame.ini`
 
@@ -217,4 +234,4 @@ PCG interops, ScriptableTools, DeformerGraph, MLDeformerFramework, Volumetrics, 
 8. Switch HUB/GameMode routes only after load, Blueprint compile, PIE, visual, cook, and packaged gates.
 9. Inspect effective output under `Saved/Config/WindowsEditor`, then re-hash ACFU, Daz, Player, Female, Frederick, Multiple, and Male.
 
-Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. Content resolution, Blueprint compilation, PIE input, visual QA, cook, package, and packaged runtime remain execution gates.
+Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. `APPLIED_CONTENT_STRUCTURAL_PASS` additionally covers content resolution and Blueprint compile/resave only for the exact 31-package Phase 4 batch. PIE input, visual QA, cook, package, and packaged runtime remain execution gates.

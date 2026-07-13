@@ -149,6 +149,11 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(
 
 bool FProjectSurvivalStatusWidgetResolverFallbackTest::RunTest(const FString& Parameters)
 {
+	AddExpectedErrorPlain(
+		TEXT("Class /Script/Engine.Actor is not a child class of Class /Script/UMG.UserWidget"),
+		EAutomationExpectedErrorFlags::Contains,
+		1);
+
 	UClass* ResolvedClass = ProjectWidgetClassResolver::ResolveWidgetClass(
 		FSoftClassPath(TEXT("/Script/Engine.Actor")),
 		UProjectSurvivalStatusWidget::StaticClass(),

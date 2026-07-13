@@ -153,9 +153,11 @@ namespace ProjectRuntimePerformancePrivate
 		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_MainPanel.T_Struggle_MainPanel"),
 		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_TargetChamber.T_Struggle_TargetChamber"),
 		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_TargetRing.T_Struggle_TargetRing"),
-		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_Cursor.T_Struggle_Cursor"),
-		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_Spark.T_Struggle_Spark"),
-		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_Vignette.T_Struggle_Vignette"),
+		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_TargetPulse.T_Struggle_TargetPulse"),
+		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_Arrow.T_Struggle_Arrow"),
+		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_GlowStreak.T_Struggle_GlowStreak"),
+		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_Noise.T_Struggle_Noise"),
+		TEXT("/Game/UI/Defeat/Struggle/Textures/T_Struggle_BackdropVignette.T_Struggle_BackdropVignette"),
 		TEXT("/Game/_Game/Images/Intimacy/Preview_IntimacyImage.Preview_IntimacyImage"),
 	};
 

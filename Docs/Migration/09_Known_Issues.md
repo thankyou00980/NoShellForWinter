@@ -11,8 +11,8 @@
 
 - Severity: gate condition.
 - Status: IN_PROGRESS.
-- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory.
-- Remaining: asset class/dependency enrichment and final action classification for every manifest row.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory, and exact Phase 4 classification/evidence for the 31 migrated core-content packages plus one target-generated texture.
+- Remaining: asset class/dependency enrichment and final action classification for every other manifest row.
 
 ## MIG-0003 — Target-owned Blueprint baseline was red
 
@@ -32,9 +32,9 @@
 ## MIG-0005 — Additional project-owned plugins were omitted initially
 
 - Severity: P1 omission risk.
-- Status: OPEN_FOR_PHASE_2.
+- Status: RESOLVED_PHASE_3.
 - Found: `EFBlink`, `DirtyPawnRuntime`, `ACFTrainingSystem`, and `CodeWidgetDesignerBridge` in addition to the seven required plugins.
-- Action: include every plugin in dependency/usage audit and migrate or explicitly retire with evidence.
+- Resolution: all four were included in the dependency/usage audit, migrated as project-owned plugins, explicitly enabled, and covered by the Phase 3 descriptor/build gates.
 
 ## MIG-0006 — Target Daz/Player baseline warnings
 
@@ -69,3 +69,11 @@
 - PIE log contains one `LogTemp: Error: Can't Start the quest` line on the ACFU Test map.
 - No fatal, ensure, crash, or PIE lifecycle failure occurred.
 - Action: classify against the migrated quest/story flow before final closeout; do not treat this sample-map condition as migrated quest behavior.
+
+## MIG-0010 — EFProjectSystems core content is not yet a runtime/package PASS
+
+- Severity: migration gate condition.
+- Status: IN_PROGRESS.
+- Completed: exact migration and UE 5.8 validation of 31 packages, generation of the packaged character-background preview texture, preservation of the raw preview, effective core settings validation, 9/9 clean focused automation, Editor/Game builds, source read-only verification, and protected invariant re-hash.
+- Current resolution: the structural soft-package probe resolves 9/11 contracts; only `/Game/Procedural/DoorToLevel` and `/Game/Procedural/Maps/DungeonGeneration` remain absent.
+- Remaining: migrate or replace those procedural contracts through an approved exact batch/adapter, then pass PIE, complete input behavior, visual QA, cook, package, and packaged-runtime validation. The current Phase 4 evidence must not be promoted to a full subsystem or migration PASS before those gates complete.
