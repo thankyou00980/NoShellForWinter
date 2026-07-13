@@ -1,0 +1,77 @@
+﻿{
+    "schema_version":  1,
+    "generated_utc":  "2026-07-13T09:50:58.1472308Z",
+    "source_root":  "D:\\Projects UE5\\LustAsDeadlySin",
+    "target_root":  "D:\\Projects UE5\\NoShellForWinter",
+    "source_registry":  {
+                            "path":  "D:\\Projects UE5\\NoShellForWinter\\Saved\\Migration\\Phase2\\SourceAssetRegistry57.json",
+                            "sha256":  "796912D0DE5F56A80C31A80419347414D79A8E3FE61D95010E3B41026AE0D88E",
+                            "indexed_packages":  10768
+                        },
+    "target_registry":  {
+                            "path":  "D:\\Projects UE5\\NoShellForWinter\\Saved\\Migration\\Phase2\\TargetAssetRegistry58.json",
+                            "sha256":  "60502D3300EF4DF079815CA8C91D85BC27B086CCA602B01022D6D82A570103CF",
+                            "indexed_packages":  5754
+                        },
+    "source_package_count":  10895,
+    "target_package_count":  5754,
+    "union_package_count":  13118,
+    "counts_by_presence":  {
+                               "BOTH":  3531,
+                               "SOURCE_ONLY":  7364,
+                               "TARGET_ONLY":  2223
+                           },
+    "counts_by_classification":  {
+                                     "DIFFERENT_CHARACTER_COLLISION":  13,
+                                     "DIFFERENT_FULLSAMPLE_COLLISION":  1077,
+                                     "IDENTICAL_OVERLAP":  2301,
+                                     "RETIRED_LEGACY_DIALOGUE":  2,
+                                     "SOURCE_ONLY_DEPENDENCY_CANDIDATE":  3920,
+                                     "SOURCE_ONLY_FULLSAMPLE":  341,
+                                     "SOURCE_ONLY_LEGACY_DAZ":  264,
+                                     "SOURCE_ONLY_PROJECT_CONTENT":  2837,
+                                     "TARGET_AUTHORITATIVE_DAZ":  189,
+                                     "TARGET_AUTHORITATIVE_PLAYER_COLLISION":  1,
+                                     "TARGET_ONLY":  2173
+                                 },
+    "counts_by_action":  {
+                             "COMPARE_CHARACTER_REFERENCES_KEEP_TARGET":  13,
+                             "COMPARE_FULLSAMPLE_IN_EDITOR":  1077,
+                             "DO_NOT_AUTO_MIGRATE_DAZ_REMAP_REFERENCES":  264,
+                             "KEEP_TARGET":  2173,
+                             "KEEP_TARGET_DAZ_AUDIT_DEPENDENCIES":  189,
+                             "KEEP_TARGET_IDENTICAL":  2301,
+                             "KEEP_TARGET_RECOMPOSE_SOURCE_CONTRACT":  1,
+                             "MIGRATE_SOURCE_ONLY_FULLSAMPLE_VIA_EDITOR":  341,
+                             "MIGRATE_VIA_UNREAL_ASSETTOOLS_AFTER_DEPENDENCY_GATE":  2837,
+                             "RETIRE_DO_NOT_MIGRATE":  2,
+                             "REVIEW_SOURCE_ONLY_DEPENDENCY":  3920
+                         },
+    "counts_by_system":  {
+                             "CharacterCreation":  21,
+                             "Chronicle":  23,
+                             "CombatEnemiesTargeting":  936,
+                             "Consumables":  889,
+                             "DazMorphClothing":  453,
+                             "DefeatStruggle":  33,
+                             "DirtyPawn":  347,
+                             "EmotesLocomotionActions":  460,
+                             "FullSample":  3927,
+                             "Input":  38,
+                             "Intimacy":  1,
+                             "Lockpicking":  6,
+                             "Other":  3436,
+                             "Persistence":  9,
+                             "ProceduralLevelFlow":  1785,
+                             "SinfulAscension":  102,
+                             "StorySelection":  4,
+                             "SurvivalNeedsStatus":  91,
+                             "Tattoo":  291,
+                             "UI":  266
+                         },
+    "source_packages_missing_registry":  127,
+    "target_packages_missing_registry":  0,
+    "manifest_path":  "D:\\Projects UE5\\NoShellForWinter\\Docs\\Migration\\04_Content_Migration_Manifest.csv",
+    "manifest_sha256":  "6390DF3A3213E92EA2D9F061074C7DF6778777B2973FF72B6DA31227EF81EB41",
+    "status":  "COMPLETE_PENDING_ACTION_EXECUTION"
+}

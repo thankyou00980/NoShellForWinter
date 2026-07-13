@@ -1,10 +1,11 @@
 {
-  "schema_version": 1,
-  "generated_utc": "2026-07-13T08:04:29Z",
-  "status": "IN_PROGRESS",
+  "schema_version": 2,
+  "generated_utc": "2026-07-13T09:54:03Z",
+  "status": "COMPLETE",
+  "scope": "Phase 2 read-only inventory and migration classification",
   "source": {
     "root": "D:\\Projects UE5\\LustAsDeadlySin",
-    "write_policy": "READ_ONLY",
+    "write_policy": "READ_ONLY_VERIFIED",
     "uproject": "ACFSample.uproject",
     "engine_association": "5.7",
     "git": {
@@ -17,34 +18,41 @@
       "lfs_entries": 10952,
       "lfs_hydrated": true
     },
-    "modules": ["ACFSample"],
-    "plugins": [
-      "EFCharacterCreation",
-      "EFCharacterCreationDazBridge",
-      "EFClothingMorph",
-      "EFProcedural",
-      "EFLevelFlow",
-      "EFCharacterCreationACFUBridge",
-      "EFProjectSystems",
-      "EFBlink",
-      "DirtyPawnRuntime",
-      "ACFTrainingSystem",
-      "CodeWidgetDesignerBridge"
+    "code": {
+      "primary_module": "ACFSample",
+      "project_plugin_modules": 20,
+      "total_modules": 21,
+      "module_owned_files_h_cpp_build_cs": 419,
+      "target_cs_files": 2,
+      "uclass_macros": 262,
+      "ustruct_macros": 124,
+      "uenum_macros": 40,
+      "uinterface_macros": 8,
+      "native_automation_tests": 87,
+      "native_savegame_classes": 4
+    },
+    "project_plugins": [
+      {"name": "EFCharacterCreation", "version": "1.0.0", "modules": ["EFCharacterCreationRuntime", "EFCharacterCreationEditor"]},
+      {"name": "EFCharacterCreationDazBridge", "version": "1.0.0", "modules": ["EFCharacterCreationDazBridgeEditor"]},
+      {"name": "EFClothingMorph", "version": "1.0.0", "modules": ["EFClothingMorphRuntime"]},
+      {"name": "EFProcedural", "version": "1.0.0", "modules": ["EFProceduralRuntime", "EFProceduralACFURuntime", "EFProceduralPCGRuntime", "EFProceduralEditor"]},
+      {"name": "EFLevelFlow", "version": "1.0.0", "modules": ["EFLevelFlowRuntime"]},
+      {"name": "EFCharacterCreationACFUBridge", "version": "1.0.0", "modules": ["EFCharacterCreationACFURuntime"]},
+      {"name": "EFProjectSystems", "version": "0.1.0", "modules": ["EFProjectSystemsCore", "EFProjectSystemsGameplay", "EFProjectSystemsUI", "EFProjectSystemsEditor"]},
+      {"name": "EFBlink", "version": "0.1.0", "modules": ["EFBlinkRuntime"]},
+      {"name": "DirtyPawnRuntime", "version": "1.0.0", "modules": ["DirtyPawnRuntime", "DirtyPawnRuntimeEditor"]},
+      {"name": "ACFTrainingSystem", "version": "0.1.0", "modules": ["ACFTrainingSystem"]},
+      {"name": "CodeWidgetDesignerBridge", "version": "0.1.0", "modules": ["CodeWidgetDesignerBridge", "CodeWidgetDesignerBridgeEditor"]}
     ],
-    "content_roots": [
-      "FullSample",
-      "DazToUnreal",
-      "Food_Props_Kit",
-      "Fantastic_Dungeon_Pack",
-      "RealisticBlood",
-      "KawaiiAnimations",
-      "ExportedAnimations",
-      "Calysto",
-      "Characters",
-      "DirtyPawnSystem",
-      "_Game"
-    ],
-    "maps": [
+    "content": {
+      "physical_packages": 10895,
+      "asset_registry_assets": 12184,
+      "asset_registry_packages": 10768,
+      "physical_packages_missing_registry": 127,
+      "maps": 40,
+      "registry_sha256": "796912D0DE5F56A80C31A80419347414D79A8E3FE61D95010E3B41026AE0D88E"
+    },
+    "critical_maps": [
       "/Game/_Game/Hub/HUB",
       "/Game/_Game/Locations/StorySelection",
       "/Game/_Game/Locations/PCGLevel",
@@ -61,54 +69,91 @@
       "EnemyScaling",
       "DefeatStruggle",
       "ProceduralLevelFlow",
-      "EmotesLocomotion",
+      "EmotesLocomotionActions",
       "Intimacy",
       "Lockpicking",
       "DirtyPawn",
       "TattooShop",
-      "Blink"
+      "Blink",
+      "Training",
+      "Persistence"
     ]
   },
   "target": {
     "root": "D:\\Projects UE5\\NoShellForWinter",
     "uproject": "NoShellForWinter.uproject",
     "engine_association": "5.8",
-    "modules": ["NoShellForWinter"],
-    "plugins": [
-      "ModelingToolsEditorMode",
-      "StateTree",
-      "GameplayStateTree",
+    "primary_module": "NoShellForWinter",
+    "preserved_plugins": [
       "AscentCombatFramework@4.3.5",
-      "OneClickMaterials@1.0",
       "DazToUnreal@5.8.0.491",
       "BpGeneratorUltimate@1.7.0",
       "PCGExtendedToolkit@0.76.2",
-      "SkinnedDecalComponent@3.0.1"
+      "SkinnedDecalComponent@3.0.1",
+      "OneClickMaterials@1.0",
+      "ModelingToolsEditorMode",
+      "StateTree",
+      "GameplayStateTree"
     ],
-    "content_roots": [
-      "FullSample",
-      "DazToUnreal",
-      "Characters",
-      "Input",
-      "ThirdPerson",
-      "Variant_Combat",
-      "Variant_Platforming",
-      "Variant_SideScrolling"
-    ],
-    "maps": [
-      "/Game/FullSample/L_UltOpenWorld",
-      "/Game/FullSample/Integrations/UIIntegrations/Level/MenuMap",
-      "/Game/FullSample/Test",
-      "/Game/FullSample/FullMap"
-    ],
-    "systems": ["ACFUUltimateSample", "DazCharacterAssets"]
+    "content": {
+      "physical_packages": 5754,
+      "asset_registry_assets": 5760,
+      "asset_registry_packages": 5754,
+      "physical_packages_missing_registry": 0,
+      "maps": 12,
+      "registry_sha256": "60502D3300EF4DF079815CA8C91D85BC27B086CCA602B01022D6D82A570103CF"
+    },
+    "protected_assets": [
+      "/Game/FullSample/Player",
+      "/Game/DazToUnreal/Female/**",
+      "/Game/DazToUnreal/Frederick/**",
+      "/Game/DazToUnreal/Multiple/**",
+      "/Game/DazToUnreal/Male/**",
+      "/Game/Characters/**",
+      "/Game/Input/**"
+    ]
   },
-  "classifications": [],
+  "content_manifest": {
+    "path": "Docs/Migration/04_Content_Migration_Manifest.csv",
+    "sha256": "6390DF3A3213E92EA2D9F061074C7DF6778777B2973FF72B6DA31227EF81EB41",
+    "union_packages": 13118,
+    "presence": {"BOTH": 3531, "SOURCE_ONLY": 7364, "TARGET_ONLY": 2223},
+    "classifications": {
+      "DIFFERENT_CHARACTER_COLLISION": 13,
+      "DIFFERENT_FULLSAMPLE_COLLISION": 1077,
+      "IDENTICAL_OVERLAP": 2301,
+      "RETIRED_LEGACY_DIALOGUE": 2,
+      "SOURCE_ONLY_DEPENDENCY_CANDIDATE": 3920,
+      "SOURCE_ONLY_FULLSAMPLE": 341,
+      "SOURCE_ONLY_LEGACY_DAZ": 264,
+      "SOURCE_ONLY_PROJECT_CONTENT": 2837,
+      "TARGET_AUTHORITATIVE_DAZ": 189,
+      "TARGET_AUTHORITATIVE_PLAYER_COLLISION": 1,
+      "TARGET_ONLY": 2173
+    },
+    "gate": "PHASE2_MANIFEST_GATE_PASS",
+    "execution_status": "PENDING_PHASED_EDITOR_MIGRATION"
+  },
+  "migration_rules": [
+    "Never overwrite target Player, Female, Frederick, Multiple, Male, DazToUnreal, Characters, or Input collisions.",
+    "Never bulk-copy Content or Plugins; migrate approved dependency closures through Unreal Editor/AssetTools.",
+    "Port project-owned plugins in dependency order and build after each wave.",
+    "Keep ACFU 4.3.5 and DazToUnreal 5.8 configuration and assets authoritative.",
+    "Treat registry-opaque physical packages as pending inspection, never as unused."
+  ],
   "unresolved": [
-    "Blueprint graph/CDO inventory",
-    "exact T and Plus source interactions",
-    "Frederick runtime identity",
-    "complete asset-by-asset classification",
-    "target Blueprint compile baseline failures"
+    "Exact source ownership and runtime behavior of T and Plus input interactions.",
+    "Frederick runtime identity; no unequivocal source package was found by name.",
+    "Sixty-seven critical procedural packages are physically present but opaque to the isolated UE 5.7 registry export and require UE 5.8 load inspection after EFProcedural is ported.",
+    "One immutable ACFU 4.3.5 Blueprint compile defect remains BLOCKED_EXTERNAL; target-owned Blueprint failures are zero.",
+    "Historical package redirects require referencer-backed promotion and must not be imported in bulk."
+  ],
+  "evidence": [
+    "Docs/Migration/Evidence/Phase2_Content_Manifest_Summary.json",
+    "Docs/Migration/Evidence/Phase2_Critical_Content_Audit.md",
+    "Docs/Migration/Evidence/Phase2_Plugin_Dependency_Audit.md",
+    "Docs/Migration/Evidence/Phase2_Config_ThreeWay_Audit.md",
+    "Saved/Migration/Phase2/SourceAssetRegistry57.json",
+    "Saved/Migration/Phase2/TargetAssetRegistry58.json"
   ]
 }
