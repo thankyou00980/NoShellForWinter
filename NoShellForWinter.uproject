@@ -75,6 +75,10 @@
 		{
 			"Name": "EFCharacterCreation",
 			"Enabled": true
+		},
+		{
+			"Name": "EFCharacterCreationACFUBridge",
+			"Enabled": true
 		}
 	]
 }
