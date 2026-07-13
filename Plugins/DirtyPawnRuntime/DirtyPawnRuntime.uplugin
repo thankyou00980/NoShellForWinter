@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Dirty Pawn Runtime",
+	"Description": "C++ runtime port of Dirty Pawn System material/height-mask behavior for LustAsDeadlySin.",
+	"Category": "Gameplay",
+	"CreatedBy": "LustAsDeadlySin",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "DirtyPawnRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "DirtyPawnRuntimeEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}
