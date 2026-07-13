@@ -20,6 +20,10 @@ EXPECTED = {
         "count": 20,
         "commit": "259bf42",
     },
+    "Docs/Migration/Evidence/Phase4_DungeonGeneration_ContentBuild.json": {
+        "count": 1,
+        "commit": "95fcd1b",
+    },
 }
 
 

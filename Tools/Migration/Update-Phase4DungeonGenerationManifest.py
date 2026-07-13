@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "Docs" / "Migration" / "04_Content_Migration_Manifest.csv"
 EVIDENCE = "Docs/Migration/Evidence/Phase4_DungeonGeneration_ContentBuild.json"
+CONTENT_COMMIT = "95fcd1b"
 PACKAGE = "/Game/Procedural/Maps/DungeonGeneration"
 TARGET_RELATIVE = "Content\\Procedural\\Maps\\DungeonGeneration.umap"
 SOURCE_LENGTH = 58016
@@ -152,7 +153,7 @@ for line_index in range(1, len(raw_lines)):
     row[indices["Action"]] = "MIGRATE_VIA_UNREAL_ASSETTOOLS_AFTER_DEPENDENCY_GATE"
     row[indices["Result"]] = "PASS"
     row[indices["TestEvidence"]] = EVIDENCE
-    row[indices["Commit"]] = "pending"
+    row[indices["Commit"]] = CONTENT_COMMIT
     row[indices["Notes"]] = (
         "Phase 2/3 classified this as a source-only inspection candidate "
         "without package loads or saves. Exact single-map UE 5.7 AssetTools "

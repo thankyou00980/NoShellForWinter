@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE_PATH = (
     "Docs/Migration/Evidence/Phase4_DungeonGeneration_ContentBuild.json"
 )
+CONTENT_COMMIT = "95fcd1b"
 PACKAGE = "/Game/Procedural/Maps/DungeonGeneration"
 TARGET_RELATIVE = "Content/Procedural/Maps/DungeonGeneration.umap"
 SOURCE_LENGTH = 58016
@@ -270,7 +271,7 @@ require(
     and row.get("Authority") == "SOURCE_BEHAVIOR"
     and row.get("Action") == "MIGRATE_VIA_UNREAL_ASSETTOOLS_AFTER_DEPENDENCY_GATE"
     and row.get("Result") == "PASS"
-    and row.get("Commit") == "pending"
+    and row.get("Commit") == CONTENT_COMMIT
     and row.get("TargetLength") == str(TARGET_LENGTH)
     and row.get("TargetSHA256") == TARGET_SHA256
     and set(filter(None, row.get("TargetDependencies", "").split(";")))
@@ -281,6 +282,7 @@ require(
 payload = {
     "schema_version": 1,
     "generated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "content_commit": CONTENT_COMMIT,
     "status": "CONTENT_BUILD_MAP_LOAD_PASS_PIE_VISUAL_COOK_PACKAGE_DUNGEON_RUNTIME_PENDING",
     "scope": {
         "source_packages_migrated": 1,

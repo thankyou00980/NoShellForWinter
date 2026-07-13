@@ -1,4 +1,5 @@
 {
+  "content_commit": "95fcd1b",
   "evidence": {
     "build_logs": {
       "editor": "Saved/Migration/Logs/Phase4_DungeonGeneration_EditorBuild58.log",
@@ -33,7 +34,7 @@
     "ue57_read_only_map_load": "UE57_DUNGEON_GENERATION_READ_ONLY_LOAD_PASS",
     "ue58_load_save_reload": "UE58_DUNGEON_GENERATION_LOAD_RESAVE_RELOAD_PASS"
   },
-  "generated_utc": "2026-07-13T13:31:56.608405+00:00",
+  "generated_utc": "2026-07-13T13:33:41.227652+00:00",
   "pending": [
     "PIE runtime validation on the migrated map",
     "visible procedural and navigation QA",
