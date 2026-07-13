@@ -71,6 +71,10 @@
 		{
 			"Name": "EFBlink",
 			"Enabled": true
+		},
+		{
+			"Name": "EFCharacterCreation",
+			"Enabled": true
 		}
 	]
 }

@@ -1,8 +1,8 @@
 # Plugin compatibility matrix
 
-Status: `PHASE2_INVENTORIED / PENDING_PORT`
+Status: `PHASE3_PORT_IN_PROGRESS`
 
-This phase is a read-only inventory of the live UE 5.7 source tree. `PHASE2_INVENTORIED` means that the descriptor, module graph, `Build.cs` dependencies, public C++ surface, plugin content/config roots, and initial UE 5.8 compatibility hotspots were inspected. It does not mean that a project-owned plugin has been copied, built, loaded, cooked, packaged, or runtime-validated in the target.
+The Phase 2 rows preserve the read-only inventory of the live UE 5.7 source tree. Phase 3 statuses are promoted only when a project-owned plugin has controlled import and UE 5.8 evidence; cook, package, and runtime claims remain pending until their own gates pass.
 
 ## Authoritative external plugins
 
@@ -20,7 +20,7 @@ Every descriptor below is rooted at `D:\Projects UE5\LustAsDeadlySin\Plugins\<Pl
 
 | Plugin | Version | Modules, type, loading phase | Descriptor plugin edges | Source files | Public surface | Content/config | Classification | Phase status |
 |---|---:|---|---|---:|---|---|---|---|
-| EFCharacterCreation | 1.0.0 | `EFCharacterCreationRuntime` Runtime/Default; `EFCharacterCreationEditor` Editor/Default | none | 25 | 12 headers; 8 UCLASS, 9 USTRUCT, 1 UENUM | 2 WBP + `Config/DefaultGame.ini` | MIGRATE_SOURCE_WITH_CONFIG_MERGE | PHASE2_INVENTORIED / PENDING_PORT |
+| EFCharacterCreation | 1.0.0 | `EFCharacterCreationRuntime` Runtime/Default; `EFCharacterCreationEditor` Editor/Default | none | 25 | 12 headers; 8 UCLASS, 9 USTRUCT, 1 UENUM | 2 WBP + recomposed project `DefaultGame.ini` section | MIGRATE_SOURCE_WITH_CONFIG_MERGE | PHASE3_EDITOR_GAME_ASSETS_CONFIG_PASS / RUNTIME_QA_PENDING |
 | EFCharacterCreationDazBridge | 1.0.0 | `EFCharacterCreationDazBridgeEditor` Editor/Default | EFCharacterCreation, DazToUnreal | 3 | 1 module header | none | REBUILD_AGAINST_TARGET | PHASE2_INVENTORIED / PENDING_PORT |
 | EFClothingMorph | 1.0.0 | `EFClothingMorphRuntime` Runtime/Default | EFCharacterCreation | 4 | 1 header; 1 UCLASS, 8 USTRUCT, 2 UENUM | none | MIGRATE_SOURCE | PHASE2_INVENTORIED / PENDING_PORT |
 | EFProcedural | 1.0.0 | `EFProceduralRuntime`, `EFProceduralACFURuntime`, `EFProceduralPCGRuntime` Runtime/Default; `EFProceduralEditor` Editor/Default | PCG | 26 | 13 headers; 4 UCLASS, 3 UINTERFACE | none | MIGRATE_SOURCE | PHASE2_INVENTORIED / PENDING_PORT |
