@@ -1,41 +1,62 @@
 # NoShellForWinter baseline
 
-Status: `IN_PROGRESS`
+Status: `COMPLETE`
 
-## Recovery baseline
+## Recovery and build baseline
 
 | Check | Result | Evidence |
 |---|---|---|
-| Target is a Git worktree | FAIL_PREEXISTING | `git rev-parse` reported no repository |
-| External restorable snapshot | PASS | `D:\Projects UE5\NoShellForWinter_Baseline_PreMigration_20260713` |
-| Snapshot SHA-256 verification | PASS | 5,916/5,916 files matched |
-| No Unreal processes during capture | PASS | Process query returned no Unreal Editor or ShaderCompileWorker process |
+| External restorable snapshot | PASS | `D:\Projects UE5\NoShellForWinter_Baseline_PreMigration_20260713`; 5,916/5,916 SHA-256 matches |
+| Local Git/LFS baseline | PASS | commit `d3fab0b`, tag `baseline/ue58-pre-lads-migration-20260713`, branch `migration/ue58-lasd-parity` |
 | Target EngineAssociation | PASS | `NoShellForWinter.uproject` reports `5.8` |
-| UE installations | PASS | UE 5.8.0 CL 55116800 and UE 5.7.4 CL 51494982 present |
 | Generate project files | PASS | `Saved/Migration/Logs/Phase1_GenerateProjectFiles_Retry_20260713.log` |
 | Development Editor Win64 | PASS | `Saved/Migration/Logs/Phase1_DevelopmentEditor_Build_20260713.log` |
 | Development Game Win64 | PASS | `Saved/Migration/Logs/Phase1_DevelopmentGame_Build_20260713.log` |
-| Compile All Blueprints | FAIL_PREEXISTING | Exit 83; 34 assets / 61 unique compiler messages in `Phase1_CompileAllBlueprints_20260713.log` |
-| Source unchanged after forensic audit | PASS | `Docs/Migration/Evidence/Phase0_Source_ReadOnly_Verification.json` |
-| ACFU/Daz immutable manifests | PASS | `Docs/Migration/Evidence/Phase0_Target_Invariant_Hashes.json` |
+| Compile target-owned Blueprints | PASS | 34 failing assets reduced to zero; `Phase1_CompileAllBlueprints_AfterOrphanCleanup_20260713.log` |
+| Compile all enabled Blueprint content | BLOCKED_EXTERNAL | one immutable ACFU asset remains: `ACF_PickAction_BP`, two unique compiler messages |
+| Minimal cook `/Game/FullSample/Test` | PASS | 4,881 packages; `Phase1_MinimalCook_TestMap_20260713.log` |
+| Visible PIE baseline | PASS | `Saved/Migration/PIE_Baseline_Python/20260713_040617` and tracked evidence JSON |
+| Source unchanged | PASS | HEAD, status, eight authoritative dirty-file hashes, and 10,952 LFS entries match |
+| ACFU/Daz/Player invariants | PASS | 5,043 ACFU files, 213 Daz plugin files, 189 target Daz assets, and four authoritative assets match byte-for-byte |
 
-## Pending baseline gates
+## Blueprint baseline repair
 
-- Immutable hash manifests for target ACFU and DazToUnreal.
-- Player/Female/Frederick/Multiple/Male asset manifest.
-- Editor startup and pre-existing warning/error inventory.
-- Basic PIE, locomotion, combat, and target baseline.
-- Baseline screenshots.
-- Minimal cook.
+The initial commandlet returned 83 with 34 failing assets and 61 unique compiler messages. The dominant defect was a stale `/Script/TP_ThirdPerson` module identity in the UE 5.8 template content. Four narrow Core Redirects map the three renamed template bases and the old package to `/Script/NoShellForWinter`.
 
-No migration subsystem is considered started while these checks remain pending.
+After the redirects:
+
+- `/Script/TP_ThirdPerson` log occurrences: 269 to 0.
+- Failing assets: 34 to 2.
+- Unique compiler issues: 61 to 5.
+
+The remaining project asset, `/Game/FullSample/Integrations/ATSIntegrations/Dialogue/SampleDialogueButton_WBP`, was a zero-referencer orphan inherited byte-for-byte from the current FullSample 5.8 distribution. The live Player and widget registry use ACFU 4.3.5 `ACF_MinimalDialogue_WB`. The orphan was quarantined and deleted through Unreal Editor AssetTools after hash and referencer gates; no raw `.uasset` operation was used.
+
+The final global commandlet returns 2 only because immutable Marketplace asset `/AscentCombatFramework/Blueprints/Abilities/ACF_PickAction_BP` still calls removed `GetInventoryComponent` API. Runtime load probes, GAS settings, PIE, and the minimal cook pass. This is recorded as `BLOCKED_EXTERNAL`, and no ACFU file was modified.
+
+## Visible PIE baseline
+
+- Map: `/Game/FullSample/Test`.
+- GameMode: `ACFUltimateGameModeBP_C`.
+- PlayerController: `ACFUltimatePlayerControllerBP_C`.
+- Pawn: `/Game/FullSample/Player.Player_C`.
+- Visible HUD: `ANS_DefaultHUD_WB_C`.
+- Visible body: `/Game/DazToUnreal/Female/Female.Female` on `SkeletalMesh`, driven by `ACF_GenericRetarget_ABP_C`.
+- Compatibility mesh: Female on `CharacterMesh0`, driven by `ACF_MMHumanoid_ABP_C`, not visibly rendered.
+- Stable runtime samples: 3.
+- Clean PIE exit: PASS.
+- Fatal/ensure count: 0/0.
+- Window screenshot: 1936x1048, SHA-256 `75F28E01895B95EB875517BCA910D22555FA2ED2C267678656ACDA54CF653062`, visual review PASS.
+- Viewport screenshot: 1280x720, SHA-256 `7CDCC968A6D41E15A2DA5DDB05290DEF6DE82DF4E557CEA737D0878D26132F83`, visual review PASS.
+
+## Tooling status
+
+- MCP transport and authentication: PASS.
+- Ultimate Engine Copilot tool calls: `BLOCKED_EXTERNAL` because the installed plugin requires license activation.
+- Built-in Unreal Python fallback: PASS and scoped by an explicit environment guard.
+- UBG coupling: zero runtime dependency. UBG source was consulted only as an editor API map.
 
 ## Verified target plugin versions
 
-- ACFU descriptor: `D:\Unreal Engine 5\Library\UE_5.8\Engine\Plugins\Marketplace\ACFUAsce5ab7c1439afbV5\AscentCombatFramework.uplugin`; version `4.3.5`, Engine `5.8.0`.
-- DazToUnreal descriptor: `D:\Unreal Engine 5\Library\UE_5.8\Engine\Plugins\DazToUnreal\DazToUnreal.uplugin`; version `5.8.0.491`.
-- No project-local EF plugin exists yet.
-
-## Pre-existing Blueprint failures
-
-The global commandlet compiled C++ successfully but returned 83. It found 34 assets with compiler errors. Most template assets still import `/Script/TP_ThirdPerson` although the target module is `/Script/NoShellForWinter`; this is a target baseline migration defect, not an EF port regression. Additional failures include ACFU plugin content, `ACFMageEnemyBP`, and `SampleDialogueButton_WBP`. The complete log remains authoritative.
+- ACFU: `4.3.5`, Engine `5.8.0`.
+- DazToUnreal: `5.8.0.491`.
+- Ultimate Blueprint Generator: `1.7.0`; editor-only and license-blocked for MCP actions.

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "verified_utc": "2026-07-13T09:39:00.4557607Z",
+  "source_root": "D:\\Projects UE5\\LustAsDeadlySin",
+  "head_expected": "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+  "head_actual": "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+  "head_match": true,
+  "status_match": true,
+  "modified_file_hashes_checked": 8,
+  "modified_file_hashes_match": true,
+  "lfs_entry_count_expected": 10952,
+  "lfs_entry_count_actual": 10952,
+  "lfs_manifest_match": true,
+  "pass": true,
+  "full_runtime_evidence": "Saved/Migration/Evidence/Phase1_SourceReadOnlyVerification.json",
+  "full_runtime_evidence_sha256": "76E41095CD30D0907450DC1C03996257E8BA9BACFFC80F5E2A5410203F88B9FB"
+}

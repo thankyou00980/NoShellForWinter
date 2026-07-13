@@ -1,5 +1,6 @@
 # Unreal generated artifacts
 Binaries/
+Build/
 DerivedDataCache/
 Intermediate/
 Saved/

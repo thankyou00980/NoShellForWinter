@@ -1,43 +1,71 @@
 # Known issues
 
-## MIG-0001 — Target has no Git repository
+## MIG-0001 — No remote Git rollback
 
 - Severity: P3 process/traceability risk.
-- Evidence: `git rev-parse --show-toplevel` failed at the target root.
-- Mitigation completed: full external snapshot with zero SHA-256 mismatches.
-- Mitigation completed: new local Git repository with LFS, baseline commit `d3fab0b`, annotated tag `baseline/ue58-pre-lads-migration-20260713`, and branch `migration/ue58-lasd-parity`.
-- Remaining limitation: no remote is configured, so rollback is local and same-volume only.
+- Status: MITIGATED.
+- Completed: external snapshot, local Git LFS baseline commit `d3fab0b`, baseline tag, migration branch.
+- Remaining limitation: no Git remote is configured, so rollback is local and same-volume.
 
 ## MIG-0002 — Forensic inventory incomplete
 
 - Severity: gate condition.
-- Status: `IN_PROGRESS`.
-- Impact: no source plugin or content migration may begin until all project-owned roots are classified.
+- Status: IN_PROGRESS.
+- Completed: package union and source/target counts, source code symbol inventory, plugin/module/map inventory.
+- Remaining: asset class/dependency enrichment and final action classification for every manifest row.
 
-## MIG-0003 — Target Blueprint baseline is red
+## MIG-0003 — Target-owned Blueprint baseline was red
 
 - Severity: P1 baseline defect.
-- Evidence: `CompileAllBlueprints` exited 83 with 34 assets and 61 unique compiler messages.
-- Dominant cause: template assets import `/Script/TP_ThirdPerson` while the live target module is `/Script/NoShellForWinter`.
-- Other owners: project FullSample content and two ACFU plugin assets.
-- Policy: repair project-owned redirects/assets; do not edit ACFU or other Marketplace plugin content.
-- Log: `Saved/Migration/Logs/Phase1_CompileAllBlueprints_20260713.log`.
+- Status: RESOLVED.
+- Initial evidence: exit 83, 34 assets, 61 unique messages, 269 `/Script/TP_ThirdPerson` occurrences.
+- Repair: narrow Core Redirects plus Editor AssetTools retirement of a zero-referencer obsolete dialogue WBP.
+- Final evidence: zero target-owned Blueprint failures and zero `TP_ThirdPerson` occurrences.
 
 ## MIG-0004 — Source checkout contains authoritative uncommitted work
 
 - Severity: P0 data-preservation risk if ignored.
-- Evidence: eight tracked modifications, including `Content/FullSample/Player.uasset` and live Intimacy/Emote code/tools.
-- Mitigation: SHA-256 hashes and full LFS OID manifest captured before migration.
-- Policy: source remains read-only; compare against the live working tree, not only HEAD.
+- Status: PROTECTED.
+- Evidence: eight tracked modifications, including source `Player.uasset` and live Intimacy/Emote work.
+- Gate: HEAD, status, all eight SHA-256 values, and the 10,952-entry LFS manifest still match after phase 1.
 
-## MIG-0005 — Additional project-owned plugins were omitted from the initial required list
+## MIG-0005 — Additional project-owned plugins were omitted initially
 
 - Severity: P1 omission risk.
-- Found: `EFBlink`, `DirtyPawnRuntime`, `ACFTrainingSystem`, and `CodeWidgetDesignerBridge`.
-- Action: include in dependency/usage audit and migrate or explicitly classify obsolete with evidence.
+- Status: OPEN_FOR_PHASE_2.
+- Found: `EFBlink`, `DirtyPawnRuntime`, `ACFTrainingSystem`, and `CodeWidgetDesignerBridge` in addition to the seven required plugins.
+- Action: include every plugin in dependency/usage audit and migrate or explicitly retire with evidence.
 
 ## MIG-0006 — Target Daz/Player baseline warnings
 
-- Severity: P1/P2 pending runtime confirmation.
-- Pre-existing evidence includes `Male` skeleton mismatch, `Multiple_PhysicsAsset` body-count ensure, invalid Daz texture folder package names, missing ACF/GAS imports, and lost parent-function metadata in `Player`.
-- Action: preserve target assets, capture live ownership/manifests, and repair through target-owned composition/configuration only.
+- Severity: P1/P2 pending subsystem validation.
+- Status: OPEN.
+- Pre-existing warnings include Male skeleton mismatch, `Multiple_PhysicsAsset` body-count ensure, invalid Daz texture-folder package names, and lost parent-function metadata in Player.
+- Current evidence: authoritative assets are byte-identical; visible Female ownership and baseline PIE pass.
+- Action: preserve target assets and repair only through target-owned composition/configuration after morph and animation audits.
+
+## MIG-0007 — ACFU 4.3.5 ships one stale Blueprint
+
+- Severity: `BLOCKED_EXTERNAL` vendor defect.
+- Status: OPEN_EXTERNAL.
+- Asset: `/AscentCombatFramework/Blueprints/Abilities/ACF_PickAction_BP`.
+- Error: stale `Get Inventory Component` return pin and removed `GetInventoryComponent` function.
+- Scope: one immutable Marketplace asset, two unique compiler messages.
+- Regression checks: ACFU 5,043-file hash manifest PASS; asset/GAS runtime probes PASS; visible PIE PASS; minimal cook PASS.
+- Policy: do not edit ACFU. Recheck after a vendor update; use a project-owned adapter only if gameplay QA proves the action is required and broken.
+
+## MIG-0008 — UBG MCP actions require license activation
+
+- Severity: P3 tooling limitation.
+- Status: `BLOCKED_EXTERNAL`.
+- MCP transport/authentication: PASS.
+- UECP action response: license verification required in plugin settings.
+- Mitigation: built-in Unreal Python and project-owned editor tooling; zero runtime dependency on UBG.
+
+## MIG-0009 — Baseline quest smoke error
+
+- Severity: P2 pending ownership classification.
+- Status: OPEN.
+- PIE log contains one `LogTemp: Error: Can't Start the quest` line on the ACFU Test map.
+- No fatal, ensure, crash, or PIE lifecycle failure occurred.
+- Action: classify against the migrated quest/story flow before final closeout; do not treat this sample-map condition as migrated quest behavior.
