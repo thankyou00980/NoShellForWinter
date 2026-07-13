@@ -1,0 +1,16 @@
+﻿{
+    "schema_version":  1,
+    "verified_utc":  "2026-07-13T08:11:56.6686253Z",
+    "source_root":  "D:\\Projects UE5\\LustAsDeadlySin",
+    "head_before":  "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+    "head_after":  "8808ee6493b6c8e73b58fca30d9d5f1c1bca77b4",
+    "head_match":  true,
+    "status_match":  true,
+    "modified_file_hashes_match":  true,
+    "lfs_entry_count_before":  10952,
+    "lfs_entry_count_after":  10952,
+    "lfs_manifest_sha256_before":  "50FF7F3DF5DD50A8E687BD312BDE1172BCBAF89D6F0588697E5B0A13B1757015",
+    "lfs_manifest_sha256_after":  "50FF7F3DF5DD50A8E687BD312BDE1172BCBAF89D6F0588697E5B0A13B1757015",
+    "lfs_manifest_match":  true,
+    "pass":  true
+}

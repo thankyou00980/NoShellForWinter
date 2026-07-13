@@ -16,6 +16,8 @@ Status: `IN_PROGRESS`
 | Development Editor Win64 | PASS | `Saved/Migration/Logs/Phase1_DevelopmentEditor_Build_20260713.log` |
 | Development Game Win64 | PASS | `Saved/Migration/Logs/Phase1_DevelopmentGame_Build_20260713.log` |
 | Compile All Blueprints | FAIL_PREEXISTING | Exit 83; 34 assets / 61 unique compiler messages in `Phase1_CompileAllBlueprints_20260713.log` |
+| Source unchanged after forensic audit | PASS | `Docs/Migration/Evidence/Phase0_Source_ReadOnly_Verification.json` |
+| ACFU/Daz immutable manifests | PASS | `Docs/Migration/Evidence/Phase0_Target_Invariant_Hashes.json` |
 
 ## Pending baseline gates
 

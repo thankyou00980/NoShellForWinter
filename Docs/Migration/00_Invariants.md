@@ -42,6 +42,15 @@
 - LFS manifest SHA-256: `50FF7F3DF5DD50A8E687BD312BDE1172BCBAF89D6F0588697E5B0A13B1757015`.
 - Source Git/LFS report: `Saved/Migration/Reports/Phase0_Source_Git_State_Before.json`.
 - Source LFS manifest: `Saved/Migration/Reports/Phase0_Source_LFS_Manifest_Before.txt`.
+- Post-audit verification: `PASS`; HEAD, porcelain status, eight live-file hashes, LFS entry count, and LFS manifest hash all remained identical.
+- Verification evidence: `Docs/Migration/Evidence/Phase0_Source_ReadOnly_Verification.json`.
+
+## Protected target manifests
+
+- ACFU 4.3.5: 5,043 files / 6,170,659,421 bytes; manifest SHA-256 `69F46CACC120E44AC3B1729342E059CCD24D77D01534CB4E0F36C4A8A26D87F9`.
+- DazToUnreal 5.8.0.491: 213 files / 172,602,860 bytes; manifest SHA-256 `523200EBEED3B1284445C0570029CE746C10D4E5039B41AAD769544166E2B491`.
+- Target Daz assets: 189 files / 980,685,486 bytes; manifest SHA-256 `A0F3176C7AFF078DC3D8669D93D1A65ACA6D520AF6938F593500967835414FAA`.
+- Player/Female/Multiple/Male individual SHA-256 hashes are recorded in `Docs/Migration/Evidence/Phase0_Target_Invariant_Hashes.json`.
 
 ## Phase-gate rule
 

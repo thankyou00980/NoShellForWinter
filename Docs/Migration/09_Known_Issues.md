@@ -5,7 +5,8 @@
 - Severity: P3 process/traceability risk.
 - Evidence: `git rev-parse --show-toplevel` failed at the target root.
 - Mitigation completed: full external snapshot with zero SHA-256 mismatches.
-- Remaining decision: choose a space-safe version-control/LFS strategy after source sizing and LFS audit.
+- Mitigation completed: new local Git repository with LFS, baseline commit `d3fab0b`, annotated tag `baseline/ue58-pre-lads-migration-20260713`, and branch `migration/ue58-lasd-parity`.
+- Remaining limitation: no remote is configured, so rollback is local and same-volume only.
 
 ## MIG-0002 — Forensic inventory incomplete
 
