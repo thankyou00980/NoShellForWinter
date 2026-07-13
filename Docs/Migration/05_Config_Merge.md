@@ -1,8 +1,8 @@
 # Configuration merge
 
-Status: `PHASE2_INVENTORIED/PENDING_PLUGIN_AND_ASSET_GATES`
+Status: `PHASE3_SELECTIVE_MERGE_IN_PROGRESS`
 
-No configuration mutation is authorized by this document. It records the three-way decision set for the UE 5.7 source, the UE 5.8 target, and the installed ACFU 4.3.5 configuration. Apply rows marked `DEFER_MERGE` only after their named plugin and asset gates pass.
+This document began as the Phase 2 three-way decision set. Phase 3 now contains only the controlled additive merges recorded below. A structural config PASS does not imply that deferred soft assets, Blueprint contracts, PIE input behavior, cook, or packaged runtime have passed.
 
 Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audit.md)
 
@@ -55,12 +55,12 @@ Evidence: [Phase2_Config_ThreeWay_Audit.md](Evidence/Phase2_Config_ThreeWay_Audi
 
 ## Exact target preservations
 
-The following target files are byte-identical to ACFU 4.3.5 and remain authoritative until a targeted merge is approved:
+At the Phase 2 baseline, `DefaultInput.ini`, `DefaultGameplayTags.ini`, `DefaultPlugins.ini`, and `DefaultGameUserSettings.ini` were byte-identical to ACFU 4.3.5. Phase 3 now has two intentional project-owned divergences:
 
-- `Config/DefaultInput.ini`
-- `Config/DefaultGameplayTags.ini`
-- `Config/DefaultPlugins.ini`
-- `Config/DefaultGameUserSettings.ini`
+- `DefaultInput.ini` preserves the UE 5.8 Enhanced Input base and `+ConsoleKeys=Tab`, while applying `-ConsoleKeys=Equals` and removing `+ConsoleKeys=Equals`.
+- `DefaultGameplayTags.ini` preserves every current ACFU tag/table row and adds exactly 58 unique `Project.*` tags.
+
+`DefaultPlugins.ini` and `DefaultGameUserSettings.ini` remain target-authoritative.
 
 Preserve the full current Daz section in `Config/DefaultGame.ini`; do not merge individual source Daz values.
 
@@ -72,24 +72,14 @@ Preserve these `.uproject` identities and entries:
 - `ModelingToolsEditorMode`, `StateTree`, `GameplayStateTree`
 - `OneClickMaterials`, `BpGeneratorUltimate`, `PCGExtendedToolkit`, `SkinnedDecalComponent`
 
-## Deferred project configuration
+## Project configuration ledger
 
-After owner plugins and referenced assets pass their gates, merge all keys from these source-owned sections, not the surrounding 5.7 file:
+Merge only owner sections, never the surrounding UE 5.7 file. Current disposition:
 
-1. `EFProjectInputSettings`
-2. `EFProjectWorldFlowSettings`
-3. `EFProjectSurvivalSettings`
-4. `EFProjectEnemySettings`
-5. `ProjectEnemyVisualVariationSettings`
-6. `ProjectEnemyLevelSettings`
-7. `ProjectRuntimePerformanceSettings`
-8. `ProjectDefeatFlowSettings`
-9. `ProjectActivityFeedSettings`
-10. `EFProceduralSettings`
-11. `EFCharacterCreationSettings`
-12. `ProjectSinfulAscensionSettings`
-13. `ProjectCharacterBackgroundSettings`
-14. `AbilitySystemGlobals`
+- `APPLIED_STRUCTURAL_PASS`: `EFProjectInputSettings`, `EFProjectEnemySettings`, `ProjectEnemyVisualVariationSettings`, `ProjectEnemyLevelSettings`, `ProjectActivityFeedSettings`, and `ProjectSinfulAscensionSettings`.
+- `APPLIED_EARLIER`: `EFCharacterCreationSettings`.
+- `PENDING_CONTENT`: `EFProjectWorldFlowSettings`, `EFProjectSurvivalSettings`, `ProjectRuntimePerformanceSettings`, `ProjectDefeatFlowSettings`, `ProjectCharacterBackgroundSettings`, and `EFProceduralSettings`.
+- `PENDING_GAS_CUE_VALIDATION`: `AbilitySystemGlobals`.
 
 Configured source-only dependencies currently include HUB, DungeonGeneration, DoorToLevel, defeat UI, character-background data/UI, `_Game/Widgets`, and `_Game/Images/preview.png`. Their config rows remain pending until the Phase 2 content action that owns them completes.
 
@@ -97,9 +87,24 @@ Phase 3 has applied only the four EFProcedural class redirects after its Runtime
 
 The two EFLevelFlow class redirects were then applied after its destination module passed Editor/Game builds. EFLevelFlow has no explicit source settings section to merge; its native CDO defaults and ACFU loading widget passed a read-only UE 5.8 probe. Serialized redirect resolution and the DungeonGeneration runtime remain pending until the gated map migration exists.
 
-## Required ACFU 4.3.5 repair to `DefaultGame.ini`
+### EFProjectSystems selective merge
 
-The desired merge must restore these ACFU 4.3.5 values while retaining the complete Daz section:
+Applied after all four EFProjectSystems modules passed UE 5.8 Editor and Game builds:
+
+- EFProjectSystems is explicitly enabled in `NoShellForWinter.uproject`.
+- Five project-owned Core Redirect lines were added. Destination modules/classes load; serialized legacy-reference resolution remains `PENDING_ALLOWLISTED_ASSET_LOAD`.
+- Exactly 58 unique `Project.Intimacy.*` and `Project.Gender.*` tags were added.
+- Six owner sections were merged: `EFProjectInputSettings`, `EFProjectEnemySettings`, `ProjectEnemyVisualVariationSettings`, `ProjectEnemyLevelSettings`, `ProjectActivityFeedSettings`, and `ProjectSinfulAscensionSettings`.
+- Legacy `MeleeMale`, `RangedMale`, `MageMale`, and `DummyMale` paths were not retained. Settings use target-authoritative `ACFMeleeEnemyBP`, `ACFRangedEnemyBP`, and `ACFMageEnemyBP`.
+- Release values were retained: sensation hold `10.0`, dance lust `0.05`, and native defeat pain `0.01`. Temporary `30.0`, `0.10`, and `0.25` values were rejected.
+- CommonUI/CommonInput settings and the `/AscentCombatFramework`, `/Game/FullSample`, and `/Game/ExportedAnimations` always-cook roots were restored. Their config presence is structurally verified; cook-manifest validation remains `PENDING_COOK`.
+- `Equals` was released from console ownership while `Tab` remains available.
+
+The UE 5.8 read-only probe passed all 46 structural checks and reported `READ_ONLY_STRUCTURAL_PROBE_PASS_SOFT_ASSETS_PENDING`. It found three target-authoritative enemy packages, eight missing packages, and one missing PNG outside AssetRegistry. It performed no map/content load, Blueprint compile, save, or PIE. The missing artifacts are DungeonGeneration, DoorToLevel, DA_FoodConsumableRegistry, DT_ProjectSurvivalStatuses, WBP_ProjectKnockoutStruggleWidget, DT_ProjectBackstories, DT_ProjectProfessions, WBP_ProjectCharacterBackgroundCreationWidget, and `Content/_Game/Images/preview.png`.
+
+## Applied ACFU 4.3.5 repair to `DefaultGame.ini`
+
+The controlled merge restored these ACFU 4.3.5 values while retaining the complete Daz section:
 
 ```ini
 [/Script/CommonUI.CommonUISettings]
@@ -111,13 +116,14 @@ InputData=/CommonUI/GenericInputData.GenericInputData_C
 [/Script/UnrealEd.ProjectPackagingSettings]
 +DirectoriesToAlwaysCook=(Path="/AscentCombatFramework")
 +DirectoriesToAlwaysCook=(Path="/Game/FullSample")
++DirectoriesToAlwaysCook=(Path="/Game/ExportedAnimations")
 ```
 
 The project-owned `/Game/_Game/Widgets` root is a separate gated addition. Do not restore `/NNEDenoiser` without a proven dependency.
 
 ## Gameplay tags
 
-Add only the 58 `Project.*` lines from the source. Preserve all current ACFU 4.3.5 table routes, including:
+Exactly 58 `Project.*` lines from the source were added while preserving all current ACFU 4.3.5 table routes, including:
 
 - `/AscentCombatFramework/Configuration/NavigationMarkerTags`
 - `/AscentCombatFramework/Configuration/GameplayCueTags`
@@ -146,11 +152,11 @@ The project settings source of truth is:
 | Minus | Direct `Hyphen` and `Subtract` defaults in intimacy settings | Preserve both keyboard variants |
 | T / Plus | Not represented in textual config; owned by input assets/Blueprint contracts | `PENDING` asset inspection and PIE |
 
-Remove `Equals` from console keys before the Plus gate. Do not replace the UE 5.8 Enhanced Input section with its source version.
+`Equals` has been removed from console ownership without replacing the UE 5.8 Enhanced Input section. The structural probe validates CDO/config only; the complete Period, H, O, N, C, Y, J, L, Comma, Down, T, Plus, Hyphen, and Subtract behavior remains `PENDING_PIE`.
 
 ## Core redirect disposition
 
-Merge the 47 project-owned redirects from source `Config/DefaultEngine.ini` additively only after their destination modules exist. They cover:
+Promote the 47 project-owned redirect candidates from source `Config/DefaultEngine.ini` only in validated subsets after their destination modules exist. The applied EFProcedural, EFLevelFlow, and EFProjectSystems subsets are recorded above; the remaining candidates cover:
 
 - CalystoCharacterCreation to EFCharacterCreation
 - CalystoLevelFlow to EFLevelFlow
@@ -169,9 +175,9 @@ The 419 unsectioned redirect candidates in source `Plugins/ACFUltimate/Config/AC
 
 Never place these 419 lines in the marketplace plugin. Any selected redirect belongs in project-owned `[CoreRedirects]` and needs a reference/load test.
 
-## `.uproject` deferred additions
+## `.uproject` project-owned additions
 
-Explicitly add these project-owned plugins after their descriptors are migrated and validated:
+These project-owned plugins have now been explicitly enabled after their descriptors were migrated and validated by their recorded build gates:
 
 - EFCharacterCreation
 - EFCharacterCreationDazBridge
@@ -211,4 +217,4 @@ PCG interops, ScriptableTools, DeformerGraph, MLDeformerFramework, Volumetrics, 
 8. Switch HUB/GameMode routes only after load, Blueprint compile, PIE, visual, cook, and packaged gates.
 9. Inspect effective output under `Saved/Config/WindowsEditor`, then re-hash ACFU, Daz, Player, Female, Frederick, Multiple, and Male.
 
-No row is `PASS` merely from static inspection. This phase is inventoried and remains pending execution gates.
+Rows explicitly marked `APPLIED_STRUCTURAL_PASS` have build, native-load, and config evidence only. Content resolution, Blueprint compilation, PIE input, visual QA, cook, package, and packaged runtime remain execution gates.

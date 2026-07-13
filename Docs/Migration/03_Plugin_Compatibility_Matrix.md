@@ -26,13 +26,17 @@ Every descriptor below is rooted at `D:\Projects UE5\LustAsDeadlySin\Plugins\<Pl
 | EFProcedural | 1.0.0 | `EFProceduralRuntime`, `EFProceduralACFURuntime`, `EFProceduralPCGRuntime` Runtime/Default; `EFProceduralEditor` Editor/Default | PCG | 26 | 13 headers; 4 UCLASS, 3 UINTERFACE | project `/Game` seeds and closure deferred | MIGRATE_SOURCE | PHASE3_CODE_ONLY_EDITOR_GAME_BUILD_PASS / CONTENT_DEPENDENCIES_PENDING |
 | EFLevelFlow | 1.0.0 | `EFLevelFlowRuntime` Runtime/Default | AscentCombatFramework, EFProcedural, EFCharacterCreation | 7 | 3 headers; 2 UCLASS | native defaults; source-only DungeonGeneration map deferred | REBUILD_AGAINST_TARGET | PHASE3_CODE_ONLY_EDITOR_GAME_STRUCTURAL_PASS / CONTENT_RUNTIME_COOK_PENDING |
 | EFCharacterCreationACFUBridge | 1.0.0 | `EFCharacterCreationACFURuntime` Runtime/Default | EFCharacterCreation, GameplayAbilities | 5 | 2 headers | none | REBUILD_AGAINST_TARGET | PHASE3_EDITOR_GAME_BUILD_PASS / RUNTIME_QA_PENDING |
-| EFProjectSystems | 0.1.0 | `EFProjectSystemsCore`, `EFProjectSystemsGameplay`, `EFProjectSystemsUI` Runtime/Default; `EFProjectSystemsEditor` Editor/Default | GameplayAbilities, EnhancedInput, AscentCombatFramework, ACFTrainingSystem, EFCharacterCreation, EFLevelFlow, EFProcedural, CodeWidgetDesignerBridge, DirtyPawnRuntime, SkinnedDecalComponent | 288 | 144 headers; 217 UCLASS, 91 USTRUCT, 31 UENUM, 4 UINTERFACE | none | MIGRATE_SOURCE_AFTER_DEPENDENCIES | PHASE2_INVENTORIED / PENDING_PORT |
+| EFProjectSystems | 0.1.0 | `EFProjectSystemsCore`, `EFProjectSystemsGameplay`, `EFProjectSystemsUI` Runtime/Default; `EFProjectSystemsEditor` Editor/Default | GameplayAbilities, EnhancedInput, AscentCombatFramework, ACFTrainingSystem, EFCharacterCreation, EFLevelFlow, EFProcedural, CodeWidgetDesignerBridge, DirtyPawnRuntime, SkinnedDecalComponent | 288 | 144 headers; 217 UCLASS, 91 USTRUCT, 31 UENUM, 4 UINTERFACE | plugin Content empty; 5 Core Redirects, 58 `Project.*` tags, and 6 settings sections applied selectively; `/Game` dependencies pending | MIGRATE_SOURCE_AFTER_DEPENDENCIES | PHASE3_EDITOR_GAME_CONFIG_STRUCTURAL_NATIVE_AUTOMATION_PASS / CONTENT_BLUEPRINT_PIE_VISUAL_COOK_PACKAGE_PENDING |
 | EFBlink | 0.1.0 | `EFBlinkRuntime` Runtime/Default | none | 11 | 5 headers; 3 UCLASS, 1 USTRUCT | none | MIGRATE_SOURCE | PHASE3_EDITOR_GAME_BUILD_PASS / CONFIG_AND_VISUAL_QA_PENDING |
 | DirtyPawnRuntime | 1.0.0 | `DirtyPawnRuntime` Runtime/Default; `DirtyPawnRuntimeEditor` Editor/Default | none | 12 | 5 headers; 16 UCLASS, 5 USTRUCT, 3 UENUM | portability manifest only | MIGRATE_SOURCE | PHASE3_EDITOR_GAME_BUILD_PASS / CONTENT_AND_QA_PENDING |
 | ACFTrainingSystem | 0.1.0 | `ACFTrainingSystem` Runtime/Default | GameplayAbilities, AscentCombatFramework | 11 | 5 headers; 3 UCLASS, 5 USTRUCT, 1 UENUM | 1 project AnimSequence migrated through AssetTools 5.7 and resaved 5.8 | REBUILD_AGAINST_TARGET | PHASE3_EDITOR_GAME_ASSET_PASS / RUNTIME_COOK_QA_PENDING |
 | CodeWidgetDesignerBridge | 0.1.0 | `CodeWidgetDesignerBridge` Runtime/Default; `CodeWidgetDesignerBridgeEditor` Editor/Default | none | 22 | 2 public headers; 1 UCLASS, 5 USTRUCT, 2 UENUM, 1 UINTERFACE | none | REBUILD_AGAINST_UE58_EDITOR | PHASE3_EDITOR_GAME_BUILD_PASS / QA_PENDING |
 
 `CanContainContent=true` is present on EFCharacterCreation, EFProjectSystems, DirtyPawnRuntime, and ACFTrainingSystem, but only EFCharacterCreation currently contains plugin assets. Project DataAssets, DataTables, Widget Blueprints, maps, input assets, and other `/Game` dependencies must therefore be handled by the content manifest; porting plugin source alone is not a subsystem-complete migration.
+
+EFProjectSystems was imported through a 289-file descriptor-plus-Source allowlist totaling 3,491,166 bytes. Ten project-owned files differ intentionally from that receipt: the ACFU signature adaptation, UE 5.8 delegate and runtime/editor separation fixes, and remapping of absent legacy enemy classes to the three target-authoritative ACF enemy assets.
+
+Its read-only UE 5.8 probe passed 46/46 checks across ten representative native classes/CDOs, effective input/survival/release settings, five redirect lines, and 58 project tags. It found the three authoritative enemy packages and eight missing soft packages, plus one pending PNG outside AssetRegistry. It did not load maps or content objects, compile Blueprints, save assets, or run PIE. A separate strict native Automation gate passed 71/71 tests with no warnings; nine asset-fallback tests, one content-hard test, and six PIE tests remain deliberately deferred.
 
 ## Dependency DAG
 
@@ -68,9 +72,9 @@ Module-internal edges add no cycles: each Editor module depends on its Runtime m
 4. Port ACFTrainingSystem and validate its ARS/GAS contract against ACFU 4.3.5.
 5. Port EFProcedural in module order: Runtime, ACFURuntime, PCGRuntime, Editor.
 6. Port EFLevelFlow after EFCharacterCreation and EFProcedural are green.
-7. Port EFProjectSystems last, in module order: Core, UI, Gameplay, Editor.
+7. EFProjectSystems descriptor/source import, Editor/Game build, selective structural config probe, and strict native Automation gate are complete. Content migration, Blueprint compile, PIE, visual QA, cook, package, and packaged runtime remain pending.
 
-Each plugin/wave remains `PENDING_PORT` until its source-only staged import has its own UHT/UBT, load, Blueprint, PIE, cook, package, and protected-hash evidence. No `Binaries`, `Intermediate`, or `Saved` subtree is a port input.
+Passing the source port does not make a subsystem complete: each wave still needs its applicable load, Blueprint, PIE, cook, package, and protected-hash evidence. No `Binaries`, `Intermediate`, or `Saved` subtree is a port input.
 
 ## Confirmed ACFU 4.3.5 signature change
 
@@ -80,7 +84,7 @@ This is a confirmed compile blocker, not a speculative hotspot:
 - ACFU 4.2.3 declaration: `D:\Unreal Engine 5\Library\UE_5.7\Engine\Plugins\Marketplace\AscentCoa789c5ab7b4cV4\Source\CollisionsManager\Public\ACMEffectsDispatcherComponent.h:20`
 - ACFU 4.3.5 declaration: `D:\Unreal Engine 5\Library\UE_5.8\Engine\Plugins\Marketplace\ACFUAsce5ab7c1439afbV5\Source\CollisionsManager\Public\ACMEffectsDispatcherComponent.h:20`
 
-`UACMEffectsDispatcherComponent::PlayReplicatedActionEffect` changed from two arguments to three and now requires `const FComponentFX& outComps`. The project-owned call must construct/pass an `FComponentFX`; ACFU remains immutable.
+`UACMEffectsDispatcherComponent::PlayReplicatedActionEffect` changed from two arguments to three and now requires `const FComponentFX& outComps`. The target-owned compatibility patch constructs an `FComponentFX` and passes it as the third argument. UE 5.8 Editor and Game builds pass; runtime hit-feedback validation remains pending. ACFU 4.3.5 was not modified.
 
 ## UE 5.8 / ACFU compatibility hotspots
 

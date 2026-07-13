@@ -1,0 +1,1472 @@
+﻿{
+    "schema_version":  1,
+    "generated_utc":  "2026-07-13T11:26:35.1127059Z",
+    "status":  "SOURCE_ONLY_IMPORT_PASS",
+    "plugin":  "EFProjectSystems",
+    "modules":  [
+                    "EFProjectSystemsCore",
+                    "EFProjectSystemsGameplay",
+                    "EFProjectSystemsUI",
+                    "EFProjectSystemsEditor"
+                ],
+    "source_plugin":  "D:\\Projects UE5\\LustAsDeadlySin\\Plugins\\EFProjectSystems",
+    "target_plugin":  "D:\\Projects UE5\\NoShellForWinter\\Plugins\\EFProjectSystems",
+    "policy":  "Descriptor and Source files only; per-file allowlisted import.",
+    "excluded_trees":  [
+                           "Binaries",
+                           "Intermediate",
+                           "Saved",
+                           "DerivedDataCache",
+                           "Content",
+                           "Config"
+                       ],
+    "file_count":  289,
+    "total_bytes":  3491166,
+    "files":  [
+                  {
+                      "relative_path":  "EFProjectSystems.uplugin",
+                      "length":  1425,
+                      "sha256":  "5FD4BBC14C9EB52D716FBC60B7F6DBD1F1BDC64C21E891D85A7240A3F4F27234"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectAscensionSettings.cpp",
+                      "length":  397,
+                      "sha256":  "3C25159A5AC56D6F0E0AD37593B3185DBE91082975326C35563F13FBACEAF747"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectAscensionSettings.h",
+                      "length":  675,
+                      "sha256":  "0FE69AD959A30E4D0EBBCA003ED2EAC3236129252B90CA0D07D63414AE246DB6"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectAssetPathResolver.h",
+                      "length":  1586,
+                      "sha256":  "6C1A0E117DD9DFBB24A04FBFCE629876FA892BF170591F2607A9CE047AA87AE0"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectEnemySettings.cpp",
+                      "length":  837,
+                      "sha256":  "7133D45D60B97F275290AE212C2721450A1565FD7F95FBF8BBB9B973F2C93162"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectEnemySettings.h",
+                      "length":  665,
+                      "sha256":  "2B069C4E4EC4118D55948199E98D86F880E3CE9D738541398EAD8D79BC23E56D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectInputSettings.cpp",
+                      "length":  575,
+                      "sha256":  "E59E8220E562BE452E0299ACD6893CA85D23F66221F3208D82ACA1B71865D04F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectInputSettings.h",
+                      "length":  1146,
+                      "sha256":  "C784D63415B68F6130725C0CDA89C45A88D9C0373A86A0FA112374A724A767AC"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectSurvivalSettings.cpp",
+                      "length":  513,
+                      "sha256":  "66464E7A67EA4266A547D04555233D4DCCAF75F1DA8DD5C18299E625D0519466"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectSurvivalSettings.h",
+                      "length":  708,
+                      "sha256":  "181E5BE89EF7B472E0F1122010F7761039D32DC9A9A7721DE387BEEDB50FFC38"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectSystemsCore.Build.cs",
+                      "length":  422,
+                      "sha256":  "3DEAE4082403E209EAC23FC12B9B92A2A30C2DB39E26C6096C8A9885874C69BD"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectSystemsCore.cpp",
+                      "length":  139,
+                      "sha256":  "5E337F29B2D9393745DA196AB9EE9A1FAA939E6D2161733E22F90D38EE8A443E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectSystemsCore.h",
+                      "length":  142,
+                      "sha256":  "EDF48D60E84B08A3209E4058559599367EE55987F1C53A380FF3301BF6A52379"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectUISettings.cpp",
+                      "length":  7181,
+                      "sha256":  "E2BBEC96CF292F632BF67C637E22E8A5950AE5E457BFF711379C491DBD749735"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectUISettings.h",
+                      "length":  7179,
+                      "sha256":  "89A50ED29A1B9C7A3B18ECD5E59D9CC7BA24AB41C50E9D5C83E6BCCCF6B6B7B9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectWorldFlowSettings.cpp",
+                      "length":  583,
+                      "sha256":  "2AE21079DD53A6204A970F84C6B6A3E084F3C4370FE69FD2C127AD22FB976B9A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsCore/EFProjectWorldFlowSettings.h",
+                      "length":  732,
+                      "sha256":  "A233A2BC22734F869671871681F1A00D619341EA074173A5EB932729691721F3"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/EFProjectSystemsEditor.Build.cs",
+                      "length":  868,
+                      "sha256":  "F88842C22AFAA3CC0B3CBB5073292E5CE6F2B3842A281203BF767F525B9AD3AF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/EFProjectSystemsEditor.cpp",
+                      "length":  2148,
+                      "sha256":  "332938EE125A8580C5E9211982590E641D6D6B0D710F2277E257C1ED1CD45209"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/EFProjectSystemsEditor.h",
+                      "length":  603,
+                      "sha256":  "A3428CB08CAEC9A0848F4B8725B6790D3C70EE8387D4E4D215E381C7C4B2AC44"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/ProjectAnimationDiagnosticsLibrary.cpp",
+                      "length":  31339,
+                      "sha256":  "5D0D21917A138CE37666AF58073CAA816740309AD6F4C6A5A59D9A1D9B1A0E78"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/ProjectAnimationDiagnosticsLibrary.h",
+                      "length":  1531,
+                      "sha256":  "F697695C92F34051CD6BE86F3E846DC01164BB5668155F4EB2D86D3000B3CC40"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/ProjectMorphTargetTransferLibrary.cpp",
+                      "length":  38237,
+                      "sha256":  "4FF08899E96833EC34424CF7691C24379E7004016A1BBD8CF6D751AFED12B3A1"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/ProjectMorphTargetTransferLibrary.h",
+                      "length":  1679,
+                      "sha256":  "0C68EEBD1403D54DBB00D3FE3F6CAE5A9651FBDC3DBDB4F7995D5F83EF73BDAB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectDefeatFlowLogicTests.cpp",
+                      "length":  3405,
+                      "sha256":  "5A2B0D473924840710C64F7376A50393A48DE27261E62B7BC1BC2EC2AA274043"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectDefeatFlowPieTests.cpp",
+                      "length":  32204,
+                      "sha256":  "60964DE057F6FFEADAC050712AC3D246AA0245B8F41F1BEEA35D7C08AC976910"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectDefeatTestEnemyActor.cpp",
+                      "length":  334,
+                      "sha256":  "FA1F3EBA75A6E6ECCB589D0FCF32EEFD69F87D947992EA787E8770362057FE82"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectDefeatTestEnemyActor.h",
+                      "length":  473,
+                      "sha256":  "008C4D768FD07DC779085BF3042DBFF8A4D6A22CAE04B8A8007F3033AA1BDC27"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectDungeonCurseTests.cpp",
+                      "length":  7321,
+                      "sha256":  "2658C5D3BFC30D3BBAC40B230FB10A1523C6F24939C56D1F5C5EB37E66F63354"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectEnemyLevelLogicTests.cpp",
+                      "length":  3519,
+                      "sha256":  "FA46E60750067655F35F8D7276DC061AD28CAAA871DB7C3CBA053BBCF9B1687F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectEnemyScalingMathTests.cpp",
+                      "length":  2190,
+                      "sha256":  "48A275175B94A71767053B711F191811987A27DF77F31F5A54B1A7FC17DBB861"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectEnemyVisualVariationSelectionTests.cpp",
+                      "length":  19742,
+                      "sha256":  "99DB9D76AFC9C6DD7CB12C925ED8C04D61CE26518164D73A4CDA88349B9F1874"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectGameplayDebugCommandTests.cpp",
+                      "length":  10314,
+                      "sha256":  "C569F3671EA38C61A5827EA6D0CDF311A158CE96A94A67E047395C9D02492B31"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectIntimacySystemTests.cpp",
+                      "length":  26709,
+                      "sha256":  "D1DFA624A3E29200C784855794508DC60B8084660F7B9FE7B91407DB836B9DB9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectRuntimePerformanceTests.cpp",
+                      "length":  12663,
+                      "sha256":  "418A98739EF071AFB175965F886AE1CB2FBE54F7B051A574286EE1A9F56A330E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectSinfulAscensionMathTests.cpp",
+                      "length":  53598,
+                      "sha256":  "12244C84DCDE0900EAEB821861C567EF6E520AD3F04C884F12D0D0EF75F93428"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsEditor/Tests/ProjectSurvivalStatusDataTests.cpp",
+                      "length":  7850,
+                      "sha256":  "744F8320B6E675C4828AA630CD96F1A6FF6032A5FB928BB9A25D48C5432EEFC5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Camera/ProjectGameplayFreeCameraSubsystem.cpp",
+                      "length":  20249,
+                      "sha256":  "363D94C173E181240AC17654FF1828E0D85676305247478B6F6B4E3153A4B808"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Camera/ProjectGameplayFreeCameraSubsystem.h",
+                      "length":  3573,
+                      "sha256":  "D4516C51D64832DA74E774CD897E41A04652BB741D9B09EA51F5B71225DD0699"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundComponent.cpp",
+                      "length":  17451,
+                      "sha256":  "E6159D03D56C434D904357A6B7BC288467B12A87E3CF753EFAD3078CF48FE208"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundComponent.h",
+                      "length":  4205,
+                      "sha256":  "222F6DB34053880DBFC46E7CCFBC9C94E3B2864F4AA5236541B84DF026EDED1C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSaveGame.cpp",
+                      "length":  68,
+                      "sha256":  "3F7989C60F8C3622391A6D9E52E4A2A8A2CBB20B27CCEA6078E8991BAAAA2007"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSaveGame.h",
+                      "length":  835,
+                      "sha256":  "5BF94E1E952AD1AA4E9CEEB34515A426FD87637E1219DFBC996A5C1CCDAB0DF6"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSettings.cpp",
+                      "length":  1055,
+                      "sha256":  "D8E1F10E35717332A64B0E839F6D3C3F18D8B73136A948627D91AE9EECD55CD0"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSettings.h",
+                      "length":  8965,
+                      "sha256":  "B326B438AA88388096802D9C93D9615151274D6090C07888C449F9D49E2B9864"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSubsystem.cpp",
+                      "length":  27628,
+                      "sha256":  "C1078A971306F417C2C13EB1B4DC6F70F649E5CF61BC598D3DDD79EA51A10CDE"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundSubsystem.h",
+                      "length":  4638,
+                      "sha256":  "BF2D3E719739D4A91C93EC38F21BC56BFD8E7540B617AA07BF71BB5BBEFAD501"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundTypes.cpp",
+                      "length":  2696,
+                      "sha256":  "05717B20DF5901AC29D4E7B1469662AF1F6E89CB863F6A0046D614DC02609113"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/ProjectCharacterBackgroundTypes.h",
+                      "length":  3797,
+                      "sha256":  "1B32AD585E303B30211580E55F0CEBA4B98AFECE1483B66C709878D3FB25D999"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundCreationWidget.cpp",
+                      "length":  48321,
+                      "sha256":  "1E3FAB755FB26A6AB9D5B345FBB887EA9614C5706CE44D95A8C79EC66118673B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundCreationWidget.h",
+                      "length":  5720,
+                      "sha256":  "F167444B53CB52345EE7080442BE26EC924497F64F2CCDE7E80F48E0C2FA3D85"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundDetailWidget.cpp",
+                      "length":  75,
+                      "sha256":  "FFBBAB56B0DEEBD55FEB11E3638D4E74FA19739E4C533349F442A4CB5105A52A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundDetailWidget.h",
+                      "length":  267,
+                      "sha256":  "8B88AE53D2DECF6B43917035891CD0B5762B7E1504799E65A915AADCEA02960F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundEffectEntryWidget.cpp",
+                      "length":  3241,
+                      "sha256":  "C40A4118250E126AB48A52EFADE92427694BBE42B8B8F3D96916111F7AE983ED"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundEffectEntryWidget.h",
+                      "length":  722,
+                      "sha256":  "33508EA45E46617C7E4CC0152823B3A7D908D1D21F39E152670E5847CD62FBBA"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundOptionEntryWidget.cpp",
+                      "length":  6804,
+                      "sha256":  "E6E9ECB77F9D7358B076A4CFE46FD65AF55B964B08E8617AB8C4F860366A3086"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundOptionEntryWidget.h",
+                      "length":  1531,
+                      "sha256":  "0C582AE24B7F8E8C5D4D8EB136E45BBC14F9B5530635DD886B12B71EF20E8B56"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundSummaryWidget.cpp",
+                      "length":  76,
+                      "sha256":  "BE9DD35389A917BFB0ACB76AF0EB9AAFC20E428662F27283DF66ECC4E56C8087"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/CharacterBackground/UI/ProjectCharacterBackgroundSummaryWidget.h",
+                      "length":  269,
+                      "sha256":  "CEA9D6DA0125A119E02291B5AA87DFE3E416769BC025694D027613BEF0C828E2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyCombatStatTypes.h",
+                      "length":  2238,
+                      "sha256":  "8A7EAC450DC7C44A3B11C2576B98C962AD227DA9347FB58A1CFDED43B5E890A8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelComponent.cpp",
+                      "length":  46146,
+                      "sha256":  "A22227774B2CF08EE377AE73905F1C48995653384CAF385FD21746613F9DBC09"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelComponent.h",
+                      "length":  3589,
+                      "sha256":  "C0E7FAFEB7B917CD97A517541704718964D0470E9B6E0AB258F3A86DC526737D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelContextProvider.h",
+                      "length":  685,
+                      "sha256":  "080DF162302506D87EF466E28BA058BF9D6556C016E3AAB25AD9568E861C5A64"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelLogic.cpp",
+                      "length":  3983,
+                      "sha256":  "52BF6C530CF84EEDC96AC3CA9A5907293A74C3AC3858AFDBE45565BD841F14AB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelLogic.h",
+                      "length":  1443,
+                      "sha256":  "6A5A4178FE4116E0FD1347013B7F87FA94FBFF4A9D6F660E10D38F0CDB00D45A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelSettings.cpp",
+                      "length":  1766,
+                      "sha256":  "FDDA246EA54D6B0028861E997118AF29612D10688E1742965C6E1AA2F876EFD2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelSettings.h",
+                      "length":  2626,
+                      "sha256":  "52E2A0176DC3F7E319219ED5074F6510E2CF26437803E97951A60273AE59E116"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelSubsystem.cpp",
+                      "length":  14394,
+                      "sha256":  "BA9FE3DE2ABC5EF2358F72A16F7FA72A0E8CA8CE4A15CCB1C8D00E7D440CE201"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyLevelSubsystem.h",
+                      "length":  2732,
+                      "sha256":  "0ED62D32F8D4BC48F27B5A63D5928F2092DA2C2298D1606DBFD319F68341A638"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyScalingMath.cpp",
+                      "length":  1286,
+                      "sha256":  "E1F8748D2C4104C3823A89DC1DDEBBD227E1E2DBC24711D2220E9AB2B73E50DE"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyScalingMath.h",
+                      "length":  736,
+                      "sha256":  "BC8D81BA25D78E3A1C9664DBBD09F95C19402234491C99A0BDE68E03E3CD7617"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyTargetInfoComponent.cpp",
+                      "length":  31821,
+                      "sha256":  "A07D86E77A711EA9D27099EDEAE175260FB80CF575C035CF8DA6E70FC0E346F2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyTargetInfoComponent.h",
+                      "length":  2180,
+                      "sha256":  "AC02A66FFFF96711D82C7B68721629B43C504CB3A2B86A20B0DEB9342049826C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSelection.cpp",
+                      "length":  23123,
+                      "sha256":  "666621FDB3B9EFDF0654978975DFDB628159A54E3743485D591A59FB6FCB0A7C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSelection.h",
+                      "length":  2937,
+                      "sha256":  "4F5BF51979839E7766927D1F2536822968500AD934A07A84364DEC044CC1CBD7"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSettings.cpp",
+                      "length":  5400,
+                      "sha256":  "74FC6835BF4A0FCED15978051426A07CE5421BF2C9F86B3D5B711F601C9517E8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSettings.h",
+                      "length":  7281,
+                      "sha256":  "CC1C11B20B7ECA0D927A0843B45D7D7F0361C9114704327027C88E109BBEAD14"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSubsystem.cpp",
+                      "length":  28471,
+                      "sha256":  "79A225A5903A4C0B24DD5C9941E350AC3B24DB70D20820E012577C91F90FBD09"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectEnemyVisualVariationSubsystem.h",
+                      "length":  3396,
+                      "sha256":  "BF8A1AE0F5E7715C86670CCB57459878506D505E62D0DD8904B904B5C970F16C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectPlayerMorphPhysicsSubsystem.cpp",
+                      "length":  4699,
+                      "sha256":  "C1130DF80D15EA302658240AA9893E07CBB752F7583B38AE34448C33EABD765A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectPlayerMorphPhysicsSubsystem.h",
+                      "length":  1318,
+                      "sha256":  "99AE821F1B58F91A7C467EDD57AF8812473215E677AB27F86B9787C4BB541196"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectTargetingFixComponent.cpp",
+                      "length":  16891,
+                      "sha256":  "8F2BE6D04B0347928DDB67772E34F3E416A88C3C78452EE67422102D096AC20F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Characters/ProjectTargetingFixComponent.h",
+                      "length":  2773,
+                      "sha256":  "4295F40039F282F6FC358C7DCB92FD92EAC714AFFAF371CCD1A0D7C34172BB3C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatAttributeComponent.cpp",
+                      "length":  18449,
+                      "sha256":  "DDFD8AFF9F8AE40E6158D619909F31F51D3E0D0757CFAC67EF7FB3E44090814F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatAttributeComponent.h",
+                      "length":  4315,
+                      "sha256":  "2346D2763CF4F08FDE30999D723CD9991F8EED45FCBC3528ABB4C3D8466684D2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatCapsuleDamageComponent.cpp",
+                      "length":  8294,
+                      "sha256":  "3F8BE893656EC5DE98E9D501394E9FC64B997C389868847E12F18A80C55455FF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatCapsuleDamageComponent.h",
+                      "length":  3806,
+                      "sha256":  "C87675133352BC50F9D49F9F2D0DA7778D66D323A6214503113953057CCF6708"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatTypes.cpp",
+                      "length":  236,
+                      "sha256":  "8CF3373183D1856366535743DCF36C0E14097BE1C12689A18D050A81E79B69F5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Combat/ProjectCombatTypes.h",
+                      "length":  6107,
+                      "sha256":  "CF8ECB9EF1B2EA8CDEAE4029A98968B857BAC00E9104859557FBE732E7AFD25A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectAutomaticTattooTunerWidget.cpp",
+                      "length":  30229,
+                      "sha256":  "00E4DA3C7B1352B805D78E8FDB372EF4B2AD129ADE4FBBACCFAD18AA6781ACAF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectAutomaticTattooTunerWidget.h",
+                      "length":  4872,
+                      "sha256":  "83DED755772F5632F8B6D18DBB928C29D16162D77BB1E85AF598BA4CAA6C5D4B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugCommandExecutor.cpp",
+                      "length":  18313,
+                      "sha256":  "F73F0E6E8261B4A038DFBDDD07340EE0FFBA4EF76254FCA78FCB6890E8CF0AF9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugCommandExecutor.h",
+                      "length":  2055,
+                      "sha256":  "1DFD5D5BFCADFC39AAD88C1A242C4A7C58EE6D3E73BEFA4C63B3D26C857FEEA3"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugMenuWidget.cpp",
+                      "length":  33944,
+                      "sha256":  "83EF7A13BDDFED0A8636EC021B272A0A6ACC92FFAA1A3FE79C2EDB2E8AFBCBAB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugMenuWidget.h",
+                      "length":  12301,
+                      "sha256":  "AF320B8E6FA2DEA56759943628276DBD93CD9410C67760D98AF4D2240FA4D698"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugSubsystem.cpp",
+                      "length":  63570,
+                      "sha256":  "84566807FD60ADF4796D2AEA1F467F82A4E53938C880DC78334E29300449F1EB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Debug/ProjectGameplayDebugSubsystem.h",
+                      "length":  6119,
+                      "sha256":  "DE236CC69A85B069645B161F06DF27453F391E4875B8FBF079F466E61748328D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatBlueprintBridgeComponent.cpp",
+                      "length":  22946,
+                      "sha256":  "737AC66012D3D017E1E5362C599AAC8704CF2327D64028AF4D8564CE21F28C73"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatBlueprintBridgeComponent.h",
+                      "length":  4123,
+                      "sha256":  "1CF4F4636EA9DDF08AF22616A7228B55D02B6E1C3A2C6F7FF03AB7EC6012E24F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowComponent.cpp",
+                      "length":  94906,
+                      "sha256":  "C1508F58CC8C64FA41ED2996C8C39AB07C3B7218DB372AB72B3EF0F53E37CA80"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowComponent.h",
+                      "length":  14442,
+                      "sha256":  "C89FCB374011AB3CA510C1B0F787F225A5651DBE5AE4921801B3740A3F25145D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowLogic.cpp",
+                      "length":  1873,
+                      "sha256":  "1A86665328755712E2522E9E4490E623BC5ED06E4CF4EA5354DF198CEE815039"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowLogic.h",
+                      "length":  776,
+                      "sha256":  "356767CE282EE7865B3083367C0616EF841A21745D16AEC90EDD9B399CD09C4E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowSettings.cpp",
+                      "length":  1593,
+                      "sha256":  "46F4CDC4E4F2DAAF9893B7B414A2F915AD957408C19998B42489542AECF3E7F8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatFlowSettings.h",
+                      "length":  5989,
+                      "sha256":  "18F3F61C66FB6FAC8C6D52E9F69B208F8599BA1F2877294C02907B2511AB6E1E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatHitResolver.cpp",
+                      "length":  4714,
+                      "sha256":  "DA252E11B64BF8F904E73790244DE8B3298C87E49F776FF1EB6F7A795EBA828E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatHitResolver.h",
+                      "length":  834,
+                      "sha256":  "12231773DDCB07B6A597D06FC37B05435A0F4ED9E1C98C1D6C873954DF780844"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatInventoryBridge.cpp",
+                      "length":  35154,
+                      "sha256":  "D23EABFD45212DB3B8BA19FAE58BBB9DF642DC5AE2E367813A4C309AEDB98A30"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatInventoryBridge.h",
+                      "length":  1953,
+                      "sha256":  "EBEFF9D112D829634ED93BAE083DC2DB67ECC3E89F55861A0DD4B6804E22AFE6"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatTravelSubsystem.cpp",
+                      "length":  5535,
+                      "sha256":  "75766614EB50AE41037ACB9946B349EFED4214B0EC79FC9E64CE86781691C2E9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatTravelSubsystem.h",
+                      "length":  1237,
+                      "sha256":  "B7CB8C1738BBEB3122BAE79F759A5A5EBA12D77543D59307AA517D3D73E9517E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectDefeatTypes.h",
+                      "length":  9154,
+                      "sha256":  "E93F748C81D12ED92C0F159C6EE5D105464A7DACFF994F62D5E10B41A88FA1F3"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectKnockoutStruggleWidget.cpp",
+                      "length":  40215,
+                      "sha256":  "B09927651B1528664B6E32655BE5CD77642455347D8D45C87DF90A817F617DFF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectKnockoutStruggleWidget.h",
+                      "length":  6070,
+                      "sha256":  "5F7F97BB4E86AB9A30E658E2A9F1C9E9C3C1E92009BB26B359F8B33A0689B4AC"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectPainDebugWidget.cpp",
+                      "length":  2616,
+                      "sha256":  "0B54FBBD2D15E23BDB6874F1DC12235D5ADEA7BB71E890CD8D991CDD6C5B85C7"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Defeat/ProjectPainDebugWidget.h",
+                      "length":  1001,
+                      "sha256":  "F48FB43888B5B11E5141B41D19E9B99BA4A51ABB5472209040A2EDED4711283D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Dialogue/ProjectEnemyDialogueChronicles.cpp",
+                      "length":  4786,
+                      "sha256":  "E76C4C4A50BB3DD98DB769BF820DF10BF81FFC6FB341E96FEB7B7B25DBF6185A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Dialogue/ProjectEnemyDialogueChronicles.h",
+                      "length":  167,
+                      "sha256":  "832DD7B6E328DB8EB63FD8015162B8AEF86821C24128E2910D1CBB0C51C202A9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DirtyPawn/ProjectDirtyPawnEffectsBridgeComponent.cpp",
+                      "length":  20994,
+                      "sha256":  "7A5B8C91B369C2F11E6BEFE19F715B87A4EBBABEBE9003E5CAB2496B319419B0"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DirtyPawn/ProjectDirtyPawnEffectsBridgeComponent.h",
+                      "length":  6483,
+                      "sha256":  "CFC465C0DD7BF155A3BEC52837F6A9E9F990AABC85BEBC857FD9EE49733DB64E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseComponent.cpp",
+                      "length":  9192,
+                      "sha256":  "5E676A9986C0FCE68508AB5F48F0EC044A919CF7CE9105D86108D8E122BCA135"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseComponent.h",
+                      "length":  2311,
+                      "sha256":  "6D2EF6A1D5CFC7053029170FC43EDF8A60239889FFEB943C5AF65B17655BF5AA"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseEnemyInterface.h",
+                      "length":  768,
+                      "sha256":  "F8200011C57D2DE0FB41C5F16EE6EA05730655DAC5C99F4520DBFB016774AA7B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseListenerInterface.h",
+                      "length":  1004,
+                      "sha256":  "08CE0CD1E740674F3EA137A7F16A040B04264D33BA2794992DF493493148B8E1"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseManager.cpp",
+                      "length":  23572,
+                      "sha256":  "1A5EEADFB58CE4CF6EA08133404873D6C5BE9109ABA99A976CBF1CB2FF1FFD63"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseManager.h",
+                      "length":  7637,
+                      "sha256":  "4D615D374A098755EB8D93A281ECD4E309077E451E62045E3A86C8FB6B0F4A97"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseTargetInterface.h",
+                      "length":  1502,
+                      "sha256":  "F328F25DD4002FDC3680BA2D9C590029815A458E75F7ACB75229FDE25090365C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/DungeonCurseTypes.h",
+                      "length":  6900,
+                      "sha256":  "8BCA4BA233A1C1364FE8F6310B11DCF78F25C7E8F29607FEE962A29934DF2753"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/RoomCurseVolume.cpp",
+                      "length":  16740,
+                      "sha256":  "90C47BF55C75881812221BED7DD258E03984DB40525BD0B1E0BD822A706C8038"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/RoomCurseVolume.h",
+                      "length":  4304,
+                      "sha256":  "7A00112B287FE6D5BCAFB330CD35812E649C1C269264CF42C6A9974CC5E56054"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/RoomGameplayMarker.cpp",
+                      "length":  1513,
+                      "sha256":  "42F2F0F8BC2EE3D94E7CE6CF4A7DC1B60F4686A848003040DE9C40AC7497AD54"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/DungeonCurse/RoomGameplayMarker.h",
+                      "length":  2132,
+                      "sha256":  "D22AA65FDD70B8D567DC30CDAE033DBCB4F233BA0D02A4842E0DE5BE58D46A55"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Effects/ProjectBreathingFadeComponent.cpp",
+                      "length":  17043,
+                      "sha256":  "83F5520C62548DBFD0CCDBDC5C75BAE7BB3839F4DE69FB2497DD8AFD41875C80"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Effects/ProjectBreathingFadeComponent.h",
+                      "length":  4993,
+                      "sha256":  "FD55B8562AB4B61CBA8C92421A64191C95363B1882F320608E860B42D017FC02"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/EFProjectSystemsGameplay.Build.cs",
+                      "length":  1682,
+                      "sha256":  "763577D8B76D065B98EF63DCEDCB1FF722F1ABC36ECC20F5C49B2F12E83843A6"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/EFProjectSystemsGameplayModule.cpp",
+                      "length":  182,
+                      "sha256":  "8EA5FD63492D8C1D1A79669AA036F5321A4D57492E2AE61803E94E86985DC575"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyDialogueLibrary.cpp",
+                      "length":  14188,
+                      "sha256":  "871499B4BDFCF9B40B5142E184F68C6678B4CF57042BCB23A7FF7B74D1ABF825"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyDialogueLibrary.h",
+                      "length":  1803,
+                      "sha256":  "5B8A63422B97CC3B63620260474B7AD1840E4B28C6131198DDB38F2B75B37DF9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyHudWidget.cpp",
+                      "length":  18968,
+                      "sha256":  "A5F95024B8867464F940F8B4A773C0F634C9C5E2D07987C98F4C32840DB2389E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyHudWidget.h",
+                      "length":  3058,
+                      "sha256":  "3D6FE5760793AB5A8DA3E314DB0443DD7B11F4C9866421405D936B502300AC50"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyPartnerComponent.cpp",
+                      "length":  6278,
+                      "sha256":  "D501065AEF18209C420B6FA376C3000D17056152D159ADBC66D3326988FE1459"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyPartnerComponent.h",
+                      "length":  2826,
+                      "sha256":  "19C6044E9A3B05ECD8520E2A3A36991D9FC6EC407DBA2A8C29A6D16EB5E96A05"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySaveGame.h",
+                      "length":  552,
+                      "sha256":  "30706BEA7EB268733EE0CF380C66A6E965C0CCD5DCA4646D4AA33F1013CBD3D9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySettings.cpp",
+                      "length":  10185,
+                      "sha256":  "9199764555A544C061E45B83E64FA8966063FABF100C5AE48C36A30FB0E61C1B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySettings.h",
+                      "length":  9944,
+                      "sha256":  "957A0FF073FD5A27C2CC91FA20CB29BCF52CC31A9969A5AE7B0C634B328E7D0F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.cpp",
+                      "length":  88299,
+                      "sha256":  "F1D51E139EDC68BE12D592FA582581E60124F8FD84403A89BB8AC10A7A66FA3F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacySubsystem.h",
+                      "length":  10320,
+                      "sha256":  "B48B0ACBD149712C19C3B49A6A6F826A1C303772604E171112433DAC14343932"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Intimacy/ProjectIntimacyTypes.h",
+                      "length":  15583,
+                      "sha256":  "5FC77E2E77643DBD2DF8E0403F15EFCF9467FF7DC5869DE29E576D8ED6BD7BC0"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockedInteractableActor.cpp",
+                      "length":  8504,
+                      "sha256":  "0264F9F643EF64499A2592C1A2A09471F2E7C0FBE2C234744AA99B6ED0BD8041"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockedInteractableActor.h",
+                      "length":  5436,
+                      "sha256":  "5BD6C33B22562CE7F471AF58D05E4E15912F00B0BB99752E6565E9134473D51A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockedWorldItem.cpp",
+                      "length":  3040,
+                      "sha256":  "64373C63BEE4052C31C595DAA8F4318497C1BC43DAADA6E331707E11667C4059"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockedWorldItem.h",
+                      "length":  1474,
+                      "sha256":  "3415D68FEE07D6D5BD89D5C094644E5151441044A2E551D6338499FAE349C78C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickableComponent.cpp",
+                      "length":  14404,
+                      "sha256":  "DA023492FA960509789646E4E02B3BA4E46DA91480F0890F8B1969171D27C465"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickableComponent.h",
+                      "length":  7334,
+                      "sha256":  "BC921A46D25C761C7AB4A90391665C18F7515126FEC0CF501349F0CCCF3542EB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingACFBridge.cpp",
+                      "length":  3233,
+                      "sha256":  "C6F91E1260443203DD0E0D40649140F9D93A48EC58A62BD75345AAA7BF0B3785"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingACFBridge.h",
+                      "length":  322,
+                      "sha256":  "9FFB031A89B961BFC46C361735CE167992DCCBAEC32606712FE42051AF5405E9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingBlueprintLibrary.cpp",
+                      "length":  1444,
+                      "sha256":  "D9540C3EBABCD98C9F0926B22EBD1F62B318FA4A5E37B3508795BF5D5AF08967"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingBlueprintLibrary.h",
+                      "length":  972,
+                      "sha256":  "32D97B84C31E2607FE282F538EB4F32781EBDEBC883ABB5A84046293D055E636"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingEditorLibrary.cpp",
+                      "length":  10809,
+                      "sha256":  "389B1BE050F8C7970EA7286AC7B005BD333F8FA3E2D4E68E980F1AB399D29D34"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingEditorLibrary.h",
+                      "length":  420,
+                      "sha256":  "06F1FE53D7891B8EAE6F02E5710D9286155BA19B3CD025ADC046F4B9FA11CDFF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingSubsystem.cpp",
+                      "length":  17869,
+                      "sha256":  "14D2265EA93808FCE1F076A898E713F2407FD49332F3EEFCD48DE2A645D4B730"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingSubsystem.h",
+                      "length":  3712,
+                      "sha256":  "7808216929117783ED6CBEDF5FF3F4107D8CE97D68593317855FB6973E5A8A44"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingWidget.cpp",
+                      "length":  15811,
+                      "sha256":  "4EEB1E04CFD8E0C4D729D6439410A2D1241E85585AAD5D7454689D1D5864EBBF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickingWidget.h",
+                      "length":  4391,
+                      "sha256":  "7E550E0153443DD05B0A85E6B035A8A66ACB0B84186DCB0100EC0075AE49DB98"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickPromptWidget.cpp",
+                      "length":  15984,
+                      "sha256":  "94ED893E22560C5EB5C96700E4D31C17D1310DCA0F82E90E3D95032043B14C50"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Lockpicking/ProjectLockpickPromptWidget.h",
+                      "length":  3851,
+                      "sha256":  "0B59CA11FD0A03DAB985A926107FEE6611015FBEBBB2621AFD9D96AD91B7B241"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.cpp",
+                      "length":  139082,
+                      "sha256":  "5B2C8D3C4714D3017D4FDF86792E7980966E9764539AB1D6BD6DA1756F00259E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteComponent.h",
+                      "length":  21937,
+                      "sha256":  "D20F7E623363ADC37A6B9CE02E16C69097F298DFB5FA61D076CD65761C99CE4B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteMenuDataAsset.cpp",
+                      "length":  50,
+                      "sha256":  "914ABE88ED07475CFC8DA4E787AD16CF920C35ECE483DFEA06840870E80C231B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteMenuDataAsset.h",
+                      "length":  590,
+                      "sha256":  "2A4F1C04A81FE1C42DF12BB166C697608BBF2CB61BB8AA8EE8C9BF4AD5A8FC4B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectEmoteTypes.h",
+                      "length":  14695,
+                      "sha256":  "1681C495C042EF59FD3210CE840CE6B4B5DFBC0712CD892EE6735AB23F3F9EF7"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectLocomotionOverrideComponent.cpp",
+                      "length":  43909,
+                      "sha256":  "D00DFC6D0311B41A4551B52FAEE4802BD21514E4394B3A3565E04348EFAFBF26"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectLocomotionOverrideComponent.h",
+                      "length":  11430,
+                      "sha256":  "6B3E12CE13976406AEF2D0A08A6354DFCA65E75B93E641E76450521CE613EF03"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectLocomotionOverrideSubsystem.cpp",
+                      "length":  6947,
+                      "sha256":  "DF34364E31063C545B296B5A96294C8E140D4CA1DFC545880217E277AC3BAB84"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectLocomotionOverrideSubsystem.h",
+                      "length":  1464,
+                      "sha256":  "D7090BB80D5DA5DCF9CCFDFAE1C7C5C4EB618A40AFBDA1E92E4D0DB48D50118D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectTogetherSceneTestSubsystem.cpp",
+                      "length":  32823,
+                      "sha256":  "00D0265ABA98A9CE8A58A14E0D49DE330C10FF26F7D339857897F4D538FD0180"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Locomotion/ProjectTogetherSceneTestSubsystem.h",
+                      "length":  6187,
+                      "sha256":  "E5E1D68181E0D501D1336D4437F78C693397CD1FFE0BB4EF4CBEE270A4E76C3F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectPerformanceBudgetSettings.cpp",
+                      "length":  2076,
+                      "sha256":  "E4BD1D445D50ED34D8B2355BA7733B061D232AA91F377C7B4CAADD35D0E5A49F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectPerformanceBudgetSettings.h",
+                      "length":  3079,
+                      "sha256":  "BCF037592A493E033E9C6AA2ACFA5DBC7421448F3390341B96290FC2BD1C3D80"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectPerformanceBudgetSubsystem.cpp",
+                      "length":  13781,
+                      "sha256":  "9E259C6F0C87E98A9AB92DE14E2D08674A4919D7A89A469A90EBA76CA77197F8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectPerformanceBudgetSubsystem.h",
+                      "length":  2388,
+                      "sha256":  "B54D6CE9B29C583FA1C4A891F1A89C9AFF710BCB14204555B117EE32C2FFB0E0"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectRuntimePerformanceSettings.cpp",
+                      "length":  491,
+                      "sha256":  "58BBA333FEC31C5609E1EEF3CC67A5D218B906761DB6A9B7150B578078466C70"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectRuntimePerformanceSettings.h",
+                      "length":  2329,
+                      "sha256":  "940BAE96F190E907C66DD30D79A72E2A502ACF737FCC63AEBB139067C779A2DF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectRuntimePerformanceSubsystem.cpp",
+                      "length":  167653,
+                      "sha256":  "21AA651E805274AAA6F60EA43DA041BE12F9547A86D78AC54322B5B1477815B9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/RuntimePerformance/ProjectRuntimePerformanceSubsystem.h",
+                      "length":  16158,
+                      "sha256":  "EC83C34DE6CC4482056D6AF11DED84B969D9A2F562EEA01A9D3E9DDBB1BA6999"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAltar.cpp",
+                      "length":  2323,
+                      "sha256":  "4B1F6ECCC3529453F024B82726051633A185E1D949CF05B2007097650951B2DB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAltar.h",
+                      "length":  1284,
+                      "sha256":  "0DF5C3ECD9358B7B9ED3594D1EFEA98D4EA65302B18C6EEB051F9C6B11DD150B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAttributeCardWidget.cpp",
+                      "length":  28144,
+                      "sha256":  "4C9FB7F0F78B006130CF8F49D6ADEB1FD7E2E3A236A6B9794A639B5A66940A1B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAttributeCardWidget.h",
+                      "length":  9791,
+                      "sha256":  "AF96E3D66259ECF34B2350EFB5510F0D36381DA9FAA411F811880D282E808508"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAttributesPanelWidget.cpp",
+                      "length":  25827,
+                      "sha256":  "202254D9A71F13A1F964BD999D0209CA837D7BD936E2BED7AF30D171B64F5AB4"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionAttributesPanelWidget.h",
+                      "length":  5150,
+                      "sha256":  "25D436B9B31A1AE18132B9675F2B296DCCA2060EB6FB6FD38CC101C95E883C69"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionBlueprintLibrary.cpp",
+                      "length":  2642,
+                      "sha256":  "3F021045DFC56E16AAE81EA327BF3A8F78EA27432DD972B3F7713796C150A355"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionBlueprintLibrary.h",
+                      "length":  1753,
+                      "sha256":  "696F7A45FC4DBE3A91E3C280886277E45F43B0CB3EEDC5978C3AD8C6AC37D4A8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionComponent.cpp",
+                      "length":  98072,
+                      "sha256":  "D3F05A52FB4A1614EF9A107E3D786913C13C06911C33CD0952946E775E28C19E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionComponent.h",
+                      "length":  15818,
+                      "sha256":  "73FDAE8DC137A7B7F5248A497B84193C411CC53A0A782B2EC428ADC3EDF060B5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionEditorLibrary.cpp",
+                      "length":  6244,
+                      "sha256":  "5F0045485881F3CE1E156EE60031D6830B999BFAFD572FBDE0D601D6FEEA236A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionEditorLibrary.h",
+                      "length":  420,
+                      "sha256":  "73B1A5F1E351CB1DF6CE25DEDD6E7DDBA087D34B95E07FCD581775E8451BD55E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionExchangeAttributeRowWidget.cpp",
+                      "length":  36560,
+                      "sha256":  "754749CB2B23274CC93E23BFD013E43A4B5280EF3A84F2489E9A269429842457"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionExchangeAttributeRowWidget.h",
+                      "length":  11872,
+                      "sha256":  "D4CB90F8C2F060880CE7674237376D2628EAE7E5EFC8FE3EC7217C08CE51574F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionExchangeMenuWidget.cpp",
+                      "length":  77534,
+                      "sha256":  "902C3C056D24E584FA6FC9446F6BE28B7C63C4F659559FCAB6BDFE00A904447B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionExchangeMenuWidget.h",
+                      "length":  14749,
+                      "sha256":  "3D96DCAAC2318B46D7258C370731D049954488CEB48A170DDD86424F5A9FED9C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionMenuSubsystem.cpp",
+                      "length":  19435,
+                      "sha256":  "8DCC56A7A5B4EDC7DCB7ED838396AA4A284051355E59E7E8E6E9611BDB30E3F5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionMenuSubsystem.h",
+                      "length":  4462,
+                      "sha256":  "DA8A313B944AB37F917565FB9D7A4D40A771E2554DEBE0AAED6FFE8C79AC2D0B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionSaveGame.cpp",
+                      "length":  60,
+                      "sha256":  "BF5D14E8818606AAB3A19B552C9A1076782DF90D9111712BDE00979DD8694B7B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionSaveGame.h",
+                      "length":  437,
+                      "sha256":  "3D6F588628DA8C3DE641A5A99E409F34BBDE92336701042AF3FF8B3882F0A6A8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionSettings.cpp",
+                      "length":  7714,
+                      "sha256":  "62EC71F54553DAC699E6F5E146C61B1EC7D5D163B49D9CFDDC4643D92159BFD3"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionSettings.h",
+                      "length":  12307,
+                      "sha256":  "E894DDFFF4C2D4B474BF9DEC03FB444CC0E9A086D09FB4DCA484206EDECBCE23"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionTypes.h",
+                      "length":  4246,
+                      "sha256":  "36850E834524CB8D45ED2FAAB3BA4B733E7E6603DCC7F4E03B65F9BCA2CA09A2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionWidget.cpp",
+                      "length":  22704,
+                      "sha256":  "4AD265EAF1B17D6BAA2B087B3DFD5B407D878322A9AB98FA691D08FD299D573D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/SinfulAscension/ProjectSinfulAscensionWidget.h",
+                      "length":  4195,
+                      "sha256":  "13DBAF742D6907B4A8C151EA5E5651F3428DFEE776FDD074F5A3F7998EC9FBDF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectInnerStateRowWidget.cpp",
+                      "length":  30847,
+                      "sha256":  "7F8BDC3DF1FDAF8EB832DA7D42E875A4691867F00CA6B87CCE73D8F8C3731B42"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectInnerStateRowWidget.h",
+                      "length":  10144,
+                      "sha256":  "C624B17FFA8DE413C5CA73477FC687B6186F668092E8E152ECC4165864F54628"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRealtimeSnapshotComponent.cpp",
+                      "length":  35566,
+                      "sha256":  "69639877C9A354D7E10F8580DFDF28789B5EA1472900431593C20EC9AFB641FF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRealtimeSnapshotComponent.h",
+                      "length":  7534,
+                      "sha256":  "A8D654A85EBCEF6FFAF10A91A768C377A6E1D416F31737888532291C22812B62"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRealtimeSnapshotSettings.cpp",
+                      "length":  693,
+                      "sha256":  "731D1E5AC41001A0AFA6DB95F319AE17D958ADB7EE0BFEAE9453690BD983EEA2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRealtimeSnapshotSettings.h",
+                      "length":  1052,
+                      "sha256":  "9588CBEE4D92486A3AA6929C11B95C318097D8761340F4E8777C9453DF041B5C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRuntimeReflectionLibrary.cpp",
+                      "length":  21604,
+                      "sha256":  "8CE04D0589C6AC90E11128D7A281635EACBB1E655854F3363051A36B9096A0FE"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectRuntimeReflectionLibrary.h",
+                      "length":  7168,
+                      "sha256":  "B57A8145E279B3AB24E504F27F41794F50917434C0D9FFE40BCFF6A232ABF57A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalAttributeBridgeComponent.cpp",
+                      "length":  18703,
+                      "sha256":  "80C22246789EB0907A785046D015AFDDC352DC38C1C5C644B9DF7F024D8CCB2F"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalAttributeBridgeComponent.h",
+                      "length":  4962,
+                      "sha256":  "987EBD896799E0F6F6E078CDADF6817810FDC2136B0D8EF6BC2808029F0B93CD"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableBlueprintLibrary.cpp",
+                      "length":  4452,
+                      "sha256":  "59D49CE8D6852CE995CD534559E02496B50101B298A2F05279EE1AF49C0F7D41"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableBlueprintLibrary.h",
+                      "length":  670,
+                      "sha256":  "310A5785A36A2ED50C79F648E71898B7CDC718AFE5EAB5B7366EEA6A4A063C82"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableEditorLibrary.cpp",
+                      "length":  12489,
+                      "sha256":  "8468B68560E81BF163375303A6ED66F76656CFC67ABCDB50D88716C12B5D5A39"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableEditorLibrary.h",
+                      "length":  655,
+                      "sha256":  "19C76F9DCD20494B7140A5F0F73326EED2CA9B26AFAA449422F6A14D486AF7F6"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableEffectComponent.cpp",
+                      "length":  13442,
+                      "sha256":  "AFDAD79BD4B705ED2C8899CF1A49539AB899764A859E010942B95C9D2FF21132"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableEffectComponent.h",
+                      "length":  2435,
+                      "sha256":  "B16E7706049AE42A1C62FAB3064F19399EDC885584DBBEE0C13A5FB470616ECA"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableRegistry.cpp",
+                      "length":  522,
+                      "sha256":  "91ED885FE257FAC03B4AFC5DDDB965E926C0FCCDEF1AC8282A8D41A7DB921172"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalConsumableRegistry.h",
+                      "length":  944,
+                      "sha256":  "71F526F0DF2D467C4EB2D536AF771F3FD6E0655C174C0E6E5ED3EE5BE0A8FB1B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalLog.cpp",
+                      "length":  83,
+                      "sha256":  "34D523766AB04A3BA950F57B04E752AEC42840100E5D168623CFA3360B13888C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalLog.h",
+                      "length":  99,
+                      "sha256":  "3C08275798CEB7973AB88BC4A75D53ACA25CF17B14FF2C7548857F30CBF288CF"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsComponent.cpp",
+                      "length":  21341,
+                      "sha256":  "FD154911EA71C7987A22D35DEA10641D0EBF7F0CCE70F9E403897EFB2F5C4C95"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsComponent.h",
+                      "length":  6904,
+                      "sha256":  "41F07219C3D3E85DAB322CDADF597EE7275563D2EEDDAC2D03EEEAB885E26A86"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsSettings.cpp",
+                      "length":  1340,
+                      "sha256":  "54617422F08E8C9156FBEFB37163D871EB3D8B79C08EB0E0BBA1C768B4FDBFE7"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsSettings.h",
+                      "length":  1329,
+                      "sha256":  "C359FCA3F1419AE72B2DB4A68D1CC5FFE9CD3F69ED43BA00E9C03B0FC59D3704"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsSubsystem.cpp",
+                      "length":  27697,
+                      "sha256":  "D3A03BBD9C92A935191524126B1B8F75419D855387214E9DE7495D24E13F3E05"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsSubsystem.h",
+                      "length":  4774,
+                      "sha256":  "CB9238BE8000244AB097466535E9AC7B44DB22248950F4178AA837C4AE73ACD8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsTypes.h",
+                      "length":  8941,
+                      "sha256":  "42784C23D7D24BE0FECEE5962B6C22069BD960CCE91CC6EC6A4CFD31F77D07D5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsWidget.cpp",
+                      "length":  31868,
+                      "sha256":  "46D8DB74D2966E359FFC5945EDE4F00A421897D624DDCDC5B717F278081B6CD4"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalNeedsWidget.h",
+                      "length":  5609,
+                      "sha256":  "2A22393C52A9EBF08FF9CC88B17019D6CF36F29B70587CD5AB420018FEF992F7"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusCatalog.cpp",
+                      "length":  7460,
+                      "sha256":  "3447789DEBD3ACA79E4497CFA365A2889ED55BEEAF45967CCAE08E9714595DF2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusCatalog.h",
+                      "length":  751,
+                      "sha256":  "2F3EAAFF42E9C1CA365A1A6CE8AC4495627E1BCEE9BA3A05CBFEFA45A3626ABC"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusComponent.cpp",
+                      "length":  50833,
+                      "sha256":  "C893F6E0E91BAE2655613433869B3D8CACE7D25BAEA77EBA9D2697D0FE8FE3ED"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusComponent.h",
+                      "length":  8931,
+                      "sha256":  "3C31391077D56667E0AE551326D9F51759CB092B7AC3A1A75AB48CE84D7FDB15"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusSettings.cpp",
+                      "length":  3152,
+                      "sha256":  "12B128AEB4DF260CB7C47E3FAEFA19E5A619295779C2F2E23C4EFE4DBB4B2036"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusSettings.h",
+                      "length":  1823,
+                      "sha256":  "AB4E82EC6DD6697762E70CC548AD125151A81A9BF14F5C4B03858392FCA9EE91"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusTypes.h",
+                      "length":  18946,
+                      "sha256":  "00E9D5EA8F806EF93241E79D507D85C0FFCA883337FB6C7EBA101823498BAC1E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusWidget.cpp",
+                      "length":  59873,
+                      "sha256":  "7A1894306D4C1BBFE45E81BB4BA0092131501464C441BAEB6E439C64861EFEBD"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Survival/ProjectSurvivalStatusWidget.h",
+                      "length":  8083,
+                      "sha256":  "52225B353E49A67BBC30DAE0C151AA3781671155919C9184447F07582FB61D8B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/TattooShop/ProjectAutomaticTattooTypes.h",
+                      "length":  3557,
+                      "sha256":  "DB9C3CC5838B4CEA5D8FF5401B6FFE3D6637847F32C6F8BF4DA42B0CA3A071AE"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/TattooShop/ProjectDefaultTattooSkinnedDecalSubsystem.cpp",
+                      "length":  107863,
+                      "sha256":  "4B10F751A476C574047222C9C66B9B8F248E416A7F27400BDCB96FFF2DB5DE77"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/TattooShop/ProjectDefaultTattooSkinnedDecalSubsystem.h",
+                      "length":  8223,
+                      "sha256":  "06800E803133AEDB8B035440E98CFA96E9217C3EAC378B74E62865DEFF0F2C3D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/TattooShop/ProjectTattooShopInputSubsystem.cpp",
+                      "length":  51793,
+                      "sha256":  "0EC52A9C7B9753B745FFD18864C50C9296CD10C0B16FB102773F83CA3652E6B9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/TattooShop/ProjectTattooShopInputSubsystem.h",
+                      "length":  5844,
+                      "sha256":  "9C4CC8FFFCAD3D6A58FCCA2705C60BA85E1269D89FE0F7E03F1EC1F8199054F8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Training/ProjectTrainingLockpickWidget.cpp",
+                      "length":  20491,
+                      "sha256":  "CA586A2199F68E145593E3A4196EE77B2DD3408C3B2BDD30D929BB7170311DF4"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Training/ProjectTrainingLockpickWidget.h",
+                      "length":  5033,
+                      "sha256":  "D7C1331FF19AE1288E52A59E885CE357CEB31BD69C1F1D4940E3ED64E197A1B5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Training/ProjectTrainingSubsystem.cpp",
+                      "length":  12930,
+                      "sha256":  "10914836ABBD4D8C7B81943F8B3154AE3E5386953D2972D7FA7D295F233C6A75"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/Training/ProjectTrainingSubsystem.h",
+                      "length":  3007,
+                      "sha256":  "D459C48BB88B727B7FB8E294440EDFA1206B19F6FA9CAC3B64588B98BC4D8820"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedEntryRowWidget.cpp",
+                      "length":  25154,
+                      "sha256":  "B3CC4768953E042F02E25FDA5D405B11DDC777A68B7DA653EDF5021837DE3617"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedEntryRowWidget.h",
+                      "length":  8091,
+                      "sha256":  "F6007D18352CE91713AF57033E6278CE9319B3CB84BCFE8DC645457455081B4D"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedSettings.cpp",
+                      "length":  1148,
+                      "sha256":  "1EADE73FB8972A61087A8B0DE4901D3C6C81BCB17D2DAD4A0F50C495DC52C128"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedSettings.h",
+                      "length":  3740,
+                      "sha256":  "53A14E26F55F90238BED2B7EE9011CB4F55F8DE0FC9BC2D011D4079CD74A1961"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedSubsystem.cpp",
+                      "length":  59462,
+                      "sha256":  "8FDACF9F362C379483FB50CE14EBC3E8A04E99C7BCA8CC4BFB9E8F81D5AFCE68"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedSubsystem.h",
+                      "length":  8183,
+                      "sha256":  "A02458F94BCB317FE37291F7700E5D2B4C046D3DA509EE660F2824AE5FEECB46"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedTypes.h",
+                      "length":  1447,
+                      "sha256":  "5D23167B40E9EC6E5B5177B9B0AFBA24F03645FE26BE77C3D47ACD65BC7EB1AE"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedWidget.cpp",
+                      "length":  39002,
+                      "sha256":  "37E3375ED57EE281F062228D5E71638CBFCE462EBDC6F96B3859BEE14F6EDFD2"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectActivityFeedWidget.h",
+                      "length":  6308,
+                      "sha256":  "BBF2D1279C59CB36EAAC92008172BE77DD444C0F2FB9584B94BDABAC7DD14F0C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectChronicleEmptyStateWidget.cpp",
+                      "length":  4923,
+                      "sha256":  "3E3E5DC2AD5572C09A58B37D42283F949058424C1C2C9FC33EBCD8CF7495C450"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectChronicleEmptyStateWidget.h",
+                      "length":  1994,
+                      "sha256":  "C830D6A15BC4DF841BBBFA5E0F4C6AE3FFDCDCF1E44726F59F6B0E49667E7573"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectChroniclePanelWidget.cpp",
+                      "length":  16402,
+                      "sha256":  "CF783606A7837A8BC31A7D8BE96E69CCB4B8E5E62572D2E437FC219849CFC5B1"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectChroniclePanelWidget.h",
+                      "length":  4455,
+                      "sha256":  "F737BDC996084D0D0E387EE6C02059B50F2558252247A24F539AFF4F246D4EFB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteMenuOptionWidget.cpp",
+                      "length":  28661,
+                      "sha256":  "F14ACE7B6171752C83BAD6749C3A86C82E30AD332EE95722D0CFB3E411E3F04C"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteMenuOptionWidget.h",
+                      "length":  7719,
+                      "sha256":  "107E307B742AC7FDA5E061D5341F0938C59710133481DB3BA8E1CFFC5FE9F0F8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteMenuWidget.cpp",
+                      "length":  45513,
+                      "sha256":  "66A4D0C1882F308E042F33AC444A0ACAC3DCF16478F0278E1B7C856A253F3F2B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteMenuWidget.h",
+                      "length":  8078,
+                      "sha256":  "AC7B836CA24C40723955B13398794A7FA052A499575AF9FB179228EC397F65A8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteSubsystem.cpp",
+                      "length":  51647,
+                      "sha256":  "767773C76F499EAAC4A9C710D95FEBA142AC250981208CD58A1D0DD970D350CB"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectEmoteSubsystem.h",
+                      "length":  8635,
+                      "sha256":  "9EB80B8A21F67E834F530C2C809D1CEA69C797895B6A8BC001D50C0672103596"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectSocialCardWidget.cpp",
+                      "length":  5907,
+                      "sha256":  "983415DAFBCAE9F35C7FC5679B4391D324007E6D7CACAD007776564C62EB38BA"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectSocialCardWidget.h",
+                      "length":  979,
+                      "sha256":  "E60850092B9539529642D4F312D5A647BB596DABE12686B5020BB31EAFFE65E9"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetLevelWidget.cpp",
+                      "length":  7750,
+                      "sha256":  "0356A0230B9EF1E62EAB4E01269754BAE8762C31F17FB9FC877D4710B2FD2C5E"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetLevelWidget.h",
+                      "length":  1213,
+                      "sha256":  "4F782B58FA6A79315A78D5E2432C710DA62FB5914000862B86B40E247D72B9E8"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetPointWidget.cpp",
+                      "length":  2349,
+                      "sha256":  "F7E3318F99D86D5FDBE9D73C25DB391208C653142E90C1444D52A32BF3850B80"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetPointWidget.h",
+                      "length":  630,
+                      "sha256":  "636C6D9E72C6840F5D1D48148AB829482E3EBFB1B9B26E01E569CB507E0674C5"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetStatsWidget.cpp",
+                      "length":  6180,
+                      "sha256":  "D0FAA44C230D964FD1BAF339F18A222FEB04143137DB358219C52650E4C3BA46"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectTargetStatsWidget.h",
+                      "length":  1057,
+                      "sha256":  "E72FA321450A184687827CF64E58E1DE91C8DF8E60E5EDDBB0D65AA340261B59"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectWidgetClassResolver.cpp",
+                      "length":  10804,
+                      "sha256":  "5AB01307EBFA24DD488B45CC56998E1CE71CAB04CDAF5B35216A13E0EBFFBD0B"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsGameplay/UI/ProjectWidgetClassResolver.h",
+                      "length":  1359,
+                      "sha256":  "0053F00AEA5678479D51CD8DEC21075CA1C8217766D8D8A778B004AF101D10BC"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsUI/EFProjectSystemsUI.Build.cs",
+                      "length":  439,
+                      "sha256":  "1DD73FC5F78C7462CCB267ACAB77C733DC6BFC1139481BA1C1A3331F54CB9751"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsUI/EFProjectSystemsUI.cpp",
+                      "length":  133,
+                      "sha256":  "47F60384D9492498069B51A772C50DC38DE687DE8D4BC6F7C54C6887A5927A5A"
+                  },
+                  {
+                      "relative_path":  "Source/EFProjectSystemsUI/EFProjectSystemsUI.h",
+                      "length":  140,
+                      "sha256":  "2668523C49D6123C988554D16E356FD6BC7A2EB7B44186F218C3F8084F1CCAFA"
+                  }
+              ]
+}
