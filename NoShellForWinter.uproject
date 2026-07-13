@@ -79,6 +79,10 @@
 		{
 			"Name": "EFCharacterCreationACFUBridge",
 			"Enabled": true
+		},
+		{
+			"Name": "EFClothingMorph",
+			"Enabled": true
 		}
 	]
 }
