@@ -95,6 +95,10 @@
 		{
 			"Name": "ACFTrainingSystem",
 			"Enabled": true
+		},
+		{
+			"Name": "EFProcedural",
+			"Enabled": true
 		}
 	]
 }

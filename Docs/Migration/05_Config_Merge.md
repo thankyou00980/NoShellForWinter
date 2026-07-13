@@ -93,6 +93,8 @@ After owner plugins and referenced assets pass their gates, merge all keys from 
 
 Configured source-only dependencies currently include HUB, DungeonGeneration, DoorToLevel, defeat UI, character-background data/UI, `_Game/Widgets`, and `_Game/Images/preview.png`. Their config rows remain pending until the Phase 2 content action that owns them completes.
 
+Phase 3 has applied only the four EFProcedural class redirects after its Runtime and PCG modules passed Editor/Game builds. The `EFProceduralSettings` section remains deferred: its three configured dungeon asset paths are absent from target Content, and the isolated UE 5.7 registry closure is evidence for inspection only, not an authorized migration allowlist.
+
 ## Required ACFU 4.3.5 repair to `DefaultGame.ini`
 
 The desired merge must restore these ACFU 4.3.5 values while retaining the complete Daz section:
