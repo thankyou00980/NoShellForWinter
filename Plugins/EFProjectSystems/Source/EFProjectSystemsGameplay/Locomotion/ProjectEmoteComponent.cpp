@@ -572,7 +572,7 @@ void UProjectEmoteComponent::BeginPlay()
 
 void UProjectEmoteComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	StopEmote();
+	StopEmote(false);
 	if (UWorld* World = GetWorld())
 	{
 		World->GetTimerManager().ClearTimer(DeferredViewTargetRestoreTimerHandle);
@@ -611,9 +611,11 @@ bool UProjectEmoteComponent::StartRuntimeInteractionById(const FName Interaction
 	return Definition != nullptr ? StartInteraction(*Definition, true) : false;
 }
 
-void UProjectEmoteComponent::StopEmote()
+void UProjectEmoteComponent::StopEmote(const bool bRestoreTargetActor)
 {
-	const TWeakObjectPtr<AActor> TargetActorToRestoreAfterStop = TargetingActorToRestore;
+	const TWeakObjectPtr<AActor> TargetActorToRestoreAfterStop = bRestoreTargetActor
+		? TargetingActorToRestore
+		: TWeakObjectPtr<AActor>();
 	TargetingActorToRestore.Reset();
 	if (UWorld* World = GetWorld())
 	{

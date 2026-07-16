@@ -137,7 +137,7 @@ private:
 	int32 ResolveTrainingCunningLevel(APawn* Pawn) const;
 	FName ResolveRuntimeActionInteractionId(const FProjectEmoteRuntimeActionRequest& Request) const;
 	void CompleteRuntimeAction(EProjectEmoteRuntimeActionEndReason EndReason);
-	void CleanupMenuAndEmoteState();
+	void CleanupMenuAndEmoteState(bool bRestoreTargetActor = true);
 	void ApplyMenuInputCapture();
 	void RestoreMenuInputCapture();
 	void ApplyMenuHudSuppression();

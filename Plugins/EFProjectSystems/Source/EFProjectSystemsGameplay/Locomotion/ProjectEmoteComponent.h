@@ -137,7 +137,7 @@ public:
 	bool StartRuntimeInteractionById(FName InteractionId);
 
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote")
-	void StopEmote();
+	void StopEmote(bool bRestoreTargetActor = true);
 
 	void OverrideDelayedPostEmoteRecovery(float DelaySeconds, bool bMoveInputIgnored, bool bLookInputIgnored);
 

@@ -104,3 +104,68 @@ ACFU (5,043 files) and the DazToUnreal plugin (213 files) match Phase 0 exactly.
 | Frederick | — | `PENDING_RUNTIME_IDENTITY`; no unambiguous package path exists in current evidence |
 
 The rejected post-Editor Male package was preserved only under `Saved/Migration/Phase5/Hashes/ProtectedRecovery`; it is not staged.
+
+## Targeting lifecycle hotfix and expanded visual QA
+
+Date: 2026-07-16
+
+The reported ACF targeting crash was reproduced to the possession-change cleanup path. ACF's
+`GetBestTargetPointForTarget` dereferenced its internal `ControlledPawn` after the project attempted to
+restore a target while the old pawn was already detached. Project-owned cleanup now skips target restore
+during pawn changes and `EndPlay`, and `UProjectTargetingFixComponent` requires a valid, currently possessed
+local pawn, camera manager and live targeting component before invoking ACF.
+
+The expanded runtime reproduction is `PASS` in
+`Saved/Migration/Phase5/Runtime/TargetingPawnChangePIE58_Hotfix.json`:
+
+- selected a Male ranged enemy and started `Actions.Together.0001Scene`;
+- called `UnPossess` while the session and runtime action were active;
+- verified the controller had no pawn, then possessed the original pawn again;
+- verified session/action inactive, pawn restored, movement/look enabled and both combat shields removed;
+- no ACF access violation occurred.
+
+That reproduction also exposed an independent project-owned reflection helper lifetime defect: parameter
+memory was allocated with `FMemory_Alloca` in a helper and returned after its stack frame ended. All reflected
+argument/return invocations now use `FStructOnScope`, keeping initialized parameter storage alive across
+`ProcessEvent`.
+
+### Hotfix validation
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Cold UE 5.8 Editor build | PASS | UBT `NoShellForWinterEditor Win64 Development`; `Result: Succeeded` |
+| Detached-pawn automation | PASS | `Saved/Migration/Phase5/Tests/TargetingLifecycleHotfix/index.json`: 1 succeeded, 0 failed |
+| Live possession-cycle regression | PASS | `Saved/Migration/Phase5/Runtime/TargetingPawnChangePIE58_Hotfix.json` |
+| Enemy registry/gender suite | PASS | `Saved/Migration/Phase5/Tests/EnemySystemsHotfix/index.json`: 2 succeeded, 0 failed |
+| Intimacy suite | PASS | `Saved/Migration/Phase5/Tests/IntimacyHotfix/index.json`: 14 succeeded, 0 failed |
+| Build/cook/stage/pak/archive | PASS | `Saved/Migration/Phase5/Package/EnemyIntimacyWin64TargetingHotfix`; UAT `BUILD SUCCESSFUL`, 238.49 s |
+| Packaged executable smoke | PENDING | Inner executable remained alive for 30 s under `-NullRHI`; automated `ExecCmds=quit` was not honored and the process was stopped explicitly |
+
+### Expanded visual QA
+
+Twenty-two clean screenshots were captured and manually inspected after disabling content-directory monitoring
+for the QA processes:
+
+- Female `T -> Y`: Root, Actions with `PARTNER`, and animation list in
+  `Saved/Migration/Phase5/Visual/TargetedFemaleYMenuHotfix`.
+- Male Intimacy: Social Card, scene HUD, Talk categories/detail, Items categories/detail, Please and climax in
+  `Saved/Migration/Phase5/Visual/IntimacyFullHotfix`.
+- Female Intimacy: the same eight states in
+  `Saved/Migration/Phase5/Visual/IntimacyFemaleHotfix`.
+- The earlier three Male `T -> Y` screenshots remain functionally valid but are not counted as clean because an
+  Auto Reimport notification was visible.
+
+Female visual/runtime evidence shows `Gender: Female`, randomized `Lv. 2` and HP 564, an active Female partner
+profile, `Actions.Together.0001Scene`, Chronicle events, Please/climax state, target restoration and Niagara
+cleanup. Male visual/runtime evidence shows the equivalent partner/session contracts and target restoration.
+Menus and HUD panels are readable and do not overlap each other. The inherited bows/weapons visibly intersect
+the actors during `0001Scene`; animation retarget/equipment hiding therefore remains `PENDING` rather than a
+visual PASS.
+
+Final invariant reports are:
+
+- `Saved/Migration/Phase5/Hashes/EnemyIntimacy_SourceReadOnly_TargetingHotfix.json`: source read-only `PASS`.
+- `Saved/Migration/Phase5/Hashes/EnemyIntimacy_ProtectedInvariants_TargetingHotfix.json`: ACFU 5,043/5,043 and
+  DazToUnreal plugin 213/213 `PASS`; the same 69 pre-existing target Daz mismatches as the post-organization
+  reference, with identical mismatch payload and zero hotfix delta.
+- Player, Female, Multiple and Male hashes remain exactly the values recorded above.

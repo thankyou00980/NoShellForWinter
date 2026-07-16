@@ -31,6 +31,7 @@
 #include "UI/ProjectActivityFeedSubsystem.h"
 #include "UI/ProjectEmoteSubsystem.h"
 #include "UObject/FieldIterator.h"
+#include "UObject/StructOnScope.h"
 #include "UObject/UnrealType.h"
 #include "UObject/FieldIterator.h"
 #include "UObject/UObjectGlobals.h"
@@ -45,18 +46,6 @@ namespace ProjectRuntimeReflectionLibraryPrivate
 		}
 
 		return Target->FindFunction(FunctionName);
-	}
-
-	static void* AllocateParms(UFunction* Function)
-	{
-		if (!Function || Function->ParmsSize <= 0)
-		{
-			return nullptr;
-		}
-
-		void* Parms = FMemory_Alloca(Function->ParmsSize);
-		FMemory::Memzero(Parms, Function->ParmsSize);
-		return Parms;
 	}
 
 	static FProperty* FindSingleInputProperty(UFunction* Function)
@@ -226,9 +215,9 @@ bool UProjectRuntimeReflectionLibrary::InvokeInt32Function(UObject* Target, FNam
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	IntProperty->SetPropertyValue_InContainer(Parms, Int32Value);
-	Target->ProcessEvent(Function, Parms);
+	FStructOnScope Parms(Function);
+	IntProperty->SetPropertyValue_InContainer(Parms.GetStructMemory(), Int32Value);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
 	return true;
 }
 
@@ -252,9 +241,9 @@ bool UProjectRuntimeReflectionLibrary::InvokeObjectArgFunction(UObject* Target, 
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	ObjectProperty->SetObjectPropertyValue_InContainer(Parms, ObjectValue);
-	Target->ProcessEvent(Function, Parms);
+	FStructOnScope Parms(Function);
+	ObjectProperty->SetObjectPropertyValue_InContainer(Parms.GetStructMemory(), ObjectValue);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
 	return true;
 }
 
@@ -274,13 +263,9 @@ bool UProjectRuntimeReflectionLibrary::InvokeBoolReturnFunction(UObject* Target,
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	if (!Parms)
-	{
-		return false;
-	}
-	Target->ProcessEvent(Function, Parms);
-	OutReturnValue = ReturnProperty->GetPropertyValue_InContainer(Parms);
+	FStructOnScope Parms(Function);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
+	OutReturnValue = ReturnProperty->GetPropertyValue_InContainer(Parms.GetStructMemory());
 	return true;
 }
 
@@ -300,13 +285,9 @@ bool UProjectRuntimeReflectionLibrary::InvokeInt32ReturnFunction(UObject* Target
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	if (!Parms)
-	{
-		return false;
-	}
-	Target->ProcessEvent(Function, Parms);
-	OutReturnValue = ReturnProperty->GetPropertyValue_InContainer(Parms);
+	FStructOnScope Parms(Function);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
+	OutReturnValue = ReturnProperty->GetPropertyValue_InContainer(Parms.GetStructMemory());
 	return true;
 }
 
@@ -330,14 +311,10 @@ bool UProjectRuntimeReflectionLibrary::InvokeObjectReturnFunction(
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	if (!Parms)
-	{
-		return false;
-	}
-	Target->ProcessEvent(Function, Parms);
+	FStructOnScope Parms(Function);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
 
-	UObject* ReturnObject = ReturnProperty->GetObjectPropertyValue_InContainer(Parms);
+	UObject* ReturnObject = ReturnProperty->GetObjectPropertyValue_InContainer(Parms.GetStructMemory());
 	if (ReturnObject && ExpectedClass && !ReturnObject->IsA(ExpectedClass))
 	{
 		return false;
@@ -374,15 +351,11 @@ bool UProjectRuntimeReflectionLibrary::InvokeObjectArgObjectReturnFunction(
 		return false;
 	}
 
-	void* Parms = ProjectRuntimeReflectionLibraryPrivate::AllocateParms(Function);
-	if (!Parms)
-	{
-		return false;
-	}
-	InputProperty->SetObjectPropertyValue_InContainer(Parms, ObjectValue);
-	Target->ProcessEvent(Function, Parms);
+	FStructOnScope Parms(Function);
+	InputProperty->SetObjectPropertyValue_InContainer(Parms.GetStructMemory(), ObjectValue);
+	Target->ProcessEvent(Function, Parms.GetStructMemory());
 
-	UObject* ReturnObject = ReturnProperty->GetObjectPropertyValue_InContainer(Parms);
+	UObject* ReturnObject = ReturnProperty->GetObjectPropertyValue_InContainer(Parms.GetStructMemory());
 	if (ReturnObject && ExpectedClass && !ReturnObject->IsA(ExpectedClass))
 	{
 		return false;
