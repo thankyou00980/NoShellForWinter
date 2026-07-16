@@ -166,6 +166,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Project|Emote|Debug")
 	AActor* GetActiveBlueprintSceneTargetActor() const;
 
+	/** Returns the actor preserved by the T-targeting bridge before an interaction starts. */
+	UFUNCTION(BlueprintPure, Category = "Project|Emote|Intimacy")
+	AActor* GetCurrentInteractionTargetActor() const;
+
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote|Intimacy")
 	bool TriggerBlueprintSceneVisualClimaxCue();
 
@@ -175,6 +179,7 @@ public:
 	bool IsDamageCancellationBlockedByIntimacyShield() const;
 	void EnsureIntimacyCombatShield(AActor* PlayerActor, AActor* PartnerActor);
 	void RefreshIntimacyCombatShieldNow();
+	void ClearIntimacyCombatShield();
 
 #if WITH_DEV_AUTOMATION_TESTS
 	void AutomationApplyIntimacyCombatShieldForTest(AActor* PlayerActor, AActor* PartnerActor);
@@ -413,6 +418,7 @@ private:
 	TObjectPtr<UProjectCombatAttributeComponent> BoundCombatAttributeComponent;
 
 	TWeakObjectPtr<UProjectLocomotionOverrideComponent> SuspendedLocomotionOverrideComponent;
+	TWeakObjectPtr<AActor> TargetingActorToRestore;
 	FTimerHandle DeferredEmoteStartTimerHandle;
 	FTimerHandle DelayedPostEmoteRecoveryTimerHandle;
 	FTimerHandle DeferredViewTargetRestoreTimerHandle;

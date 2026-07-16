@@ -33,6 +33,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Project|Target|Debug")
 	bool DebugSetCurrentTargetActor(AActor* TargetActor);
 
+	/** Re-establishes a target temporarily released for a project-owned interaction. */
+	bool RestoreCurrentTargetActor(AActor* TargetActor);
+
 	UFUNCTION(BlueprintCallable, Category = "Project|Target")
 	bool DeactivateCurrentTargetingLock();
 

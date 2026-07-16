@@ -45,9 +45,33 @@ UProjectEnemyVisualVariationSettings::UProjectEnemyVisualVariationSettings()
 	SectionName = TEXT("ProjectEnemyVisualVariation");
 
 	TargetEnemyClasses = {
-		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFMageEnemyBP.ACFMageEnemyBP_C")),
-		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFMeleeEnemyBP.ACFMeleeEnemyBP_C")),
-		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFRangedEnemyBP.ACFRangedEnemyBP_C"))
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDefenderEnemyBPMale.ACFDefenderEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyAmbushEnemyBPMale.ACFDummyAmbushEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyEnemyBPMale.ACFDummyEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFGunEnemyBPMale.ACFGunEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMageEnemyBPMale.ACFMageEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMeleeEnemyBPMale.ACFMeleeEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMMEnemyBPMale.ACFMMEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFRangedEnemyBPMale.ACFRangedEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDefenderEnemyBPFemale.ACFDefenderEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDummyAmbushEnemyBPFemale.ACFDummyAmbushEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDummyEnemyBPFemale.ACFDummyEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFGunEnemyBPFemale.ACFGunEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMageEnemyBPFemale.ACFMageEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMeleeEnemyBPFemale.ACFMeleeEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMMEnemyBPFemale.ACFMMEnemyBPFemale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFRangedEnemyBPFemale.ACFRangedEnemyBPFemale_C"))
+	};
+
+	MaleMorphTargetEnemyClasses = {
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDefenderEnemyBPMale.ACFDefenderEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyAmbushEnemyBPMale.ACFDummyAmbushEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyEnemyBPMale.ACFDummyEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFGunEnemyBPMale.ACFGunEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMageEnemyBPMale.ACFMageEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMeleeEnemyBPMale.ACFMeleeEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMMEnemyBPMale.ACFMMEnemyBPMale_C")),
+		ProjectEnemyVisualVariationSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFRangedEnemyBPMale.ACFRangedEnemyBPMale_C"))
 	};
 
 	AllowedMorphNames = {

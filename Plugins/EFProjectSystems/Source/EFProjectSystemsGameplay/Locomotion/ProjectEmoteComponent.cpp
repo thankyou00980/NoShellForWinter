@@ -64,7 +64,7 @@ namespace ProjectEmoteComponentPrivate
 	static const FName TogetherFolderNodeId(TEXT("Actions.Together"));
 	static const FName TogetherScene0001NodeId(TEXT("Actions.Together.0001Scene"));
 	static constexpr TCHAR DefaultMenuDataAssetPath[] = TEXT("/Game/_Game/Emote/DA_ProjectEmoteMenu.DA_ProjectEmoteMenu");
-	static constexpr TCHAR DefaultTogetherSceneBlueprintPath[] = TEXT("/Script/Engine.Blueprint'/Game/ExportedAnimations/Together/0001Scene.0001Scene'");
+	static constexpr TCHAR DefaultTogetherSceneBlueprintPath[] = TEXT("/Script/Engine.Blueprint'/Game/_Game/Animations/Intimacy/Scenes/BP_IntimacyScene_0001.BP_IntimacyScene_0001'");
 	static constexpr TCHAR BlueprintSceneClimaxCueToken[] = TEXT("MilkySplash");
 	// Project-standard permanently authored RootOffset values for these shipped action nodes.
 	// They seed fallback/menu generation only; DA_ProjectEmoteMenu remains manually editable.
@@ -613,6 +613,8 @@ bool UProjectEmoteComponent::StartRuntimeInteractionById(const FName Interaction
 
 void UProjectEmoteComponent::StopEmote()
 {
+	const TWeakObjectPtr<AActor> TargetActorToRestoreAfterStop = TargetingActorToRestore;
+	TargetingActorToRestore.Reset();
 	if (UWorld* World = GetWorld())
 	{
 		World->GetTimerManager().ClearTimer(DeferredEmoteStartTimerHandle);
@@ -645,6 +647,16 @@ void UProjectEmoteComponent::StopEmote()
 #if WITH_EDITOR
 	DebugBlueprintSceneTargetActor.Reset();
 #endif
+	if (AActor* TargetActor = TargetActorToRestoreAfterStop.Get())
+	{
+		if (ACharacter* Character = CachedCharacterOwner.Get())
+		{
+			if (UProjectTargetingFixComponent* TargetingFixComponent = Character->FindComponentByClass<UProjectTargetingFixComponent>())
+			{
+				TargetingFixComponent->RestoreCurrentTargetActor(TargetActor);
+			}
+		}
+	}
 
 	if (bHadActiveState)
 	{
@@ -771,6 +783,15 @@ AActor* UProjectEmoteComponent::GetActiveBlueprintSceneVisualActor() const
 AActor* UProjectEmoteComponent::GetActiveBlueprintSceneTargetActor() const
 {
 	return TargetParticipantState.Actor.Get();
+}
+
+AActor* UProjectEmoteComponent::GetCurrentInteractionTargetActor() const
+{
+	if (AActor* ActiveTargetActor = GetActiveBlueprintSceneTargetActor())
+	{
+		return ActiveTargetActor;
+	}
+	return ResolveCurrentTargetActor();
 }
 
 bool UProjectEmoteComponent::TriggerBlueprintSceneVisualClimaxCue()
@@ -1681,6 +1702,7 @@ bool UProjectEmoteComponent::StartInteraction(const FProjectEmoteInteractionDefi
 	}
 
 	StopEmote();
+	TargetingActorToRestore = PreparedBlueprintSceneTargetActor;
 	ResolveDependencies();
 	Character = CachedCharacterOwner.Get();
 	PlayerController = ResolveOwningPlayerController();
@@ -2406,6 +2428,11 @@ void UProjectEmoteComponent::RestoreIntimacyCombatShield()
 	CombatShieldSnapshots.Reset();
 	bIntimacyCombatShieldApplied = false;
 	NextIntimacyCombatShieldRefreshSeconds = 0.0f;
+}
+
+void UProjectEmoteComponent::ClearIntimacyCombatShield()
+{
+	RestoreIntimacyCombatShield();
 }
 
 void UProjectEmoteComponent::RefreshIntimacyCombatShield(const bool bForce)

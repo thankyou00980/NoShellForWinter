@@ -284,6 +284,12 @@ bool UProjectTargetingFixComponent::DebugSetCurrentTargetActor(AActor* TargetAct
 	(void)TargetActor;
 	return false;
 #else
+	return RestoreCurrentTargetActor(TargetActor);
+#endif
+}
+
+bool UProjectTargetingFixComponent::RestoreCurrentTargetActor(AActor* TargetActor)
+{
 	if (!IsValid(TargetActor) || TargetActor == GetOwner())
 	{
 		return false;
@@ -326,7 +332,6 @@ bool UProjectTargetingFixComponent::DebugSetCurrentTargetActor(AActor* TargetAct
 	ShowTargetInfoForActor(TargetActor);
 	RefreshSocialCardForActor(TargetActor, true);
 	return bChangedTargetingState || IsValid(CachedTargetActor.Get());
-#endif
 }
 
 bool UProjectTargetingFixComponent::DeactivateCurrentTargetingLock()

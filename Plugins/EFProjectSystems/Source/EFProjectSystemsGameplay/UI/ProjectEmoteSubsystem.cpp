@@ -14,6 +14,7 @@
 #include "GameFramework/PlayerController.h"
 #include "InputCoreTypes.h"
 #include "Intimacy/ProjectIntimacySubsystem.h"
+#include "Intimacy/ProjectIntimacyPartnerComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lockpicking/ProjectLockpickableComponent.h"
 #include "Locomotion/ProjectEmoteComponent.h"
@@ -1302,6 +1303,20 @@ bool UProjectEmoteSubsystem::IsCombatBlockingEmoteMenu() const
 	if (TrackedEmoteComponent && TrackedEmoteComponent->IsEmoteActive())
 	{
 		return false;
+	}
+
+	// T + Y is an explicit contextual interaction request. A selected enemy or
+	// companion with an Intimacy partner identity must keep the Partner/Social/
+	// Actions menu available even while ACF still reports the surrounding battle.
+	if (TrackedEmoteComponent)
+	{
+		if (const AActor* CurrentTarget = TrackedEmoteComponent->GetCurrentInteractionTargetActor())
+		{
+			if (CurrentTarget->FindComponentByClass<UProjectIntimacyPartnerComponent>())
+			{
+				return false;
+			}
+		}
 	}
 
 	if (TrackedEmoteComponent && TrackedEmoteComponent->IsCombatLockoutActive(ProjectEmoteSubsystemPrivate::CombatMenuLockoutSeconds))

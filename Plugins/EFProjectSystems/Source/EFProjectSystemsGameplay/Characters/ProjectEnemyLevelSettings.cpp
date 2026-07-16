@@ -25,9 +25,22 @@ UProjectEnemyLevelSettings::UProjectEnemyLevelSettings()
 	SectionName = TEXT("ProjectEnemyLevel");
 
 	TargetEnemyBaseClasses = {
-		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFMageEnemyBP.ACFMageEnemyBP_C")),
-		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFMeleeEnemyBP.ACFMeleeEnemyBP_C")),
-		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/FullSample/Blueprints/Characters/Enemies/ACFRangedEnemyBP.ACFRangedEnemyBP_C"))
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDefenderEnemyBPMale.ACFDefenderEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyAmbushEnemyBPMale.ACFDummyAmbushEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFDummyEnemyBPMale.ACFDummyEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFGunEnemyBPMale.ACFGunEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMageEnemyBPMale.ACFMageEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMeleeEnemyBPMale.ACFMeleeEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFMMEnemyBPMale.ACFMMEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Male/ACFRangedEnemyBPMale.ACFRangedEnemyBPMale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDefenderEnemyBPFemale.ACFDefenderEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDummyAmbushEnemyBPFemale.ACFDummyAmbushEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFDummyEnemyBPFemale.ACFDummyEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFGunEnemyBPFemale.ACFGunEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMageEnemyBPFemale.ACFMageEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMeleeEnemyBPFemale.ACFMeleeEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFMMEnemyBPFemale.ACFMMEnemyBPFemale_C")),
+		ProjectEnemyLevelSettingsPrivate::MakeEnemyClass(TEXT("/Game/_Game/Characters/Female/ACFRangedEnemyBPFemale.ACFRangedEnemyBPFemale_C"))
 	};
 
 	MapLevelRules = {

@@ -42,6 +42,7 @@ private:
 	void TryApplyVariation(TWeakObjectPtr<APawn> PawnPtr, int32 AttemptIndex);
 	bool ShouldProcessPawn(const APawn* Pawn) const;
 	bool IsTargetEnemyClass(const UClass* ActorClass) const;
+	bool IsMaleMorphTargetClass(const UClass* ActorClass) const;
 	UEFCharacterCustomizationComponent* FindOrCreateCustomizationComponent(APawn* Pawn) const;
 	bool GatherAllowedMorphEntries(const UEFCharacterCustomizationComponent* CustomizationComponent, TArray<FMorphSliderEntry>& OutEntries) const;
 	bool GatherMorphEntriesForConfiguredName(
@@ -70,6 +71,7 @@ private:
 private:
 	FDelegateHandle ActorSpawnedHandle;
 	TArray<TSubclassOf<APawn>> TargetEnemyClasses;
+	TArray<TSubclassOf<APawn>> MaleMorphTargetEnemyClasses;
 	TSet<FName> AllowedMorphNameSet;
 	TSet<TObjectKey<UObject>> ProcessedActors;
 	TSet<TObjectKey<UObject>> PendingActors;

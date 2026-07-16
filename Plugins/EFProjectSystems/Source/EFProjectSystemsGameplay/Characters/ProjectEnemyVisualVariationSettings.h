@@ -64,6 +64,10 @@ public:
 	UPROPERTY(EditAnywhere, Config, Category = "Targets", meta = (AllowedClasses = "/Script/Engine.Pawn"))
 	TArray<TSoftClassPtr<APawn>> TargetEnemyClasses;
 
+	/** Subset allowed to receive genital and sight-driven arousal morphs. */
+	UPROPERTY(EditAnywhere, Config, Category = "Targets", meta = (AllowedClasses = "/Script/Engine.Pawn"))
+	TArray<TSoftClassPtr<APawn>> MaleMorphTargetEnemyClasses;
+
 	UPROPERTY(EditAnywhere, Config, Category = "Morphs")
 	TArray<FName> AllowedMorphNames;
 
