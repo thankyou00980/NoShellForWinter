@@ -64,6 +64,10 @@ public:
 	UPROPERTY(EditAnywhere, Config, Category = "Targets", meta = (AllowedClasses = "/Script/Engine.Pawn"))
 	TArray<TSoftClassPtr<APawn>> TargetEnemyClasses;
 
+	/** Subset allowed to receive genital and sight-driven arousal morphs. */
+	UPROPERTY(EditAnywhere, Config, Category = "Targets", meta = (AllowedClasses = "/Script/Engine.Pawn"))
+	TArray<TSoftClassPtr<APawn>> MaleMorphTargetEnemyClasses;
+
 	UPROPERTY(EditAnywhere, Config, Category = "Morphs")
 	TArray<FName> AllowedMorphNames;
 
@@ -161,7 +165,7 @@ public:
 	bool bEnableSightDrivenArousalMorphs = true;
 
 	UPROPERTY(EditAnywhere, Config, Category = "Arousal")
-	FName FlaccidMorphName = TEXT("DK_Flacid04");
+	FName FlaccidMorphName = TEXT("DK_Flacid 04");
 
 	UPROPERTY(EditAnywhere, Config, Category = "Arousal")
 	FName ErectionMorphName = TEXT("DK_Erection");

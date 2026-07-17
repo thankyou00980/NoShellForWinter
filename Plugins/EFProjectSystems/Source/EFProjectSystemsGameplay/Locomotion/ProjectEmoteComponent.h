@@ -24,6 +24,7 @@ class UDamageType;
 class UProjectCombatAttributeComponent;
 class UProjectEmoteMenuDataAsset;
 class UProjectLocomotionOverrideComponent;
+class UPrimitiveComponent;
 class USkeletalMesh;
 class USkinnedMeshComponent;
 class USkeletalMeshComponent;
@@ -115,6 +116,20 @@ struct FProjectEmoteAiCombatSuppressionSnapshot
 	bool bBrainWasPaused = false;
 };
 
+struct FProjectEmoteEquipmentVisibilitySnapshot
+{
+	TWeakObjectPtr<AActor> Actor;
+	bool bWasHiddenInGame = false;
+	bool bWasCollisionEnabled = true;
+};
+
+struct FProjectEmoteEquipmentPrimitiveVisibilitySnapshot
+{
+	TWeakObjectPtr<UPrimitiveComponent> Component;
+	bool bWasVisible = true;
+	bool bWasHiddenInGame = false;
+};
+
 UCLASS(ClassGroup = (Project), meta = (BlueprintSpawnableComponent))
 class EFPROJECTSYSTEMSGAMEPLAY_API UProjectEmoteComponent : public UActorComponent
 {
@@ -137,7 +152,7 @@ public:
 	bool StartRuntimeInteractionById(FName InteractionId);
 
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote")
-	void StopEmote();
+	void StopEmote(bool bRestoreTargetActor = true);
 
 	void OverrideDelayedPostEmoteRecovery(float DelaySeconds, bool bMoveInputIgnored, bool bLookInputIgnored);
 
@@ -166,6 +181,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Project|Emote|Debug")
 	AActor* GetActiveBlueprintSceneTargetActor() const;
 
+	/** Returns the actor preserved by the T-targeting bridge before an interaction starts. */
+	UFUNCTION(BlueprintPure, Category = "Project|Emote|Intimacy")
+	AActor* GetCurrentInteractionTargetActor() const;
+
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote|Intimacy")
 	bool TriggerBlueprintSceneVisualClimaxCue();
 
@@ -175,11 +194,16 @@ public:
 	bool IsDamageCancellationBlockedByIntimacyShield() const;
 	void EnsureIntimacyCombatShield(AActor* PlayerActor, AActor* PartnerActor);
 	void RefreshIntimacyCombatShieldNow();
+	void ClearIntimacyCombatShield();
 
 #if WITH_DEV_AUTOMATION_TESTS
 	void AutomationApplyIntimacyCombatShieldForTest(AActor* PlayerActor, AActor* PartnerActor);
 	void AutomationRestoreIntimacyCombatShieldForTest();
+	void AutomationApplyBlueprintSceneEquipmentSuppressionForTest(AActor* PlayerActor, AActor* PartnerActor);
+	void AutomationRestoreBlueprintSceneEquipmentSuppressionForTest();
 #endif
+	UFUNCTION(BlueprintPure, Category = "Project|Emote|Automation")
+	int32 AutomationGetSuppressedBlueprintSceneEquipmentCount() const;
 
 #if WITH_EDITOR
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote|Debug")
@@ -263,6 +287,9 @@ private:
 	void ApplyMinimalAnimSceneLock();
 	void RestoreMinimalAnimSceneLock();
 	void ApplyAnimSceneLockForActor(AActor* Actor, USkeletalMeshComponent* SourceMeshComponent);
+	void ApplyBlueprintSceneEquipmentSuppression(AActor* PlayerActor, AActor* PartnerActor);
+	void RefreshBlueprintSceneEquipmentSuppression();
+	void RestoreBlueprintSceneEquipmentSuppression();
 	void ApplyAnimInstanceSceneLock(UObject* AnimInstanceObject);
 	void ApplyVisibleMeshLeaderPoseSceneLock();
 	void ApplyVisibleMeshLeaderPoseSceneLockForActor(AActor* Actor, USkeletalMeshComponent* SourceMeshComponent);
@@ -413,6 +440,7 @@ private:
 	TObjectPtr<UProjectCombatAttributeComponent> BoundCombatAttributeComponent;
 
 	TWeakObjectPtr<UProjectLocomotionOverrideComponent> SuspendedLocomotionOverrideComponent;
+	TWeakObjectPtr<AActor> TargetingActorToRestore;
 	FTimerHandle DeferredEmoteStartTimerHandle;
 	FTimerHandle DelayedPostEmoteRecoveryTimerHandle;
 	FTimerHandle DeferredViewTargetRestoreTimerHandle;
@@ -462,6 +490,8 @@ private:
 	TArray<FProjectEmoteLeaderPoseSceneLockSnapshot> LeaderPoseSceneLockSnapshots;
 	TArray<FProjectEmoteCombatShieldSnapshot> CombatShieldSnapshots;
 	TArray<FProjectEmoteAiCombatSuppressionSnapshot> IntimacyAiSuppressionSnapshots;
+	TArray<FProjectEmoteEquipmentVisibilitySnapshot> BlueprintSceneEquipmentSnapshots;
+	TArray<FProjectEmoteEquipmentPrimitiveVisibilitySnapshot> BlueprintSceneEquipmentPrimitiveSnapshots;
 	TArray<FProjectEmoteMenuNodeDefinition> CachedMenuNodes;
 	TMap<FName, int32> CachedMenuNodeIndexById;
 	mutable FProjectEmoteInteractionDefinition InteractionLookupScratch;

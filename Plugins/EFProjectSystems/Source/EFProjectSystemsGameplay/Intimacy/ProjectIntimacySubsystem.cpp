@@ -131,7 +131,6 @@ void UProjectIntimacySubsystem::Tick(const float DeltaTime)
 					ActiveSession.bPleaseActive ? TEXT("true") : TEXT("false"),
 					ActiveSession.SessionTimeSeconds);
 			}
-			RefreshActiveIntimacyCombatShield();
 			EndSession(!ActiveSession.bSatisfied);
 		}
 		bSuppressStartUntilSceneEnds = false;
@@ -733,7 +732,7 @@ FProjectIntimacySessionSnapshot UProjectIntimacySubsystem::BuildSnapshot() const
 			Snapshot.Relationship = Profile->Relationship;
 			Snapshot.RelationshipTags = Profile->RelationshipTags;
 			Snapshot.RelationshipText = UProjectIntimacyPartnerComponent::RelationshipTagsToText(Profile->RelationshipTags);
-			Snapshot.GenderTag = Profile->GenderTag.IsValid() ? Profile->GenderTag : Snapshot.GenderTag;
+			Snapshot.GenderTag = Snapshot.GenderTag.IsValid() ? Snapshot.GenderTag : Profile->GenderTag;
 			Snapshot.GenderText = UProjectIntimacyPartnerComponent::GenderTagToText(Snapshot.GenderTag);
 			Snapshot.Affect = Profile->Affect;
 			Snapshot.SatisfiedWins = Profile->SatisfiedWins;
@@ -863,9 +862,10 @@ void UProjectIntimacySubsystem::AppendTargetIntimacyRows(AActor* PartnerActor, F
 	const int32 ControlPoints = Profile
 		? Profile->ControlPoints
 		: UProjectIntimacySettings::ComputeInitialControl(EffectivePersonality);
-	const FGameplayTag GenderTag = Profile && Profile->GenderTag.IsValid()
-		? Profile->GenderTag
-		: PartnerComponent->GetResolvedGenderTag();
+	const FGameplayTag ComponentGenderTag = PartnerComponent->GetResolvedGenderTag();
+	const FGameplayTag GenderTag = ComponentGenderTag.IsValid()
+		? ComponentGenderTag
+		: (Profile ? Profile->GenderTag : FGameplayTag());
 
 	auto ResolveValue = [this, PartnerComponent, Profile, EffectivePersonality, ControlPoints, GenderTag](const FName ValueId, FString& OutValue) -> bool
 	{
@@ -1276,6 +1276,10 @@ void UProjectIntimacySubsystem::EndSession(const bool bCancelled)
 	RestoreAnimationRates();
 	SavePersistentState();
 	bSessionActive = false;
+	if (TrackedEmoteComponent)
+	{
+		TrackedEmoteComponent->ClearIntimacyCombatShield();
+	}
 	ActiveSession = FProjectIntimacyRuntimeSession();
 	ResolvedOptions.Reset();
 	RefreshHudWidget();
@@ -2455,11 +2459,18 @@ void UProjectIntimacySubsystem::NormalizeProfile(
 		Profile.PartnerId = PartnerComponent->GetResolvedPartnerId();
 	}
 
-	if (!Profile.GenderTag.IsValid())
+	const FGameplayTag ComponentGenderTag = PartnerComponent
+		? PartnerComponent->GetResolvedGenderTag()
+		: FGameplayTag();
+	if (ComponentGenderTag.IsValid())
 	{
-		Profile.GenderTag = PartnerComponent
-			? PartnerComponent->GetResolvedGenderTag()
-			: ProjectIntimacySubsystemPrivate::Tag(TEXT("Project.Gender.Male"));
+		// The registered character class is authoritative. Repair legacy profiles that
+		// persisted an incompatible gender before the Male/Female registry existed.
+		Profile.GenderTag = ComponentGenderTag;
+	}
+	else if (!Profile.GenderTag.IsValid())
+	{
+		Profile.GenderTag = ProjectIntimacySubsystemPrivate::Tag(TEXT("Project.Gender.Male"));
 	}
 
 	if (Profile.RelationshipTags.Num() <= 0)

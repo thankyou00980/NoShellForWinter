@@ -134,7 +134,7 @@ namespace ProjectTogetherSceneTestPrivate
 
 UProjectTogetherSceneTestSubsystem::UProjectTogetherSceneTestSubsystem()
 {
-	SceneBlueprintPath = FSoftObjectPath(TEXT("/Script/Engine.Blueprint'/Game/ExportedAnimations/Together/0001Scene.0001Scene'"));
+	SceneBlueprintPath = FSoftObjectPath(TEXT("/Script/Engine.Blueprint'/Game/_Game/Animations/Intimacy/Scenes/BP_IntimacyScene_0001.BP_IntimacyScene_0001'"));
 }
 
 void UProjectTogetherSceneTestSubsystem::Initialize(FSubsystemCollectionBase& Collection)

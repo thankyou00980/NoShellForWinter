@@ -136,6 +136,7 @@ void UProjectEnemyVisualVariationSubsystem::Initialize(FSubsystemCollectionBase&
 	Super::Initialize(Collection);
 
 	TargetEnemyClasses.Reset();
+	MaleMorphTargetEnemyClasses.Reset();
 	AllowedMorphNameSet.Reset();
 	ProcessedActors.Reset();
 	PendingActors.Reset();
@@ -156,6 +157,22 @@ void UProjectEnemyVisualVariationSubsystem::Initialize(FSubsystemCollectionBase&
 				LogProjectEnemyVisualVariation,
 				Warning,
 				TEXT("Could not resolve target enemy class '%s'."),
+				*TargetEnemyClass.ToSoftObjectPath().ToString());
+		}
+	}
+
+	for (const TSoftClassPtr<APawn>& TargetEnemyClass : Settings->MaleMorphTargetEnemyClasses)
+	{
+		if (UClass* ResolvedClass = TargetEnemyClass.LoadSynchronous())
+		{
+			MaleMorphTargetEnemyClasses.AddUnique(ResolvedClass);
+		}
+		else
+		{
+			UE_LOG(
+				LogProjectEnemyVisualVariation,
+				Warning,
+				TEXT("Could not resolve male morph target enemy class '%s'."),
 				*TargetEnemyClass.ToSoftObjectPath().ToString());
 		}
 	}
@@ -184,6 +201,7 @@ void UProjectEnemyVisualVariationSubsystem::Deinitialize()
 
 	ActorSpawnedHandle.Reset();
 	TargetEnemyClasses.Reset();
+	MaleMorphTargetEnemyClasses.Reset();
 	AllowedMorphNameSet.Reset();
 	ProcessedActors.Reset();
 	PendingActors.Reset();
@@ -375,7 +393,11 @@ void UProjectEnemyVisualVariationSubsystem::TryApplyVariation(TWeakObjectPtr<APa
 
 	const FMorphSliderEntry& SelectedEntry = AllowedEntries[RollResult.SelectedEntryIndex];
 	CustomizationComponent->ApplyMorph(SelectedEntry, RollResult.MorphValue);
-	ApplyConfiguredMaleMorphGroups(Pawn, CustomizationComponent);
+	const bool bIsMaleMorphTarget = IsMaleMorphTargetClass(Pawn->GetClass());
+	if (bIsMaleMorphTarget)
+	{
+		ApplyConfiguredMaleMorphGroups(Pawn, CustomizationComponent);
+	}
 
 	const float SkinBrightnessMin = FMath::Min(Settings->SkinBrightnessMin, Settings->SkinBrightnessMax);
 	const float SkinBrightnessMax = FMath::Max(Settings->SkinBrightnessMin, Settings->SkinBrightnessMax);
@@ -384,7 +406,10 @@ void UProjectEnemyVisualVariationSubsystem::TryApplyVariation(TWeakObjectPtr<APa
 	CustomizationComponent->SetSkinColor(SkinColor);
 	ProjectEnemyVisualVariationSubsystemPrivate::ApplyNativeSkinColorToPawnMeshes(Pawn, *Settings, SkinColor);
 
-	InitializeArousalMorphState(Pawn, CustomizationComponent);
+	if (bIsMaleMorphTarget)
+	{
+		InitializeArousalMorphState(Pawn, CustomizationComponent);
+	}
 	MarkActorProcessed(Pawn);
 }
 
@@ -421,6 +446,24 @@ bool UProjectEnemyVisualVariationSubsystem::IsTargetEnemyClass(const UClass* Act
 	}
 
 	for (const TSubclassOf<APawn>& TargetEnemyClass : TargetEnemyClasses)
+	{
+		if (TargetEnemyClass && ActorClass == TargetEnemyClass.Get())
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool UProjectEnemyVisualVariationSubsystem::IsMaleMorphTargetClass(const UClass* ActorClass) const
+{
+	if (!IsValid(ActorClass))
+	{
+		return false;
+	}
+
+	for (const TSubclassOf<APawn>& TargetEnemyClass : MaleMorphTargetEnemyClasses)
 	{
 		if (TargetEnemyClass && ActorClass == TargetEnemyClass.Get())
 		{

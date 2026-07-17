@@ -76,7 +76,7 @@ public:
 	TSoftObjectPtr<UNiagaraSystem> SweatyBreathingNiagaraSystem = TSoftObjectPtr<UNiagaraSystem>(FSoftObjectPath(TEXT("/Script/Niagara.NiagaraSystem'/Game/Ultimate_Smoke_Vfx/FX/Niagara/HeavyBreathing.HeavyBreathing'")));
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dirty Pawn|Sweaty Breathing")
-	FSoftObjectPath SweatyBreathingSceneBlueprintPath = FSoftObjectPath(TEXT("/Script/Engine.Blueprint'/Game/ExportedAnimations/Together/0001Scene.0001Scene'"));
+	FSoftObjectPath SweatyBreathingSceneBlueprintPath = FSoftObjectPath(TEXT("/Script/Engine.Blueprint'/Game/_Game/Animations/Intimacy/Scenes/BP_IntimacyScene_0001.BP_IntimacyScene_0001'"));
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dirty Pawn|Sweaty Breathing")
 	FName SweatyBreathingComponentName = TEXT("HeavyBreathing");

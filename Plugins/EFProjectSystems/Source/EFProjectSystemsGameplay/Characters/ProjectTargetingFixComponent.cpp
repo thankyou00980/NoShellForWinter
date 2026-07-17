@@ -2,6 +2,7 @@
 
 #include "Characters/ProjectEnemyLevelComponent.h"
 #include "Characters/ProjectEnemyTargetInfoComponent.h"
+#include "Camera/PlayerCameraManager.h"
 #include "Components/SceneComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Pawn.h"
@@ -284,15 +285,49 @@ bool UProjectTargetingFixComponent::DebugSetCurrentTargetActor(AActor* TargetAct
 	(void)TargetActor;
 	return false;
 #else
-	if (!IsValid(TargetActor) || TargetActor == GetOwner())
+	return RestoreCurrentTargetActor(TargetActor);
+#endif
+}
+
+bool UProjectTargetingFixComponent::RestoreCurrentTargetActor(AActor* TargetActor)
+{
+	if (!IsValid(TargetActor) || TargetActor == GetOwner() || TargetActor->IsActorBeingDestroyed())
 	{
 		return false;
 	}
 
-	EnsureRuntimeContext();
+	// ACF's UATSTargetingComponent::SetCurrentTarget assumes its private
+	// ControlledPawn and camera manager references are valid. During
+	// OnPossessedPawnChanged the old pawn no longer satisfies that contract;
+	// calling SetCurrentTarget then dereferences a null ControlledPawn in
+	// GetBestTargetPointForTarget. Never enter ACF while the owner is detached.
+	if (!EnsureRuntimeContext())
+	{
+		UE_LOG(LogProjectTargetingFix, Verbose,
+			TEXT("Skipped target restore for %s because its owner is not the currently possessed local pawn."),
+			*GetNameSafe(TargetActor));
+		return false;
+	}
+
+	APawn* OwnerPawn = CachedOwnerPawn.Get();
+	APlayerController* PlayerController = CachedPlayerController.Get();
+	if (!IsValid(OwnerPawn)
+		|| OwnerPawn->IsActorBeingDestroyed()
+		|| !IsValid(PlayerController)
+		|| PlayerController->GetPawn() != OwnerPawn
+		|| !IsValid(PlayerController->PlayerCameraManager)
+		|| TargetActor->GetWorld() != GetWorld())
+	{
+		return false;
+	}
+
 	UActorComponent* TargetingComponent = ResolveTargetingComponent();
 	bool bChangedTargetingState = false;
-	if (TargetingComponent)
+	if (IsValid(TargetingComponent)
+		&& TargetingComponent->IsRegistered()
+		&& TargetingComponent->HasBegunPlay()
+		&& IsValid(TargetingComponent->GetOwner())
+		&& !TargetingComponent->GetOwner()->IsActorBeingDestroyed())
 	{
 		if (UFunction* SetCurrentTargetFunction = TargetingComponent->FindFunction(TEXT("SetCurrentTarget")))
 		{
@@ -326,7 +361,6 @@ bool UProjectTargetingFixComponent::DebugSetCurrentTargetActor(AActor* TargetAct
 	ShowTargetInfoForActor(TargetActor);
 	RefreshSocialCardForActor(TargetActor, true);
 	return bChangedTargetingState || IsValid(CachedTargetActor.Get());
-#endif
 }
 
 bool UProjectTargetingFixComponent::DeactivateCurrentTargetingLock()
@@ -395,7 +429,11 @@ bool UProjectTargetingFixComponent::EnsureRuntimeContext()
 {
 	CachedOwnerPawn = Cast<APawn>(GetOwner());
 	CachedPlayerController = CachedOwnerPawn ? Cast<APlayerController>(CachedOwnerPawn->GetController()) : nullptr;
-	return CachedOwnerPawn && CachedPlayerController && CachedPlayerController->IsLocalController();
+	return IsValid(CachedOwnerPawn)
+		&& !CachedOwnerPawn->IsActorBeingDestroyed()
+		&& IsValid(CachedPlayerController)
+		&& CachedPlayerController->IsLocalController()
+		&& CachedPlayerController->GetPawn() == CachedOwnerPawn;
 }
 
 UActorComponent* UProjectTargetingFixComponent::ResolveTargetingComponent()

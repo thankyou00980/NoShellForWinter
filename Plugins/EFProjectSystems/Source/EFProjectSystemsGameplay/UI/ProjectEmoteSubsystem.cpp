@@ -14,6 +14,7 @@
 #include "GameFramework/PlayerController.h"
 #include "InputCoreTypes.h"
 #include "Intimacy/ProjectIntimacySubsystem.h"
+#include "Intimacy/ProjectIntimacyPartnerComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lockpicking/ProjectLockpickableComponent.h"
 #include "Locomotion/ProjectEmoteComponent.h"
@@ -344,7 +345,9 @@ void UProjectEmoteSubsystem::HandleTrackedPawnChanged(APawn* OldPawn, APawn* New
 {
 	if (OldPawn && OldPawn == TrackedPlayerPawn)
 	{
-		CleanupMenuAndEmoteState();
+		// The old pawn has already been detached from ACF's targeting runtime.
+		// Cleanup must not attempt to restore its pre-interaction target.
+		CleanupMenuAndEmoteState(false);
 	}
 
 	TrackedPlayerPawn = NewPawn;
@@ -407,7 +410,7 @@ void UProjectEmoteSubsystem::DetachFromTrackedPlayerController(const bool bStopA
 
 	if (bStopActiveEmote && TrackedEmoteComponent)
 	{
-		TrackedEmoteComponent->StopEmote();
+		TrackedEmoteComponent->StopEmote(false);
 	}
 
 	if (TrackedEmoteMenuWidget)
@@ -783,7 +786,7 @@ void UProjectEmoteSubsystem::CompleteRuntimeAction(const EProjectEmoteRuntimeAct
 	OnRuntimeActionEnded.Broadcast(CompletedRequest, EndReason);
 }
 
-void UProjectEmoteSubsystem::CleanupMenuAndEmoteState()
+void UProjectEmoteSubsystem::CleanupMenuAndEmoteState(const bool bRestoreTargetActor)
 {
 	if (bMenuOpen)
 	{
@@ -794,7 +797,7 @@ void UProjectEmoteSubsystem::CleanupMenuAndEmoteState()
 	{
 		if (TrackedEmoteComponent)
 		{
-			TrackedEmoteComponent->StopEmote();
+			TrackedEmoteComponent->StopEmote(bRestoreTargetActor);
 		}
 		CompleteRuntimeAction(EProjectEmoteRuntimeActionEndReason::Interrupted);
 		return;
@@ -802,7 +805,7 @@ void UProjectEmoteSubsystem::CleanupMenuAndEmoteState()
 
 	if (TrackedEmoteComponent)
 	{
-		TrackedEmoteComponent->StopEmote();
+		TrackedEmoteComponent->StopEmote(bRestoreTargetActor);
 	}
 }
 
@@ -1302,6 +1305,20 @@ bool UProjectEmoteSubsystem::IsCombatBlockingEmoteMenu() const
 	if (TrackedEmoteComponent && TrackedEmoteComponent->IsEmoteActive())
 	{
 		return false;
+	}
+
+	// T + Y is an explicit contextual interaction request. A selected enemy or
+	// companion with an Intimacy partner identity must keep the Partner/Social/
+	// Actions menu available even while ACF still reports the surrounding battle.
+	if (TrackedEmoteComponent)
+	{
+		if (const AActor* CurrentTarget = TrackedEmoteComponent->GetCurrentInteractionTargetActor())
+		{
+			if (CurrentTarget->FindComponentByClass<UProjectIntimacyPartnerComponent>())
+			{
+				return false;
+			}
+		}
 	}
 
 	if (TrackedEmoteComponent && TrackedEmoteComponent->IsCombatLockoutActive(ProjectEmoteSubsystemPrivate::CombatMenuLockoutSeconds))

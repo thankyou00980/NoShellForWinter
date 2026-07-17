@@ -19,6 +19,7 @@
 #include "Components/PrimitiveComponent.h"
 #include "Components/SkinnedMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Engine/Blueprint.h"
 #include "Engine/BlueprintGeneratedClass.h"
 #include "Engine/GameInstance.h"
@@ -64,8 +65,19 @@ namespace ProjectEmoteComponentPrivate
 	static const FName TogetherFolderNodeId(TEXT("Actions.Together"));
 	static const FName TogetherScene0001NodeId(TEXT("Actions.Together.0001Scene"));
 	static constexpr TCHAR DefaultMenuDataAssetPath[] = TEXT("/Game/_Game/Emote/DA_ProjectEmoteMenu.DA_ProjectEmoteMenu");
-	static constexpr TCHAR DefaultTogetherSceneBlueprintPath[] = TEXT("/Script/Engine.Blueprint'/Game/ExportedAnimations/Together/0001Scene.0001Scene'");
+	static constexpr TCHAR DefaultTogetherSceneBlueprintPath[] = TEXT("/Script/Engine.Blueprint'/Game/_Game/Animations/Intimacy/Scenes/BP_IntimacyScene_0001.BP_IntimacyScene_0001'");
 	static constexpr TCHAR BlueprintSceneClimaxCueToken[] = TEXT("MilkySplash");
+	static constexpr TCHAR EquipmentIdentityTokens[][16] =
+	{
+		TEXT("Weapon"),
+		TEXT("ItemActor"),
+		TEXT("Equipment"),
+		TEXT("Sword"),
+		TEXT("BowActor"),
+		TEXT("Shield"),
+		TEXT("Quiver"),
+		TEXT("ArrowActor")
+	};
 	// Project-standard permanently authored RootOffset values for these shipped action nodes.
 	// They seed fallback/menu generation only; DA_ProjectEmoteMenu remains manually editable.
 	static constexpr float StandardFunnyTimeRemakeRootOffsetZ = 10.0f;
@@ -76,6 +88,57 @@ namespace ProjectEmoteComponentPrivate
 		return TrainingId.IsNone()
 			? NAME_None
 			: FName(*FString::Printf(TEXT("Actions.Training.%s"), *TrainingId.ToString()));
+	}
+
+	static bool ContainsEquipmentIdentityToken(const FString& Value)
+	{
+		for (const TCHAR* Token : EquipmentIdentityTokens)
+		{
+			if (Value.Contains(Token, ESearchCase::IgnoreCase))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	static bool IsLikelyAttachedEquipmentActor(const AActor* Actor)
+	{
+		if (!IsValid(Actor) || Actor->IsA<AController>() || Actor->IsA<ACharacter>())
+		{
+			return false;
+		}
+
+		const FString ActorIdentity = FString::Printf(TEXT("%s %s"), *Actor->GetName(), *Actor->GetClass()->GetPathName());
+		if (ContainsEquipmentIdentityToken(ActorIdentity))
+		{
+			return true;
+		}
+
+		TInlineComponentArray<UPrimitiveComponent*> PrimitiveComponents;
+		Actor->GetComponents(PrimitiveComponents);
+		for (const UPrimitiveComponent* PrimitiveComponent : PrimitiveComponents)
+		{
+			FString AssetPath;
+			if (const USkeletalMeshComponent* SkeletalMeshComponent = Cast<USkeletalMeshComponent>(PrimitiveComponent))
+			{
+				AssetPath = GetPathNameSafe(SkeletalMeshComponent->GetSkeletalMeshAsset());
+			}
+			else if (const UStaticMeshComponent* StaticMeshComponent = Cast<UStaticMeshComponent>(PrimitiveComponent))
+			{
+				AssetPath = GetPathNameSafe(StaticMeshComponent->GetStaticMesh());
+			}
+
+			if (AssetPath.Contains(TEXT("/Weapons/"), ESearchCase::IgnoreCase)
+				|| AssetPath.Contains(TEXT("/Items/"), ESearchCase::IgnoreCase)
+				|| AssetPath.Contains(TEXT("/Equipment/"), ESearchCase::IgnoreCase))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	static FName ResolveAttributeLeafName(const FGameplayTag& AttributeTag)
@@ -558,6 +621,7 @@ namespace ProjectEmoteComponentPrivate
 UProjectEmoteComponent::UProjectEmoteComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.TickGroup = TG_PostUpdateWork;
 	PrimaryComponentTick.SetTickFunctionEnable(false);
 	InitializeDefaultInteractionCatalog();
 }
@@ -572,7 +636,7 @@ void UProjectEmoteComponent::BeginPlay()
 
 void UProjectEmoteComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	StopEmote();
+	StopEmote(false);
 	if (UWorld* World = GetWorld())
 	{
 		World->GetTimerManager().ClearTimer(DeferredViewTargetRestoreTimerHandle);
@@ -585,6 +649,7 @@ void UProjectEmoteComponent::TickComponent(const float DeltaTime, const ELevelTi
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	RefreshIntimacyCombatShield(false);
+	RefreshBlueprintSceneEquipmentSuppression();
 	UpdateFreeCamera(DeltaTime);
 }
 
@@ -611,8 +676,12 @@ bool UProjectEmoteComponent::StartRuntimeInteractionById(const FName Interaction
 	return Definition != nullptr ? StartInteraction(*Definition, true) : false;
 }
 
-void UProjectEmoteComponent::StopEmote()
+void UProjectEmoteComponent::StopEmote(const bool bRestoreTargetActor)
 {
+	const TWeakObjectPtr<AActor> TargetActorToRestoreAfterStop = bRestoreTargetActor
+		? TargetingActorToRestore
+		: TWeakObjectPtr<AActor>();
+	TargetingActorToRestore.Reset();
 	if (UWorld* World = GetWorld())
 	{
 		World->GetTimerManager().ClearTimer(DeferredEmoteStartTimerHandle);
@@ -645,6 +714,16 @@ void UProjectEmoteComponent::StopEmote()
 #if WITH_EDITOR
 	DebugBlueprintSceneTargetActor.Reset();
 #endif
+	if (AActor* TargetActor = TargetActorToRestoreAfterStop.Get())
+	{
+		if (ACharacter* Character = CachedCharacterOwner.Get())
+		{
+			if (UProjectTargetingFixComponent* TargetingFixComponent = Character->FindComponentByClass<UProjectTargetingFixComponent>())
+			{
+				TargetingFixComponent->RestoreCurrentTargetActor(TargetActor);
+			}
+		}
+	}
 
 	if (bHadActiveState)
 	{
@@ -773,6 +852,15 @@ AActor* UProjectEmoteComponent::GetActiveBlueprintSceneTargetActor() const
 	return TargetParticipantState.Actor.Get();
 }
 
+AActor* UProjectEmoteComponent::GetCurrentInteractionTargetActor() const
+{
+	if (AActor* ActiveTargetActor = GetActiveBlueprintSceneTargetActor())
+	{
+		return ActiveTargetActor;
+	}
+	return ResolveCurrentTargetActor();
+}
+
 bool UProjectEmoteComponent::TriggerBlueprintSceneVisualClimaxCue()
 {
 	AActor* VisualActor = ActiveBlueprintSceneVisualActor;
@@ -889,7 +977,22 @@ void UProjectEmoteComponent::AutomationRestoreIntimacyCombatShieldForTest()
 {
 	RestoreIntimacyCombatShield();
 }
+
+void UProjectEmoteComponent::AutomationApplyBlueprintSceneEquipmentSuppressionForTest(AActor* PlayerActor, AActor* PartnerActor)
+{
+	ApplyBlueprintSceneEquipmentSuppression(PlayerActor, PartnerActor);
+}
+
+void UProjectEmoteComponent::AutomationRestoreBlueprintSceneEquipmentSuppressionForTest()
+{
+	RestoreBlueprintSceneEquipmentSuppression();
+}
 #endif
+
+int32 UProjectEmoteComponent::AutomationGetSuppressedBlueprintSceneEquipmentCount() const
+{
+	return BlueprintSceneEquipmentSnapshots.Num();
+}
 
 #if WITH_EDITOR
 void UProjectEmoteComponent::SetDebugBlueprintSceneTargetActor(AActor* TargetActor)
@@ -1681,6 +1784,7 @@ bool UProjectEmoteComponent::StartInteraction(const FProjectEmoteInteractionDefi
 	}
 
 	StopEmote();
+	TargetingActorToRestore = PreparedBlueprintSceneTargetActor;
 	ResolveDependencies();
 	Character = CachedCharacterOwner.Get();
 	PlayerController = ResolveOwningPlayerController();
@@ -1733,6 +1837,7 @@ bool UProjectEmoteComponent::StartInteraction(const FProjectEmoteInteractionDefi
 		bBlueprintSceneActive = true;
 		ActiveBlueprintSceneDefinition = PreparedBlueprintSceneDefinition;
 		CacheAndFreezeTargetParticipant(TargetParticipantState, PreparedBlueprintSceneTargetActor, PreparedBlueprintSceneTargetMesh);
+		ApplyBlueprintSceneEquipmentSuppression(Character, PreparedBlueprintSceneTargetActor);
 		if (ShouldApplyIntimacyCombatShield(Definition))
 		{
 			ApplyIntimacyCombatShield(Character, PreparedBlueprintSceneTargetActor);
@@ -2408,6 +2513,11 @@ void UProjectEmoteComponent::RestoreIntimacyCombatShield()
 	NextIntimacyCombatShieldRefreshSeconds = 0.0f;
 }
 
+void UProjectEmoteComponent::ClearIntimacyCombatShield()
+{
+	RestoreIntimacyCombatShield();
+}
+
 void UProjectEmoteComponent::RefreshIntimacyCombatShield(const bool bForce)
 {
 	if (!bIntimacyCombatShieldApplied || CombatShieldSnapshots.IsEmpty())
@@ -2783,6 +2893,119 @@ void UProjectEmoteComponent::ApplyAnimSceneLockForActor(AActor* Actor, USkeletal
 	{
 		SourceMeshComponent->RefreshBoneTransforms();
 	}
+}
+
+void UProjectEmoteComponent::ApplyBlueprintSceneEquipmentSuppression(AActor* PlayerActor, AActor* PartnerActor)
+{
+	RestoreBlueprintSceneEquipmentSuppression();
+
+	const AActor* Participants[] = { PlayerActor, PartnerActor };
+	for (const AActor* Participant : Participants)
+	{
+		if (!IsValid(Participant))
+		{
+			continue;
+		}
+
+		TArray<AActor*> AttachedActors;
+		Participant->GetAttachedActors(AttachedActors, true, true);
+		for (AActor* AttachedActor : AttachedActors)
+		{
+			if (!ProjectEmoteComponentPrivate::IsLikelyAttachedEquipmentActor(AttachedActor)
+				|| BlueprintSceneEquipmentSnapshots.ContainsByPredicate([AttachedActor](const FProjectEmoteEquipmentVisibilitySnapshot& Snapshot)
+				{
+					return Snapshot.Actor.Get() == AttachedActor;
+				}))
+			{
+				continue;
+			}
+
+			FProjectEmoteEquipmentVisibilitySnapshot Snapshot;
+			Snapshot.Actor = AttachedActor;
+			Snapshot.bWasHiddenInGame = AttachedActor->IsHidden();
+			Snapshot.bWasCollisionEnabled = AttachedActor->GetActorEnableCollision();
+			BlueprintSceneEquipmentSnapshots.Add(Snapshot);
+
+			AttachedActor->SetActorHiddenInGame(true);
+			AttachedActor->SetActorEnableCollision(false);
+
+			TInlineComponentArray<UPrimitiveComponent*> PrimitiveComponents;
+			AttachedActor->GetComponents(PrimitiveComponents);
+			for (UPrimitiveComponent* PrimitiveComponent : PrimitiveComponents)
+			{
+				if (!PrimitiveComponent)
+				{
+					continue;
+				}
+
+				FProjectEmoteEquipmentPrimitiveVisibilitySnapshot PrimitiveSnapshot;
+				PrimitiveSnapshot.Component = PrimitiveComponent;
+				PrimitiveSnapshot.bWasVisible = PrimitiveComponent->IsVisible();
+				PrimitiveSnapshot.bWasHiddenInGame = PrimitiveComponent->bHiddenInGame;
+				BlueprintSceneEquipmentPrimitiveSnapshots.Add(PrimitiveSnapshot);
+				PrimitiveComponent->SetVisibility(false, true);
+				PrimitiveComponent->SetHiddenInGame(true, true);
+			}
+		}
+	}
+
+	if (!BlueprintSceneEquipmentSnapshots.IsEmpty())
+	{
+		UE_LOG(
+			LogProjectEmoteComponent,
+			Log,
+			TEXT("[ProjectEmote] Suppressed %d attached equipment actor(s) for blueprint scene playback."),
+			BlueprintSceneEquipmentSnapshots.Num());
+	}
+}
+
+void UProjectEmoteComponent::RefreshBlueprintSceneEquipmentSuppression()
+{
+	if (BlueprintSceneEquipmentSnapshots.IsEmpty())
+	{
+		return;
+	}
+
+	for (const FProjectEmoteEquipmentVisibilitySnapshot& Snapshot : BlueprintSceneEquipmentSnapshots)
+	{
+		if (AActor* Actor = Snapshot.Actor.Get())
+		{
+			Actor->SetActorHiddenInGame(true);
+			Actor->SetActorEnableCollision(false);
+		}
+	}
+
+	for (const FProjectEmoteEquipmentPrimitiveVisibilitySnapshot& Snapshot : BlueprintSceneEquipmentPrimitiveSnapshots)
+	{
+		if (UPrimitiveComponent* Component = Snapshot.Component.Get())
+		{
+			Component->SetVisibility(false, true);
+			Component->SetHiddenInGame(true, true);
+		}
+	}
+}
+
+void UProjectEmoteComponent::RestoreBlueprintSceneEquipmentSuppression()
+{
+	for (const FProjectEmoteEquipmentVisibilitySnapshot& Snapshot : BlueprintSceneEquipmentSnapshots)
+	{
+		if (AActor* Actor = Snapshot.Actor.Get())
+		{
+			Actor->SetActorHiddenInGame(Snapshot.bWasHiddenInGame);
+			Actor->SetActorEnableCollision(Snapshot.bWasCollisionEnabled);
+		}
+	}
+	for (const FProjectEmoteEquipmentPrimitiveVisibilitySnapshot& Snapshot : BlueprintSceneEquipmentPrimitiveSnapshots)
+	{
+		if (UPrimitiveComponent* Component = Snapshot.Component.Get())
+		{
+			Component->SetVisibility(Snapshot.bWasVisible, true);
+			Component->SetHiddenInGame(Snapshot.bWasHiddenInGame, true);
+		}
+	}
+
+	BlueprintSceneEquipmentSnapshots.Reset();
+	BlueprintSceneEquipmentPrimitiveSnapshots.Reset();
 }
 
 void UProjectEmoteComponent::ApplyMinimalAnimSceneLock()
@@ -3816,7 +4039,9 @@ void UProjectEmoteComponent::RestoreBlueprintSceneState()
 		&& !ActiveTargetOverlayMontage
 		&& !TargetParticipantState.Actor.IsValid()
 		&& !bBlueprintScenePlayerTransformCached
-		&& !ActiveBlueprintSceneVisualActor)
+		&& !ActiveBlueprintSceneVisualActor
+		&& BlueprintSceneEquipmentSnapshots.IsEmpty()
+		&& BlueprintSceneEquipmentPrimitiveSnapshots.IsEmpty())
 	{
 		return;
 	}
@@ -3835,6 +4060,7 @@ void UProjectEmoteComponent::RestoreBlueprintSceneState()
 	FTransform TargetEndTransform = FTransform::Identity;
 	const bool bUseTargetEndTransform = BuildBlueprintSceneTargetEndTransform(TargetEndTransform);
 	RestoreTargetParticipant(TargetParticipantState, bUseTargetEndTransform ? &TargetEndTransform : nullptr);
+	RestoreBlueprintSceneEquipmentSuppression();
 	RestoreIntimacyCombatShield();
 
 	bBlueprintSceneActive = false;
