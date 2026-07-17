@@ -24,6 +24,7 @@ class UDamageType;
 class UProjectCombatAttributeComponent;
 class UProjectEmoteMenuDataAsset;
 class UProjectLocomotionOverrideComponent;
+class UPrimitiveComponent;
 class USkeletalMesh;
 class USkinnedMeshComponent;
 class USkeletalMeshComponent;
@@ -115,6 +116,20 @@ struct FProjectEmoteAiCombatSuppressionSnapshot
 	bool bBrainWasPaused = false;
 };
 
+struct FProjectEmoteEquipmentVisibilitySnapshot
+{
+	TWeakObjectPtr<AActor> Actor;
+	bool bWasHiddenInGame = false;
+	bool bWasCollisionEnabled = true;
+};
+
+struct FProjectEmoteEquipmentPrimitiveVisibilitySnapshot
+{
+	TWeakObjectPtr<UPrimitiveComponent> Component;
+	bool bWasVisible = true;
+	bool bWasHiddenInGame = false;
+};
+
 UCLASS(ClassGroup = (Project), meta = (BlueprintSpawnableComponent))
 class EFPROJECTSYSTEMSGAMEPLAY_API UProjectEmoteComponent : public UActorComponent
 {
@@ -184,7 +199,11 @@ public:
 #if WITH_DEV_AUTOMATION_TESTS
 	void AutomationApplyIntimacyCombatShieldForTest(AActor* PlayerActor, AActor* PartnerActor);
 	void AutomationRestoreIntimacyCombatShieldForTest();
+	void AutomationApplyBlueprintSceneEquipmentSuppressionForTest(AActor* PlayerActor, AActor* PartnerActor);
+	void AutomationRestoreBlueprintSceneEquipmentSuppressionForTest();
 #endif
+	UFUNCTION(BlueprintPure, Category = "Project|Emote|Automation")
+	int32 AutomationGetSuppressedBlueprintSceneEquipmentCount() const;
 
 #if WITH_EDITOR
 	UFUNCTION(BlueprintCallable, Category = "Project|Emote|Debug")
@@ -268,6 +287,9 @@ private:
 	void ApplyMinimalAnimSceneLock();
 	void RestoreMinimalAnimSceneLock();
 	void ApplyAnimSceneLockForActor(AActor* Actor, USkeletalMeshComponent* SourceMeshComponent);
+	void ApplyBlueprintSceneEquipmentSuppression(AActor* PlayerActor, AActor* PartnerActor);
+	void RefreshBlueprintSceneEquipmentSuppression();
+	void RestoreBlueprintSceneEquipmentSuppression();
 	void ApplyAnimInstanceSceneLock(UObject* AnimInstanceObject);
 	void ApplyVisibleMeshLeaderPoseSceneLock();
 	void ApplyVisibleMeshLeaderPoseSceneLockForActor(AActor* Actor, USkeletalMeshComponent* SourceMeshComponent);
@@ -468,6 +490,8 @@ private:
 	TArray<FProjectEmoteLeaderPoseSceneLockSnapshot> LeaderPoseSceneLockSnapshots;
 	TArray<FProjectEmoteCombatShieldSnapshot> CombatShieldSnapshots;
 	TArray<FProjectEmoteAiCombatSuppressionSnapshot> IntimacyAiSuppressionSnapshots;
+	TArray<FProjectEmoteEquipmentVisibilitySnapshot> BlueprintSceneEquipmentSnapshots;
+	TArray<FProjectEmoteEquipmentPrimitiveVisibilitySnapshot> BlueprintSceneEquipmentPrimitiveSnapshots;
 	TArray<FProjectEmoteMenuNodeDefinition> CachedMenuNodes;
 	TMap<FName, int32> CachedMenuNodeIndexById;
 	mutable FProjectEmoteInteractionDefinition InteractionLookupScratch;

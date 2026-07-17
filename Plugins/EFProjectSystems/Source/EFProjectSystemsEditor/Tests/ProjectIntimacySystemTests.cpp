@@ -5,6 +5,7 @@
 #include "Combat/ProjectCombatAttributeComponent.h"
 #include "Combat/ProjectCombatTypes.h"
 #include "Components/ACFDamageHandlerComponent.h"
+#include "Components/SceneComponent.h"
 #include "Locomotion/ProjectEmoteComponent.h"
 #include "SinfulAscension/ProjectSinfulAscensionComponent.h"
 #include "Survival/ProjectSurvivalNeedsComponent.h"
@@ -60,6 +61,63 @@ bool FProjectIntimacyCombatShieldStateTest::RunTest(const FString& Parameters)
 	TestTrue(TEXT("Partner damage flag should restore"), Partner->CanBeDamaged());
 	TestFalse(TEXT("Player ACF immortal flag should restore"), PlayerDamageHandler->GetIsImmortal());
 	TestFalse(TEXT("Partner ACF immortal flag should restore"), PartnerDamageHandler->GetIsImmortal());
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(
+	FProjectIntimacyEquipmentSuppressionRestoreTest,
+	"ACFUltimateSample.Intimacy.BlueprintScene.EquipmentSuppressionAndRestore",
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FProjectIntimacyEquipmentSuppressionRestoreTest::RunTest(const FString& Parameters)
+{
+	AActor* Player = NewObject<AActor>();
+	AActor* Partner = NewObject<AActor>();
+	AActor* PlayerWeapon = NewObject<AActor>(GetTransientPackage(), TEXT("ACF_BaseSword_BP_C_Automation"));
+	AActor* PartnerWeapon = NewObject<AActor>(GetTransientPackage(), TEXT("ACF_BowActor_BP_C_Automation"));
+	UProjectEmoteComponent* EmoteComponent = NewObject<UProjectEmoteComponent>(Player);
+	TestNotNull(TEXT("Player should be constructible"), Player);
+	TestNotNull(TEXT("Partner should be constructible"), Partner);
+	TestNotNull(TEXT("Player weapon should be constructible"), PlayerWeapon);
+	TestNotNull(TEXT("Partner weapon should be constructible"), PartnerWeapon);
+	TestNotNull(TEXT("Emote component should be constructible"), EmoteComponent);
+	if (!Player || !Partner || !PlayerWeapon || !PartnerWeapon || !EmoteComponent)
+	{
+		return false;
+	}
+
+	auto AddRoot = [](AActor* Actor)
+	{
+		USceneComponent* Root = NewObject<USceneComponent>(Actor);
+		Actor->SetRootComponent(Root);
+	};
+	AddRoot(Player);
+	AddRoot(Partner);
+	AddRoot(PlayerWeapon);
+	AddRoot(PartnerWeapon);
+	Player->AddInstanceComponent(EmoteComponent);
+	PlayerWeapon->AttachToActor(Player, FAttachmentTransformRules::KeepRelativeTransform);
+	PartnerWeapon->AttachToActor(Partner, FAttachmentTransformRules::KeepRelativeTransform);
+	PlayerWeapon->SetActorHiddenInGame(false);
+	PartnerWeapon->SetActorHiddenInGame(true);
+	PlayerWeapon->SetActorEnableCollision(true);
+	PartnerWeapon->SetActorEnableCollision(false);
+
+	TestTrue(TEXT("Player weapon should be attached"), PlayerWeapon->GetAttachParentActor() == Player);
+	TestTrue(TEXT("Partner weapon should be attached"), PartnerWeapon->GetAttachParentActor() == Partner);
+	EmoteComponent->AutomationApplyBlueprintSceneEquipmentSuppressionForTest(Player, Partner);
+	TestEqual(TEXT("Both equipment actors should be tracked"), EmoteComponent->AutomationGetSuppressedBlueprintSceneEquipmentCount(), 2);
+	TestTrue(TEXT("Visible player weapon should be hidden during scene"), PlayerWeapon->IsHidden());
+	TestFalse(TEXT("Player weapon collision should be disabled during scene"), PlayerWeapon->GetActorEnableCollision());
+	TestTrue(TEXT("Already-hidden partner weapon should remain hidden during scene"), PartnerWeapon->IsHidden());
+	TestFalse(TEXT("Partner weapon collision should remain disabled during scene"), PartnerWeapon->GetActorEnableCollision());
+
+	EmoteComponent->AutomationRestoreBlueprintSceneEquipmentSuppressionForTest();
+	TestEqual(TEXT("Equipment snapshots should clear after restore"), EmoteComponent->AutomationGetSuppressedBlueprintSceneEquipmentCount(), 0);
+	TestFalse(TEXT("Player weapon visibility should restore"), PlayerWeapon->IsHidden());
+	TestTrue(TEXT("Player weapon collision should restore"), PlayerWeapon->GetActorEnableCollision());
+	TestTrue(TEXT("Partner weapon hidden state should restore"), PartnerWeapon->IsHidden());
+	TestFalse(TEXT("Partner weapon collision state should restore"), PartnerWeapon->GetActorEnableCollision());
 	return true;
 }
 

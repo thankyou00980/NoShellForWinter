@@ -165,7 +165,7 @@ public:
 	bool bEnableSightDrivenArousalMorphs = true;
 
 	UPROPERTY(EditAnywhere, Config, Category = "Arousal")
-	FName FlaccidMorphName = TEXT("DK_Flacid04");
+	FName FlaccidMorphName = TEXT("DK_Flacid 04");
 
 	UPROPERTY(EditAnywhere, Config, Category = "Arousal")
 	FName ErectionMorphName = TEXT("DK_Erection");

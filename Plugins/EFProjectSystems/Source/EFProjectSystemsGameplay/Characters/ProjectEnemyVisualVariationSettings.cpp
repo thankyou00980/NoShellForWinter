@@ -148,7 +148,7 @@ UProjectEnemyVisualVariationSettings::UProjectEnemyVisualVariationSettings()
 	};
 
 	bEnableSightDrivenArousalMorphs = true;
-	FlaccidMorphName = TEXT("DK_Flacid04");
+	FlaccidMorphName = TEXT("DK_Flacid 04");
 	ErectionMorphName = TEXT("DK_Erection");
 	MorphTransitionSpeed = 0.25f;
 	SightCheckIntervalSeconds = 0.10f;

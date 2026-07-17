@@ -62,7 +62,7 @@ The scene uses the current `/Game/DazToUnreal/Female/Female` and `/Game/DazToUnr
 | Packaged content inventory | PASS | UnrealPak: 22 organized character assets and all 3 Intimacy assets present |
 | Packaged interactive smoke | PENDING | Headless launch stayed alive but did not honor automated quit; no interactive packaged-session claim is made |
 | Animation retarget/pose parity | PENDING | Explicitly permitted exception; asset load, references and package are blocking and pass |
-| Male erection visual | PENDING_ASSET_DATA | Runtime routing is Male-only, but current Male mesh reports missing `DK_Flacid04` and `DK_Erection` morph targets, so the driver correctly skips them |
+| Male erection visual | PASS | The authoritative Male mesh contains `DK_Flacid 04` and `DK_Erection`; the corrected runtime preserves the Male mesh and logs the arousal transition. See `Saved/Migration/Phase5/Visual/IntimacyMaleGenderMeshFinal` and `Saved/Logs/NoShellForWinter.log`. |
 
 The focused PIE result proves:
 
@@ -169,3 +169,40 @@ Final invariant reports are:
   DazToUnreal plugin 213/213 `PASS`; the same 69 pre-existing target Daz mismatches as the post-organization
   reference, with identical mismatch payload and zero hotfix delta.
 - Player, Female, Multiple and Male hashes remain exactly the values recorded above.
+
+## Final automated runtime hardening
+
+Date: 2026-07-16
+
+The earlier visual-equipment paragraph is superseded by this final pass. Project-owned scene playback now
+snapshots attached equipment actors and their primitive visibility/collision state, suppresses them every
+post-update tick while `Actions.Together.0001Scene` is active, and restores the exact state on cancel. This is
+necessary because ACF can refresh equipped component visibility after an actor-level hide.
+
+Visual comparison against the read-only LADS reference captures at
+`D:\Projects UE5\LustAsDeadlySin\Saved\Intimacy\VisualCaptures` also exposed a Female substitution in the mixed
+local Character Creation integration. The independently staged migration gate now authors and validates all 11
+organized Male Blueprint CDOs against `/Game/DazToUnreal/Male/Male`; Female remains unchanged. On the validated
+integrated workspace the final Male runtime has no scene mesh mismatch, uses the Male role animation, and logs
+`Enemy arousal morph transition triggered`. Concurrent Character Creation changes remain outside this commit.
+
+### Final gates
+
+| Gate | Result | Evidence |
+|---|---|---|
+| UE 5.8 build after equipment/gender fixes | PASS | `Saved/Migration/Phase5/Logs/MaleRuntimeGenderFixBuild.log`; UBT `Result: Succeeded` |
+| Intimacy native suite | PASS | `Saved/Migration/Phase5/Tests/IntimacyGenderMeshFinalFull/index.json`: 15 succeeded, 0 failed |
+| Enemy registry/gender/morph/mesh suite | PASS | `Saved/Migration/Phase5/Tests/EnemyMaleMeshRegistryFinal/index.json`: 2 succeeded, 0 failed; all 11 Male CDOs use the authoritative Male mesh |
+| Automated Male/Female runtime soak | PASS | `Saved/Migration/Phase5/Runtime/IntimacySoak58_GenderMeshFinal/summary.json`: 2/2 cycles; four equipment actors suppressed and restored exactly per cycle |
+| Male full visual sequence | PASS | Eight accepted captures in `Saved/Migration/Phase5/Visual/IntimacyMaleGenderMeshFinal`; Male body/pose, visible erection, Social Card `Gender: Male`, no intersecting weapons, HUD/Talk/Items/Please/climax |
+| Female full visual sequence | PASS | Eight accepted captures in `Saved/Migration/Phase5/Visual/IntimacyFemaleEquipmentFix2`; Female pose/body, no male genital morph, no intersecting weapons, HUD/Talk/Items/Please/climax |
+| LADS reference visual comparison | PASS | Source captures inspected read-only from `Saved/Intimacy/VisualCaptures`; target preserves the synchronized pose and removes the source weapon intersections |
+| Cook/stage/pak/archive | PASS | `Saved/Migration/Phase5/Package/EnemyIntimacyGenderMeshFinal`; UAT `BUILD SUCCESSFUL` in 325.45 s |
+| IoStore inventory | PASS | `Saved/Migration/Phase5/Package/EnemyIntimacyGenderMeshFinal.inventory.txt`: 11 Male, 11 Female and 3 Intimacy assets; `ACFMMEnemyBPMale` present |
+| Packaged startup smoke | PASS | `Saved/Migration/Phase5/Package/EnemyIntimacyGenderMeshFinal.smoke.json`: inner executable alive for 20 seconds under `NullRHI`, then stopped explicitly |
+| Source read-only | PASS | `Saved/Migration/Phase5/Hashes/EnemyIntimacy_SourceReadOnly_GenderMeshFinal.json` |
+| Protected invariants | PASS task delta | `Saved/Migration/Phase5/Hashes/EnemyIntimacy_ProtectedInvariants_GenderMeshFinal.json`: ACFU 5,043/5,043, DazToUnreal plugin 213/213, and the same 69 pre-existing target-Daz mismatch payload |
+
+The runtime automation executes the complete session path: target resolution, Social Card, quick-start scene,
+active Intimacy profile/HUD, Talk, Items, Please, forced climax/Niagara, cancel, target recovery, movement/input
+recovery, combat-shield cleanup and equipment restoration. Male and Female both pass the same lifecycle.

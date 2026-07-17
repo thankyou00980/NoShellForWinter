@@ -6,6 +6,8 @@
 #include "Characters/ProjectEnemyLevelSettings.h"
 #include "Characters/ProjectEnemyVisualVariationSettings.h"
 #include "EFProjectEnemySettings.h"
+#include "Engine/SkeletalMesh.h"
+#include "GameFramework/Character.h"
 #include "GameFramework/Pawn.h"
 #include "Intimacy/ProjectIntimacyPartnerComponent.h"
 #include "Misc/AutomationTest.h"
@@ -60,6 +62,15 @@ bool FProjectEnemyCharacterRegistryCoverageTest::RunTest(const FString& Paramete
 	TestEqual(TEXT("Level registry contains sixteen hostiles"), LevelSettings->TargetEnemyBaseClasses.Num(), 16);
 	TestEqual(TEXT("Shared visual registry contains sixteen hostiles"), VisualSettings->TargetEnemyClasses.Num(), 16);
 	TestEqual(TEXT("Male morph registry contains only eight Male hostiles"), VisualSettings->MaleMorphTargetEnemyClasses.Num(), 8);
+	TestEqual(TEXT("Flaccid morph setting matches the current Male mesh"), VisualSettings->FlaccidMorphName, FName(TEXT("DK_Flacid 04")));
+	TestEqual(TEXT("Erection morph setting matches the current Male mesh"), VisualSettings->ErectionMorphName, FName(TEXT("DK_Erection")));
+	USkeletalMesh* MaleMesh = LoadObject<USkeletalMesh>(nullptr, TEXT("/Game/DazToUnreal/Male/Male.Male"));
+	TestNotNull(TEXT("Current Male mesh resolves"), MaleMesh);
+	if (MaleMesh)
+	{
+		TestNotNull(TEXT("Current Male mesh contains configured flaccid morph"), MaleMesh->FindMorphTarget(VisualSettings->FlaccidMorphName));
+		TestNotNull(TEXT("Current Male mesh contains configured erection morph"), MaleMesh->FindMorphTarget(VisualSettings->ErectionMorphName));
+	}
 
 	TSet<FString> RuntimePaths;
 	int32 RuntimeMaleCount = 0;
@@ -84,6 +95,15 @@ bool FProjectEnemyCharacterRegistryCoverageTest::RunTest(const FString& Paramete
 		ProjectEnemyCharacterRegistryTestsPrivate::ValidateFinalPathContract(*this, TEXT("Male identity class"), Path);
 		TestTrue(TEXT("Male identity class stays in Male folder"), ProjectEnemyCharacterRegistryTestsPrivate::IsMaleClassPath(Path));
 		MaleCompanionCount += ProjectEnemyCharacterRegistryTestsPrivate::IsCompanionClassPath(Path) ? 1 : 0;
+		const UClass* CharacterClass = ClassPath.TryLoadClass<ACharacter>();
+		const ACharacter* CharacterDefaults = CharacterClass ? CharacterClass->GetDefaultObject<ACharacter>() : nullptr;
+		const USkeletalMesh* AuthoredMesh = CharacterDefaults && CharacterDefaults->GetMesh()
+			? CharacterDefaults->GetMesh()->GetSkeletalMeshAsset()
+			: nullptr;
+		TestNotNull(*FString::Printf(TEXT("Male identity class loads: %s"), *Path), CharacterDefaults);
+		TestTrue(
+			*FString::Printf(TEXT("Male identity class uses the authoritative Male mesh: %s"), *Path),
+			AuthoredMesh && AuthoredMesh->GetPathName() == TEXT("/Game/DazToUnreal/Male/Male.Male"));
 	}
 	TestEqual(TEXT("Male registry includes three companions"), MaleCompanionCount, 3);
 
